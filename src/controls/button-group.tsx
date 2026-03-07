@@ -9,7 +9,7 @@ interface ButtonGroupProps {
   orientation?: "horizontal" | "vertical";
 }
 
-export function ButtonGroup({ children, className, orientation = "horizontal" }: ButtonGroupProps) {
+export function ButtonGroup({ children, className, orientation = "horizontal", ...props }: ButtonGroupProps) {
   return (
       <div
         role="group"
@@ -31,6 +31,7 @@ export function ButtonGroup({ children, className, orientation = "horizontal" }:
             ],
           className
         )}
+        {...props}
       >
         {children}
       </div>

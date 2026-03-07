@@ -85,7 +85,7 @@ export function BreadcrumbsEllipsis({ className, ...props }: ComponentProps<"spa
             className={cn("text-slate-600", className)}
             {...props}
         >
-            <Ellipsis className='w-4 h-4 text-slate-500' />
+            <Ellipsis className='size-4 text-slate-500' />
             <span className="sr-only">More</span>
         </span>
     );
@@ -100,7 +100,7 @@ export function BreadcrumbsSeparator({ children, className, ...props }: Componen
             className={cn("text-slate-400", className)}
             {...props}
         >
-            {children || <ChevronRight className='w-4 h-4' />}
+            {children || <ChevronRight className='size-4' />}
         </span>
     );
 }

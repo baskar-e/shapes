@@ -14,6 +14,7 @@ import {
 } from '@floating-ui/react';
 import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
+import { Button } from './button';
 
 interface DialogContextType {
     isOpen: boolean;
@@ -33,14 +34,18 @@ type DialogProps = {
     onOpen?: (open: boolean, event?: Event, reason?: OpenChangeReason) => void
 }
 
+type DialogContentProps = {
+    showCloseButton?: boolean
+} & ComponentProps<'div'>
+
 type DialogOverlayProps = {
-    portal?: HTMLElement | RefObject<HTMLElement | null> | null
+    portal?: RefObject<HTMLElement | null>
 } & ComponentProps<typeof FloatingOverlay>
 
 const [DialogProvider, useDialogContext] = createSafeContext<DialogContextType>('Dialog');
 const DialogOverlayProvider = createContext<{ isOverlay: boolean } | undefined>(undefined);
 
-export function Dialog({ open, onOpen, children, space = 8 }: DialogProps) {
+export function Dialog({ open, onOpen, children }: DialogProps) {
     const labelId = useId();
     const descriptionId = useId();
 
@@ -52,7 +57,7 @@ export function Dialog({ open, onOpen, children, space = 8 }: DialogProps) {
         open: isOpen,
         onOpenChange: setIsOpen,
         whileElementsMounted: autoUpdate,
-        middleware: [offset(space), flip(), shift({ padding: 5 })],
+        // middleware: [offset(), flip(), shift({ padding: 5 })],
     });
 
     const click = useClick(context);
@@ -68,9 +73,9 @@ export function Dialog({ open, onOpen, children, space = 8 }: DialogProps) {
     );
 }
 
-export function DialogContent({ children, className, ...props }: ComponentProps<"div">) {
+export function DialogContent({ children, className, showCloseButton = true, ...props }: DialogContentProps) {
     const { refs, isOpen, labelId, descriptionId, context, getFloatingProps } = useDialogContext();
-    const overlayCtx  = useContext(DialogOverlayProvider);
+    const overlayCtx = useContext(DialogOverlayProvider);
     const isInsideOverlay = !!overlayCtx?.isOverlay;
 
     if (!isOpen) return null;
@@ -82,9 +87,10 @@ export function DialogContent({ children, className, ...props }: ComponentProps<
                 aria-labelledby={labelId}
                 aria-describedby={descriptionId}
                 {...getFloatingProps(props)}
-                className={cn("bg-white text-ash p-6 rounded-xl shadow-2xl max-w-md w-full relative outline-none animate-in zoom-in-95 fade-in duration-200", className)}
+                className={cn("relative flex flex-col gap-y-4 bg-white text-ash text-sm p-5 rounded-xl shadow-2xl max-w-md w-full outline-none animate-in zoom-in-95 fade-in duration-200", className)}
             >
                 {children}
+                {showCloseButton && <DialogClose className='absolute right-3 top-3'><X className='size-4' /></DialogClose>}
             </div>
         </FloatingFocusManager>
     )
@@ -101,7 +107,7 @@ export function DialogOverlay({ children, className, portal, ...props }: DialogO
         <DialogOverlayProvider value={{ isOverlay: true }}>
             <FloatingPortal root={portal}>
                 <FloatingOverlay
-                    className={cn("bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center animate-in fade-in duration-300", className)}
+                    className={cn("flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 animate-in fade-in duration-300", className)}
                     lockScroll
                     {...props}
                 >
@@ -117,21 +123,22 @@ export function DialogButton<T extends HTMLButtonElement>({ ref: externalRef, ch
     const mergedRef = useMergeRefs([refs.setReference, externalRef]);
 
     return (
-        <button
+        <Button
             ref={mergedRef as Ref<HTMLButtonElement>}
+            variant='outline'
             {...getReferenceProps(props)}
             data-state={isOpen ? 'open' : 'closed'}
-            className={cn("px-4 py-2 text-ash text-sm rounded-md border w-fit", className)}
+            className={className}
         >
             {children}
-        </button>
+        </Button>
     );
 }
 
 export function DialogHeader({ className, ...props }: ComponentProps<"div">) {
     return (
         <div
-            className={cn("flex flex-col gap-y-1.5 text-ash text-center sm:text-left pb-2 mb-4 border-b border-border", className)}
+            className={cn("flex flex-col gap-y-1.5 text-ash text-center sm:text-left pb-2 border-b border-border", className)}
             {...props}
         />
     )
@@ -144,7 +151,7 @@ export function DialogTitle({ className, ...props }: ComponentProps<"h2">) {
         <h2
             {...props}
             id={labelId}
-            className={cn("text-lg font-semibold leading-none tracking-tight", className)}
+            className={cn("font-semibold text-base leading-none tracking-tight", className)}
         />
     );
 }
@@ -169,11 +176,20 @@ export function DialogClose({ className, children, ...props }: ComponentProps<"b
             type="button"
             aria-label='close'
             onClick={() => setIsOpen(false)}
-            className={cn("absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 outline-none", className)}
+            className={cn("px-1.5 py-0.5 rounded-lg transition-colors hover:bg-slate-100 outline-none", className)}
             {...props}
         >
-            {children || <X className='w-5' />}
+            {children}
             <span className="sr-only">Close</span>
         </button>
     );
+}
+
+export function DialogFooter({ className, ...props }: ComponentProps<"div">) {
+    return (
+        <div
+            className={cn("flex justify-end gap-2 text-ash pt-4 border-t border-border", className)}
+            {...props}
+        />
+    )
 }

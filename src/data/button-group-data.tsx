@@ -217,12 +217,6 @@ export const buttonGroupInput = [
 ]
 
 export const buttonGroupPropsData = [
-    // {
-    //     name: <span className="inline-block w-min bg-gray-100 px-2 py-1 rounded-md">size</span>,
-    //     type: <span className="inline-block w-min bg-gray-100 px-2 py-1 rounded-md">"sm" | "md" | "lg"</span>,
-    //     default: <span className="inline-block w-min bg-gray-100 px-2 py-1 rounded-md">"md"</span>,
-    //     description: "The size of the button group."
-    // },
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">orientation</span>,
         type: <div className="flex flex-wrap gap-1"><span className="bg-gray-100 px-2 py-1 rounded-md">"horizontal"</span><span className="bg-gray-100 px-2 py-1 rounded-md">"vertical"</span></div>,
@@ -235,7 +229,7 @@ export const buttonGroupPropsData = [
     }
 ]
 
-export const ButtonGroupAttribute = [
+export const buttonGroupAttribute = [
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">data-orientation</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"horizontal" | "vertical"</span>,

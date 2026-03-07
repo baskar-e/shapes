@@ -1,7 +1,7 @@
 // 'use client'
 
 import { Fragment } from 'react';
-import { Copy, Check } from 'lucide-react';
+import { Copy } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 // Token types for syntax highlighting
@@ -139,7 +139,7 @@ export function CodeBlock({
           aria-label="Copy code"
         // onClick={handleCopy}
         >
-          <Copy className="w-4 h-4 text-slate-400" />
+          <Copy className="size-4 text-slate-400" />
           {/* {copied ? (
             <Check className="w-4 h-4 text-green-400" />
           ) : (

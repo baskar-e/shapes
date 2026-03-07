@@ -196,7 +196,7 @@ export function DatePickerTrigger({
             {...getReferenceProps(props)}
         >
             <span>{selectedDate ? format(selectedDate) : placeholder}</span>
-            <CalendarIcon className="w-4 h-4 ml-2 text-slate-400" />
+            <CalendarIcon className="size-4 ml-2 text-slate-400" />
         </button>
     );
 }
@@ -374,7 +374,7 @@ export function DatePickerHeader({ className, ...props }: ComponentProps<'div'>)
                 className="p-1 rounded hover:bg-slate-100 transition-colors"
                 onClick={handlePrevMonth}
             >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="size-4" />
             </button>
             <div className="font-semibold text-sm" aria-live="polite">
                 {MONTHS[currentMonth]} {currentYear}
@@ -386,7 +386,7 @@ export function DatePickerHeader({ className, ...props }: ComponentProps<'div'>)
                 className="p-1 rounded hover:bg-slate-100 transition-colors"
                 onClick={handleNextMonth}
             >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="size-4" />
             </button>
         </div>
     );

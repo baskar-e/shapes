@@ -60,15 +60,15 @@ const SortableItem = memo<SortableItemProps>(({ id, data, handleNested, onRemove
     return (
         <li ref={setNodeRef} style={style} className={`group/list flex items-center gap-x-1.5 xl:gap-x-2.5 border border-[#BFCBD3] text-xs xl:text-sm rounded-lg px-2 xl:pl-3.5 xl:pr-2.5 min-h-9 xl:min-h-10 
         ${isDragging ? 'opacity-50' : ''} ${(data.parentId && overlay) ? 'ml-[12%]' : ''}`}>
-            <Move {...attributes} {...listeners} width={12} height={12} className='shrink-0' />
+            <Move {...attributes} {...listeners} className='size-3 shrink-0' />
             <span className="text-nowrap text-ellipsis overflow-hidden mr-auto">{data.title}</span>
             {data.url &&
                 <button className='group-[.hook]/left:group-hover/list:block hidden shrink-0' onClick={handleNested}>
-                    <CornerRightDown width={14} height={14} className={`${data.parentId ? 'rotate-90' : ''}`} />
+                    <CornerRightDown className={`size-3.5 ${data.parentId ? 'rotate-90' : ''}`} />
                 </button>
             }
             <button className='group-[.hook]/left:group-hover/list:block hidden shrink-0' onClick={onRemove}>
-                <X width={14} height={14} />
+                <X size={14} />
             </button>
         </li>
     )
@@ -359,10 +359,7 @@ export default function Sortable({
                     className="flex items-center justify-center text-white text-sm bg-violet-800 rounded-lg gap-x-1.5 w-20 xl:w-22.5 h-(--left-h) mt-auto"
                     onClick={() => setSidebarLayout(leftbar.leftmenu)}
                 >
-                    <CircleCheckBig
-                        width={16}
-                        height={16}
-                    />
+                    <CircleCheckBig size={14} />
                     Save
                 </button>
             </div>
@@ -439,10 +436,7 @@ export default function Sortable({
                                         </span>
                                         {view.items.length > 0 && (
                                             <span className="ml-auto shrink-0">
-                                                <ChevronDown
-                                                    width={14}
-                                                    height={14}
-                                                />
+                                                <ChevronDown size={14} />
                                             </span>
                                         )}
                                     </li>

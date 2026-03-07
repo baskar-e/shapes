@@ -3,10 +3,9 @@
 import { CodeBlock } from "@/components/codeBlock"
 import { TabButton, TabList, TabPanel, Tabs } from "../../controls/tabs"
 import { PropsTable } from "@/components/propsTable"
-import { Checkbox } from "@/controls/checkbox"
-import { checkboxBasic, checkboxCode, checkboxDisabled, checkboxLabel, checkboxPropsData, checkboxUsage } from "@/data/checkbox-data"
 import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxInput, ComboboxItem, ComboboxList } from "@/controls/combobox"
-import { comboboxCode, comboboxUsage } from "@/data/combobox-data"
+import { comboboxAutoHighlight, comboboxBasic, comboboxCode, comboboxContentAttribute, comboboxDisabled, comboboxDisabledFn, comboboxEmptyPropsData, comboboxInputAttribute, comboboxInputPropsData, comboboxItemAttribute, comboboxItemPropsData, comboboxLabel, comboboxLabelFn, comboboxPropsData, comboboxUsage, comboboxValue, comboboxValueFn } from "@/data/combobox-data"
+import { AttributeTable } from "@/components/attributeTable"
 
 type Fruits = {
     id?: number;
@@ -33,10 +32,10 @@ export default function ComboboxPage() {
     ];
 
     const fruitsDisabled: Fruits[] = [
-        { name: 'Apple' },
-        { name: 'Banana' },
-        { name: 'Carrot', invalid: true },
-        { name: 'Mango' },
+        { id: 1, name: 'Apple', invalid: true },
+        { id: 2, name: 'Banana' },
+        { id: 3, name: 'Carrot', invalid: true },
+        { id: 4, name: 'Mango' },
     ];
 
     return (
@@ -63,7 +62,7 @@ export default function ComboboxPage() {
                 <h4 className="text-xl xl:text-2xl font-medium pb-2">Examples</h4>
                 <h5 className="text-lg xl:text-xl font-medium pb-1">Basic</h5>
                 <p className="text-sm">
-                    A simple <code className="rounded-sm px-1.5 py-0.5 bg-gray-200">{'Combobox'}</code> with a list of items.
+                    A simple <code className="rounded-sm px-1.5 py-0.5 bg-gray-200">{'Combobox'}</code> component that allows the user to select an option from a list of items.
                 </p>
                 <Tabs defaultValue={'preview'} variant="line">
                     <TabList>
@@ -85,7 +84,7 @@ export default function ComboboxPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxBasic}
+                            data={comboboxBasic}
                         />
                     </TabPanel>
                 </Tabs>
@@ -116,7 +115,7 @@ export default function ComboboxPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={comboboxCode}
+                            data={comboboxLabel}
                         />
                     </TabPanel>
                 </Tabs>
@@ -143,7 +142,7 @@ export default function ComboboxPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxLabel}
+                            data={comboboxLabelFn}
                         />
                     </TabPanel>
                 </Tabs>
@@ -174,7 +173,7 @@ export default function ComboboxPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxLabel}
+                            data={comboboxValue}
                         />
                     </TabPanel>
                 </Tabs>
@@ -201,7 +200,7 @@ export default function ComboboxPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxLabel}
+                            data={comboboxValueFn}
                         />
                     </TabPanel>
                 </Tabs>
@@ -232,7 +231,7 @@ export default function ComboboxPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxDisabled}
+                            data={comboboxDisabled}
                         />
                     </TabPanel>
                 </Tabs>
@@ -245,7 +244,7 @@ export default function ComboboxPage() {
                         <TabButton value="code">Code</TabButton>
                     </TabList>
                     <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
-                        <Combobox items={fruitsDisabled} labelKey={'name'} disabledKey={'invalid'}>
+                        <Combobox items={fruitsDisabled} labelKey={'name'} disabledKey={(i) => !!(i.id === 1 && i.invalid)}>
                             <ComboboxInput placeholder="Select an option..." />
                             <ComboboxContent>
                                 <ComboboxEmpty />
@@ -259,7 +258,7 @@ export default function ComboboxPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxDisabled}
+                            data={comboboxDisabledFn}
                         />
                     </TabPanel>
                 </Tabs>
@@ -290,7 +289,7 @@ export default function ComboboxPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxDisabled}
+                            data={comboboxAutoHighlight}
                         />
                     </TabPanel>
                 </Tabs>
@@ -299,11 +298,41 @@ export default function ComboboxPage() {
             {/* Component API */}
             <div className="grid gap-3">
                 <h4 className="text-xl xl:text-2xl font-medium pb-2">Component API</h4>
-                <h5 className="text-lg xl:text-xl font-medium">Checkbox</h5>
+                <h5 className="text-lg xl:text-xl font-medium">Combobox</h5>
                 <p className="text-sm pb-1">
-                    The <span className="text-[13px] rounded-sm px-1.5 py-0.5 bg-gray-200">Checkbox</span> component is a control that allows users to toggle between checked and unchecked states.
+                    A component that allows users to either select from a list or enter a custom value.
                 </p>
-                <PropsTable data={checkboxPropsData} />
+                <PropsTable data={comboboxPropsData} />
+            </div>
+            <div className="grid gap-3">
+                <h5 className="text-lg xl:text-xl font-medium">ComboboxContent</h5>
+                <p className="text-sm pb-1">
+                    A container for the dropdown content, including the list of items or empty state.
+                </p>
+                <AttributeTable data={comboboxContentAttribute} />
+            </div>
+            <div className="grid gap-3">
+                <h5 className="text-lg xl:text-xl font-medium">ComboboxEmpty</h5>
+                <p className="text-sm pb-1">
+                    Displays a message when no options match the user's input.
+                </p>
+                <PropsTable data={comboboxEmptyPropsData} />
+            </div>
+            <div className="grid gap-3">
+                <h5 className="text-lg xl:text-xl font-medium">ComboboxInput</h5>
+                <p className="text-sm pb-1">
+                    The input field where users type to filter or enter a value.
+                </p>
+                <PropsTable data={comboboxInputPropsData} className="mb-5" />
+                <AttributeTable data={comboboxInputAttribute} />
+            </div>
+            <div className="grid gap-3">
+                <h5 className="text-lg xl:text-xl font-medium">ComboboxItem</h5>
+                <p className="text-sm pb-1">
+                    A single selectable option in the dropdown list.
+                </p>
+                <PropsTable data={comboboxItemPropsData} className="mb-5" />
+                <AttributeTable data={comboboxItemAttribute} />
             </div>
         </div>
     )

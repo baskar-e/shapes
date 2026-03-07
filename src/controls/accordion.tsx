@@ -135,7 +135,7 @@ export function AccordionTrigger({ children, className, ...props }: ComponentPro
                 {...props}
             >
                 {children}
-                <ChevronDown className={`w-4 text-slate-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`size-4 text-slate-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
             </button>
         </h3>
     )

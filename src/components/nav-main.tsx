@@ -46,7 +46,7 @@ export function NavMain({
                   : null
               ) :
                 <>
-                  <CollapsibleTrigger asChild className="group text-slate-800 text-sm pl-2 py-1.5">
+                  <CollapsibleTrigger asChild className="group text-slate-800 text-sm pl-2 py-1.5 cursor-default select-none">
                     <div>{item.title}
                       <SidebarMenuAction className="group-data-[state=open]:rotate-90">
                         <ChevronRight className="text-slate-600" />

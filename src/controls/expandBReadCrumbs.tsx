@@ -95,7 +95,7 @@ export function DynamicBreadcrumbs({
             <BreadcrumbsItem className="flex items-center gap-2">
                 <BreadcrumbsLink href={homePath}>
                     {homeIcon ? (
-                        <Home className="w-4 h-4" />
+                        <Home className="size-4" />
                     ) : (
                         homeLabel
                     )}

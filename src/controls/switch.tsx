@@ -13,10 +13,8 @@ type SwitchProps = {
 
 const [SwitchProvider, useSwitchContext] = createSafeContext<SwitchContextProps>("Switch");
 
-export function Switch({ id: providedId, children, className, value: controlledCheck, onValueChange, ...props }: SwitchProps) {
+export function Switch({ children, className, value: controlledCheck, onValueChange, ...props }: SwitchProps) {
     const [internalCheck, setInternalCheck] = useState(false);
-    const generatedId = useId();
-    const id = providedId ?? generatedId;
     const checked = controlledCheck ?? internalCheck;
 
     const handleCheck = (check: boolean) => {
@@ -31,14 +29,12 @@ export function Switch({ id: providedId, children, className, value: controlledC
             <div className="group relative inline-flex items-center w-fit shrink-0">
                 <input
                     {...props}
-                    id={id}
                     type="checkbox"
                     role="switch"
                     className="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
                     checked={checked}
                     onChange={(e) => handleCheck(e.target.checked)}
                 />
-
                 <span
                     aria-hidden="true"
                     data-state={checked ? 'checked' : 'unchecked'}
@@ -49,7 +45,7 @@ export function Switch({ id: providedId, children, className, value: controlledC
                         className
                     )}
                 >
-                    {children ?? <SwitchIcon className="bg-white" />}
+                    {children ?? <SwitchIcon className="bg-white shadow-lg" />}
                 </span>
             </div>
         </SwitchProvider>
@@ -62,7 +58,11 @@ export function SwitchIcon({ children, className }: ComponentProps<"span">) {
     return (
         <span
             data-state={checked ? 'checked' : 'unchecked'}
-            className={cn("flex items-center justify-center h-full w-1/2 rounded-full shadow-lg overflow-hidden transition-transform duration-200 translate-x-0 group-has-checked:translate-x-full", className)}
+            className={cn(
+                "flex items-center justify-center h-full w-1/2 p-0.5 rounded-full overflow-hidden transition-transform duration-200 translate-x-0 group-has-checked:translate-x-full",
+                "*:size-full *:first:group-has-checked:hidden *:last:group-not-has-checked:hidden",
+                className
+            )}
         >
             {children}
         </span>

@@ -30,7 +30,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <a href="#">
                 <div
                   className="bg-violet-900 text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <Shapes className="size-4" />
+                  <Shapes size={16} />
                 </div>
                 <div className="grid flex-1 text-left text-sm xl:text-base leading-tight">
                   <span className="truncate font-medium">ShapeS</span>

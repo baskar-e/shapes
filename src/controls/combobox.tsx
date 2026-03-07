@@ -268,8 +268,8 @@ export function ComboboxItem({ children, className, value, onSelect, ...props }:
     return (
         <div
             className={cn(
-                "relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2 text-sm  transition-colors duration-200  dark:hover:bg-slate-800/60 focus:bg-white/60 outline-none",
-                isActive && 'bg-white/40 text-slate-800 shadow-md ring-1 ring-white/70',
+                "relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2 text-sm transition-colors duration-200 dark:hover:bg-slate-800/60 outline-none",
+                isActive && 'bg-white/50 text-slate-800 shadow-md ring-1 ring-white/80',
                 disabled && 'opacity-50 cursor-not-allowed',
                 className
             )}

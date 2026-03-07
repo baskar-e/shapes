@@ -11,9 +11,9 @@ export const Checkbox = ({ label, description, className, ...props }: CheckboxPr
     const id = useId();
 
     return (
-        <div className="group grid grid-cols-[auto_1fr] items-center gap-x-3 gap-y-1">
+        <div className={cn("group grid items-center gap-x-3 gap-y-1", (label || description) && "grid-cols-[auto_1fr]")}>
             <div className={cn(
-                "relative flex items-center justify-center size-4.5 rounded border border-gray-300 bg-white shrink-0 shadow-md transition-all duration-200",
+                "relative flex items-center justify-center size-4.5 rounded bg-white shrink-0 shadow-md transition-all duration-200",
                 "has-checked:bg-violet-800 has-checked:border-violet-800",
                 "has-focus-visible:ring-2 has-focus-visible:ring-violet-500 has-focus-visible:ring-offset-1",
                 "has-disabled:opacity-50",

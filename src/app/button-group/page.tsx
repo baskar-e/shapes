@@ -3,7 +3,7 @@ import { TabButton, TabList, TabPanel, Tabs } from "../../controls/tabs"
 import { ButtonGroup } from "@/controls/button-group"
 import { Button } from "@/controls/button"
 import { Input } from "@/controls/input"
-import { ButtonGroupAttribute, buttonGroupBasic, buttonGroupCode, buttonGroupInput, buttonGroupNested, buttonGroupPropsData, buttonGroupUsage, buttonGroupVertical } from "@/data/button-group-data"
+import { buttonGroupAttribute, buttonGroupBasic, buttonGroupCode, buttonGroupInput, buttonGroupNested, buttonGroupPropsData, buttonGroupUsage, buttonGroupVertical } from "@/data/button-group-data"
 import { PropsTable } from "@/components/propsTable"
 import { AttributeTable } from "@/components/attributeTable"
 import { Plus, Search } from "lucide-react"
@@ -130,12 +130,12 @@ export default function ButtonGroupPage() {
       {/* Component API */}
       <div className="grid gap-3">
         <h4 className="text-xl xl:text-2xl font-medium pb-2">Component API</h4>
-        <h5 className="text-lg xl:text-xl font-medium">Button Group</h5>
+        <h5 className="text-lg xl:text-xl font-medium">ButtonGroup</h5>
         <p className="text-sm pb-1">
           A <span className="text-[13px] rounded-sm px-1.5 py-0.5 bg-gray-200">ButtonGroup</span> component is a layout container designed to unify related buttons into a single, cohesive interface with seamless transitions and consistent styling.
         </p>
         <PropsTable data={buttonGroupPropsData} className="mb-5" />
-        <AttributeTable data={ButtonGroupAttribute} />
+        <AttributeTable data={buttonGroupAttribute} />
       </div>
     </div>
   )

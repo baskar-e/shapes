@@ -8,7 +8,7 @@ import { InputGroup, InputGroupAddon } from '../../controls/input-group'
 import { Heart, Moon, Search, Sun } from 'lucide-react'
 import { Checkbox } from '../../controls/checkbox'
 import { Dropdown, DropdownButton, DropdownContent, DropdownItem } from '../../controls/dropdown'
-import { Combobox, ComboboxEmpty, ComboboxInput, ComboboxItem, ComboboxList } from '../../controls/combobox'
+import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxInput, ComboboxItem, ComboboxList } from '../../controls/combobox'
 import { RadioGroup, RadioItem } from '../../controls/radio-group'
 import { Switch, SwitchIcon } from '../../controls/switch'
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardImage, CardTitle } from '../../controls/card'
@@ -158,7 +158,7 @@ export default function ButtonPage() {
                 </Card>
             </div>
             <label htmlFor="ne">controller</label>
-            <Switch id='ne' className='w- h-6 p-1' >
+            <Switch>
                 <SwitchIcon className=''>
                     <Sun className='group-has-checked:hidden' />
                     <Moon className='group-not-has-checked:hidden text-white' />
@@ -166,8 +166,8 @@ export default function ButtonPage() {
             </Switch>
             <Switch />
             <Checkbox label='woeing' description='asdfasdf' className='bg-black h-8 w-8' />
-            <Dropdown position='bottom'>
-                <DropdownButton >
+            <Dropdown side='bottom'>
+                <DropdownButton>
                     click
                 </DropdownButton>
                 <DropdownContent>
@@ -184,17 +184,16 @@ export default function ButtonPage() {
             </Dropdown>
             <Combobox items={[]} position='top-start' >
                 <ComboboxInput placeholder='sd' value={ci} onChange={(e) => { setCi(e), console.log(e) }} />
-                <ComboboxList>
+                <ComboboxContent>
                     <ComboboxEmpty />
-                    {users.map((user) => (
-                        <ComboboxItem ref={asd} key={user.name} value={user.name}>
-                            {user.name}
-                            {/* <div className="flex items-center gap-3"> */}
-                            {/* <span>{user.name}</span> */}
-                            {/* </div> */}
-                        </ComboboxItem>
-                    ))}
-                </ComboboxList>
+                    <ComboboxList>
+                        {users.map((user) => (
+                            <ComboboxItem ref={asd} key={user.name} value={user.name}>
+                                {user.name}
+                            </ComboboxItem>
+                        ))}
+                    </ComboboxList>
+                </ComboboxContent>
             </Combobox>
             <input type="text" onChange={(e) => setCi(e.target.value)} />
             <Button variant='secondary' onClick={han} >labe</Button>

@@ -84,16 +84,16 @@ export default function AccordionPage() {
         <PropsTable data={accordionPropsData} />
       </div>
       <div className="grid gap-3">
+        <h5 className="text-lg xl:text-xl font-medium">AccordionContent</h5>
+        <AttributeTable data={accordionItemAttribute} />
+      </div>
+      <div className="grid gap-3">
         <h5 className="text-lg xl:text-xl font-medium">AccordionItem</h5>
         <PropsTable data={accordionItemPropsData} className="mb-5" />
         <AttributeTable data={accordionItemAttribute} />
       </div>
       <div className="grid gap-3">
         <h5 className="text-lg xl:text-xl font-medium">AccordionTrigger</h5>
-        <AttributeTable data={accordionItemAttribute} />
-      </div>
-      <div className="grid gap-3">
-        <h5 className="text-lg xl:text-xl font-medium">AccordionContent</h5>
         <AttributeTable data={accordionItemAttribute} />
       </div>
     </div>

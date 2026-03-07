@@ -7,7 +7,6 @@ import {
     offset,
     flip,
     shift,
-    Placement,
     OffsetOptions,
     OpenChangeReason,
     useDismiss,
@@ -21,6 +20,8 @@ import {
     FloatingPortal,
     useTransitionStyles,
     useMergeRefs,
+    Alignment,
+    Side,
 } from '@floating-ui/react';
 import { cn } from '@/lib/utils';
 import { FloatingContextType } from '@/types';
@@ -28,23 +29,25 @@ import { createSafeContext } from '@/lib/context';
 
 type DropdownProps = {
     children: ReactNode
-    position?: Placement
+    align?: Alignment | 'center'
+    side?: Side
     space?: OffsetOptions
     open?: boolean
     onOpen?: (open: boolean, event?: Event, reason?: OpenChangeReason) => void
 }
 
 type DropdownContentProps = {
-    portal?: HTMLElement | RefObject<HTMLElement | null> | null
+    portal?: RefObject<HTMLElement | null>
+    modal?: boolean
 } & ComponentProps<"div">
 
 type DropdownItemProps = {
-    onClick?: (e: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>) => void;
+    onSelect?: (e: Event) => void;
 } & ComponentProps<"div">
 
 const [DropdownProvider, useDropdownContext] = createSafeContext<FloatingContextType>('Dropdown');
 
-export function Dropdown({ open, onOpen, children, position, space = 8 }: DropdownProps) {
+export function Dropdown({ open, onOpen, children, align = 'center', side = 'bottom', space = 8 }: DropdownProps) {
     const [internalOpen, setInternalOpen] = useState(false);
     const isOpen = open ?? internalOpen;
     const setIsOpen = onOpen ?? setInternalOpen;
@@ -55,7 +58,7 @@ export function Dropdown({ open, onOpen, children, position, space = 8 }: Dropdo
     const { refs, context, placement, floatingStyles } = useFloating({
         open: isOpen,
         onOpenChange: setIsOpen,
-        placement: position,
+        placement: align === 'center' ? side : `${side}-${align}`,
         whileElementsMounted: autoUpdate,
         middleware: [offset(space), flip(), shift({ padding: 5 })],
     });
@@ -98,7 +101,7 @@ export function DropdownButton<T extends HTMLButtonElement>({ ref: externalRef, 
     );
 }
 
-export function DropdownContent({ children, className, portal, ...props }: DropdownContentProps) {
+export function DropdownContent({ children, className, portal, modal = false, ...props }: DropdownContentProps) {
     const { refs, listRef, placement, floatingStyles, getFloatingProps, context } = useDropdownContext();
     const { isMounted, styles: transitionStyles } = useTransitionStyles(context, {
         duration: 200,
@@ -119,12 +122,13 @@ export function DropdownContent({ children, className, portal, ...props }: Dropd
             }[side],
         }),
     });
+    const [side, align] = placement.split('-')
 
     if (!isMounted) return null;
 
     return (
         <FloatingPortal root={portal}>
-            <FloatingFocusManager context={context} modal={false}>
+            <FloatingFocusManager context={context} modal={modal}>
                 <div
                     ref={refs.setFloating}
                     style={{ ...floatingStyles, zIndex: 50 }}
@@ -134,7 +138,8 @@ export function DropdownContent({ children, className, portal, ...props }: Dropd
                         {...props}
                         data-state={isMounted ? 'open' : 'closed'}
                         data-slot='dropdown-content'
-                        data-placement={placement}
+                        data-align={align ?? 'center'}
+                        data-side={side}
                         className={cn("min-w-48 overflow-hidden rounded-lg border p-1.5 shadow-md bg-white/20 backdrop-blur-md border-white/30 space-y-1 dark:bg-slate-950/70 dark:backdrop-blur-lg dark:border-slate-800/50 z-50", className)}
                         style={transitionStyles}
                     >
@@ -148,14 +153,14 @@ export function DropdownContent({ children, className, portal, ...props }: Dropd
     );
 }
 
-export function DropdownItem({ children, className, onClick, ...props }: DropdownItemProps) {
+export function DropdownItem({ children, className, onSelect, ...props }: DropdownItemProps) {
     const { activeIndex, setIsOpen, getItemProps } = useDropdownContext();
     const { ref, index } = useListItem();
     const isActive = activeIndex === index;
 
     return (
         <div
-            className={cn("relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2 text-sm text-slate-800 transition-colors duration-200 hover:bg-white/40 dark:hover:bg-slate-800/60 focus:bg-white/60 outline-none hover:shadow-md hover:ring-1 hover:ring-white/70", className)}
+            className={cn("relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2 text-sm text-slate-800 outline-none transition-colors duration-200 hover:bg-white/50 hover:shadow-md hover:ring-1 hover:ring-white/80 dark:hover:bg-slate-800/60 focus-visible:bg-white/50 focus-visible:shadow-md focus-visible:ring-1 focus-visible:ring-white/80", className)}
             {...getItemProps({
                 ...props,
                 ref,
@@ -163,14 +168,17 @@ export function DropdownItem({ children, className, onClick, ...props }: Dropdow
                 'aria-selected': isActive,
                 tabIndex: isActive ? 0 : -1,
                 onClick(e: MouseEvent<HTMLDivElement>) {
-                    onClick?.(e);
-                    setIsOpen(false);
+                    onSelect?.(e);
+                    if (!e.defaultPrevented) {
+                        setIsOpen(false);
+                    }
                 },
                 onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
                     if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        onClick?.(e);
-                        setIsOpen(false);
+                        onSelect?.(e);
+                        if (!e.defaultPrevented) {
+                            setIsOpen(false);
+                        }
                     }
                 },
             })}
