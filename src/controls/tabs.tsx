@@ -150,9 +150,10 @@ export function TabList({ children, className, ...props }: ComponentProps<"div">
             role="tablist"
             aria-orientation={orientation}
             data-orientation={orientation}
+            data-variant={variant}
             className={cn(
-                "relative flex data-[orientation=vertical]:flex-col overflow-auto no-scrollbar",
-                variant === "pill" && "bg-white rounded-full p-1.5",
+                "relative flex data-[orientation=vertical]:flex-col shrink-0 overflow-auto no-scrollbar",
+                variant === "pill" && "bg-white rounded-3xl p-1.5",
                 variant === "line" && "border-b border-b-slate-300",
                 className
             )}
@@ -165,7 +166,7 @@ export function TabList({ children, className, ...props }: ComponentProps<"div">
 }
 
 export function TabButton({ value, children, className, ...props }: TabButtonProps) {
-    const { tabsMap, baseId, activeTab, indicatorRef, handleTabChange } = useTabsContext();
+    const { tabsMap, baseId, activeTab, indicatorRef, variant, handleTabChange } = useTabsContext();
     const indicatorCtx = useContext(TabHighlightProvider);
 
     const isActive = activeTab === value;
@@ -186,7 +187,7 @@ export function TabButton({ value, children, className, ...props }: TabButtonPro
             data-state={isActive ? 'active' : 'inactive'}
             tabIndex={isActive ? 0 : -1}
             className={cn(
-                "relative px-4 py-2 text-sm text-ash font-normal rounded-[22px] -outline-offset-1 hover:text-slate-800 data-[state=active]:font-medium data-[state=active]:text-slate-800 focus-visible:outline-slate-400",
+                "relative px-4 py-1.5 text-sm text-slate-600 font-medium rounded-[22px] -outline-offset-2 hover:text-slate-800 data-[state=active]:text-slate-800 focus-visible:outline-slate-400",
                 className
             )}
             {...props}
@@ -201,7 +202,14 @@ export function TabButton({ value, children, className, ...props }: TabButtonPro
                         "absolute inset-0 z-0 pointer-events-none",
                     )}
                 >
-                    <TabIndicator className={indicatorCtx?.className} />
+                    <div
+                        aria-hidden="true"
+                        className={cn("relative w-full rounded-[22px] shadow-white-md",
+                            variant === "pill" && "h-full bg-white border-2 border-gray-50",
+                            variant === "line" && "h-0.5 top-[calc(100%-2px)] bg-slate-600",
+                            indicatorCtx?.className
+                        )}
+                    />
                 </div>
             )}
         </button>
@@ -225,7 +233,7 @@ export function TabPanel({ value, children, className, ...props }: TabPanelProps
             data-state={isActive ? 'active' : 'inactive'}
             data-orientation={orientation}
             tabIndex={0}
-            className={cn("p-4 bg-[#edf0f3] rounded-lg animate-in fade-in duration-200", className)}
+            className={cn("p-4 bg-white text-slate-800 text-sm rounded-lg animate-in fade-in duration-300", className)}
             {...props}
         >
             {children}
@@ -233,28 +241,12 @@ export function TabPanel({ value, children, className, ...props }: TabPanelProps
     );
 }
 
-
-export function TabHighLight({ children, className }: { children: ReactNode, className?: string }) {
+export function TabHighlight({ children, className }: { children: ReactNode, className?: string }) {
     useTabsContext();
 
     return (
         <TabHighlightProvider value={{ className }}>
             {children}
         </TabHighlightProvider>
-    )
-}
-
-export function TabIndicator({ className }: { className?: string }) {
-    const { variant } = useTabsContext();
-
-    return (
-        <div
-            aria-hidden="true"
-            className={cn("relative w-full rounded-[22px] shadow-white-md",
-                variant === "pill" && "h-full bg-white",
-                variant === "line" && "h-0.5 top-[calc(100%-2px)] bg-slate-600",
-                className
-            )}
-        />
     )
 }

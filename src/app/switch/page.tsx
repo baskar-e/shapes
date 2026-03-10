@@ -44,7 +44,7 @@ export default function SwitchPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <Switch />
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
@@ -64,7 +64,7 @@ export default function SwitchPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-28 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <label className="grid grid-cols-[1fr_min-content] items-center gap-x-4 gap-y-1 w-full bg-white rounded-2xl text-sm text-ash p-3 shadow-md">
                             <div className="font-medium">Enable Notifications</div>
                             <Switch className="w-8.5 h-5"/>
@@ -88,7 +88,7 @@ export default function SwitchPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <Switch value={check} onValueChange={setCheck} />
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
@@ -108,7 +108,7 @@ export default function SwitchPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <Switch>
                             <SwitchIcon>
                                 <Sun />

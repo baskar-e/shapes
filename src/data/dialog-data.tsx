@@ -1,852 +1,437 @@
 import { t } from "@/components/codeBlock"
 
-const items = [
-    { word: { text: '' } },
-    {
-        word: [
-            t("keyword", "const"),
-            t("variable", "fruits"),
-            t("keyword", "="),
-            t("bracket", "[", false),
-            t("text", "Apple,"),
-            t("text", "Banana,"),
-            t("text", "Carrot,"),
-            t("text", "Mango", false),
-            t("bracket", "]", false),
-            t("text", ";", false),
-        ]
-    },
-    { word: { text: '' } }
-]
-
-const itemsLabel = [
-    { word: { text: '' } },
-    {
-        word: [
-            t("keyword", "const"),
-            t("variable", "fruitsLabel"),
-            t("keyword", "="),
-            t("bracket", "[", false),
-        ],
-        level: [
-            {
-                word: [
-                    t("bracket", "{"), t("text", "name:"), t("string", "\"Apple\"", false), t("text", ","), t("text", "color:"), t("string", "\"Red\""), t("bracket", "}", false), t("text", ",")
-                ]
-            },
-            {
-                word: [
-                    t("bracket", "{"), t("text", "name:"), t("string", "\"Banana\"", false), t("text", ","), t("text", "color:"), t("string", "\"Yellow\""), t("bracket", "}", false), t("text", ",")
-                ]
-            },
-            {
-                word: [
-                    t("bracket", "{"), t("text", "name:"), t("string", "\"Carrot\"", false), t("text", ","), t("text", "color:"), t("string", "\"Orange\""), t("bracket", "}", false), t("text", ",")
-                ]
-            },
-            {
-                word: [
-                    t("bracket", "{"), t("text", "name:"), t("string", "\"Mango\"", false), t("text", ","), t("text", "color:"), t("string", "\"Green\""), t("bracket", "}", false)
-                ]
-            }
-        ]
-    },
-    {
-        word: { "bracket": "]", "text": ";", "space": false }
-    },
-    { word: { text: '' } }
-]
-
-const itemsValue = [
-    { word: { text: '' } },
-    {
-        word: [
-            t("keyword", "const"),
-            t("variable", "fruitsValue"),
-            t("keyword", "="),
-            t("bracket", "[", false),
-        ],
-        level: [
-            {
-                word: [
-                    t("bracket", "{"), t("text", "id:"), t("string", "1", false), t("text", ","), t("text", "name:"), t("string", "\"Apple\""), t("bracket", "}", false), t("text", ",")
-                ]
-            },
-            {
-                word: [
-                    t("bracket", "{"), t("text", "id:"), t("string", "2", false), t("text", ","), t("text", "name:"), t("string", "\"Banana\""), t("bracket", "}", false), t("text", ",")
-                ]
-            },
-            {
-                word: [
-                    t("bracket", "{"), t("text", "id:"), t("string", "3", false), t("text", ","), t("text", "name:"), t("string", "\"Carrot\""), t("bracket", "}", false), t("text", ",")
-                ]
-            },
-            {
-                word: [
-                    t("bracket", "{"), t("text", "id:"), t("string", "4", false), t("text", ","), t("text", "name:"), t("string", "\"Mango\""), t("bracket", "}", false)
-                ]
-            }
-        ]
-    },
-    {
-        word: { "bracket": "]", "text": ";", "space": false }
-    },
-    { word: { text: '' } }
-]
-
-const itemsDisabled = [
-    { word: { text: '' } },
-    {
-        word: [
-            t("keyword", "const"),
-            t("variable", "fruitsDisabled"),
-            t("keyword", "="),
-            t("bracket", "[", false),
-        ],
-        level: [
-            {
-                word: [
-                    t("bracket", "{"), t("text", "id:"), t("string", "1", false), t("text", ","), t("text", "name:"), t("string", "\"Apple\"", false), t("text", ","), t("text", "invalid:"), t("string", "true", false), t("bracket", "}", false), t("text", ",")
-                ]
-            },
-            {
-                word: [
-                    t("bracket", "{"), t("text", "id:"), t("string", "2", false), t("text", ","), t("text", "name:"), t("string", "\"Banana\""), t("bracket", "}", false), t("text", ",")
-                ]
-            },
-            {
-                word: [
-                    t("bracket", "{"), t("text", "id:"), t("string", "3", false), t("text", ","), t("text", "name:"), t("string", "\"Carrot\"", false), t("text", ","), t("text", "invalid:"), t("string", "true", false), t("bracket", "}", false), t("text", ",")
-                ]
-            },
-            {
-                word: [
-                    t("bracket", "{"), t("text", "id:"), t("string", "4", false), t("text", ","), t("text", "name:"), t("string", "\"Mango\""), t("bracket", "}", false)
-                ]
-            }
-        ]
-    },
-    {
-        word: { "bracket": "]", "text": ";", "space": false }
-    },
-    { word: { text: '' } }
-]
-
-const comboboxContent = [
-    {
-        word: [
-            t("tag", "<ComboboxInput"),
-            t("prop", "placeholder", false),
-            t("keyword", "=", false),
-            t("string", '"Select an option..."'),
-            t("tag", "/>")
-        ]
-    },
-    {
-        word: { "tag": "<ComboboxContent>" },
-        level: [
-            {
-                word: { "tag": "<ComboboxEmpty />" },
-            },
-            {
-                word: { "tag": "<ComboboxList>" },
-                level: [
-                    {
-                        word: [
-                            t("bracket", "{", false),
-                            t("bracket", "(", false),
-                            t("variable", "item", false),
-                            t("bracket", ")"),
-                            t("keyword", "=>"),
-                            t("bracket", "(")
-                        ]
-                    },
-                    {
-                        level: [
-                            {
-                                word: [
-                                    t("tag", "<ComboboxItem"),
-                                    t("prop", "key", false),
-                                    t("keyword", "=", false),
-                                    t("bracket", "{", false),
-                                    t("text", "item.name", false),
-                                    t("bracket", "}"),
-                                    t("prop", "value", false),
-                                    t("keyword", "=", false),
-                                    t("bracket", "{", false),
-                                    t("text", "item", false),
-                                    t("bracket", "}", false),
-                                    t("tag", ">")
-                                ],
-                                level: [
-                                    {
-                                        word: [
-                                            t("bracket", "{", false),
-                                            t("text", "item.name", false),
-                                            t("bracket", "}")
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                word: { "tag": "</ComboboxItem>" }
-                            }
-                        ]
-                    },
-                    {
-                        word: { "bracket": ")}" }
-                    }
-                ]
-            },
-            {
-                word: { "tag": "</ComboboxList>" }
-            }
-        ]
-    },
-    {
-        word: { "tag": "</ComboboxContent>" }
-    }
-];
-
-export const comboboxCode = [
+export const dialogCode = [
     {
         word: { keyword: 'import', bracket: '{' },
         level: [
             {
-                word: { text: 'Combobox,', },
+                word: { text: 'Dialog,', },
             },
             {
-                word: { text: 'ComboboxContent,' },
+                word: { text: 'DialogButton,' },
             },
             {
-                word: { text: 'ComboboxEmpty,' },
+                word: { text: 'DialogClose,' },
             },
             {
-                word: { text: 'ComboboxInput,' },
+                word: { text: 'DialogContent,' },
             },
             {
-                word: { text: 'ComboboxItem,' },
+                word: { text: 'DialogDescription,' },
             },
             {
-                word: { text: 'ComboboxList' },
+                word: { text: 'DialogFooter,' },
+            },
+            {
+                word: { text: 'DialogHeader,' },
+            },
+            {
+                word: { text: 'DialogOverlay,' },
+            },
+            {
+                word: { text: 'DialogTitle' },
             }
         ],
     },
     {
-        word: { bracket: '}', keyword: 'from', string: '"@/components/ui/combobox"' }
-    }
+        word: { bracket: '}', keyword: 'from', string: '"@/components/ui/dialog"' }
+    },
+    { word: { text: "" } }
 ]
 
-export const comboboxUsage = [
+export const dialogUsage = [
     {
-        word: { "tag": "<Combobox>" },
+        word: { "tag": "<Dialog>" },
         level: [
             {
-                word: { "tag": "<ComboboxInput />" }
+                word: [t("tag", "<DialogButton>", false), t("text", "Open", false), t("tag", "</DialogButton>")],
             },
             {
-                word: { "tag": "<ComboboxContent>" },
+                word: { "tag": "<DialogContent>" },
                 level: [
                     {
-                        word: { "tag": "<ComboboxEmpty />" }
+                        word: { "tag": "<DialogHeader>" },
                     },
                     {
-                        word: { "tag": "<ComboboxList>" },
-
                         level: [
-                            {
-                                word: { "tag": "<ComboboxItem" },
-                                level: [
-                                    {
-                                        word: { text: "Item" }
-                                    }
-                                ]
-                            },
-                            {
-                                word: [t("tag", "</ComboboxItem>")]
-                            }
+                            { word: [t("tag", "<DialogTitle>", false), t("text", "Title", false), t("tag", "</DialogTitle>")] },
+                            { word: [t("tag", "<DialogDescription>", false), t("text", "Description", false), t("tag", "</DialogDescription>")] },
                         ]
                     },
                     {
-                        word: [t("tag", "</ComboboxList>")]
+                        word: { "tag": "</DialogHeader>" },
+                    },
+                    {
+                        word: { "text": "Content" }
+                    },
+                    {
+                        word: { "tag": "<DialogFooter>" },
+                    },
+                    {
+                        level: [
+                            { word: [t("tag", "<DialogClose>", false), t("text", "Close", false), t("tag", "</DialogClose>")] },
+
+                        ]
+                    },
+                    {
+                        word: { "tag": "</DialogFooter>" },
                     }
                 ]
             },
             {
-                word: [t("tag", "</ComboboxContent>")]
+                word: [t("tag", "</DialogContent>")]
             }
         ]
     },
     {
-        word: [t("tag", "</Combobox>")]
+        word: [t("tag", "</Dialog>")]
     }
 ];
 
-export const comboboxBasic = [
-    ...comboboxCode,
-    ...items,
+export const dialogBasic = [
+    ...dialogCode,
     {
-        word: [t("keyword", "export function"), t("function", "ComboboxBasic", false), t("bracket", "() {")],
+        word: [t("keyword", "export function"), t("function", "DialogBasic", false), t("bracket", "() {")],
+    },
+    {
         level: [
             {
                 word: {
                     "keyword": "return",
                     "bracket": "("
-                },
+                }
+            },
+            {
+                level: [
+                    {
+                        word: { "tag": "<Dialog>" },
+                    },
+                    {
+                        level: [
+                            {
+                                word: [t("tag", "<DialogButton>", false), t("text", "Open", false), t("tag", "</DialogButton>")],
+                            },
+                            {
+                                word: { "tag": "<DialogContent>" },
+                            },
+                            {
+                                level: [
+                                    {
+                                        word: { "tag": "<DialogHeader>" },
+                                    },
+                                    {
+                                        level: [
+                                            { word: [t("tag", "<DialogTitle>", false), t("text", "Title", false), t("tag", "</DialogTitle>")] },
+                                            { word: [t("tag", "<DialogDescription>", false), t("text", "Description", false), t("tag", "</DialogDescription>")] },
+                                        ]
+                                    },
+                                    {
+                                        word: { "tag": "</DialogHeader>" },
+                                    },
+                                    {
+                                        word: { "tag": "<p>" },
+                                    },
+                                    {
+                                        level: [{ word: { "text": "Here is the central content of the dialog where you can include any details or instructions." } }],
+                                    },
+                                    {
+                                        word: { "tag": "</p>" },
+                                    },
+                                    {
+                                        word: { "tag": "<DialogFooter>" },
+                                    },
+                                    {
+                                        level: [
+                                            { word: [t("tag", "<DialogClose"), t("prop", "className", false), t("keyword", "=", false), t("string", '"border"', false), t("tag", ">", false), t("text", "Close", false), t("tag", "</DialogClose>")] },
+                                            { word: [t("tag", "<Button"), t("prop", "variant", false), t("keyword", "=", false), t("string", '"primary"', false), t("tag", ">", false), t("text", "Save", false), t("tag", "</Button>")] },
+                                        ]
+                                    },
+                                    {
+                                        word: { "tag": "</DialogFooter>" },
+                                    }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</DialogContent>" },
+                            }
+                        ]
+                    },
+                    {
+                        word: { "tag": "</Dialog>" },
+                    }
+                ]
+            },
+            {
+                word: { "bracket": ");" }
+            }
+        ]
+    },
+    {
+        word: { "bracket": "}" }
+    }
+];
+
+export const dialogControlled = [
+    ...dialogCode,
+    {
+        word: [t("keyword", "export function"), t("function", "DialogControlled", false), t("bracket", "() {")],
+    },
+    {
+        level: [
+            {
+                word: [t("keyword", "const"), t("bracket", "[", false), t("variable", "open", false), t("text", ","), t("function", "setOpen", false), t("bracket", "]"), t("keyword", "="), t("function", "useState", false), t("bracket", "(", false), t("text", "false", false), t("bracket", ")", false), t("text", ";")],
+            },
+            { word: { text: '' } },
+            {
+                word: {
+                    "keyword": "return",
+                    "bracket": "("
+                }
             },
             {
                 level: [
                     {
                         word: [
-                            t("tag", "<Combobox"),
-                            t("prop", "items", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("text", "fruits", false),
-                            t("bracket", "}", false),
+                            t("tag", "<Dialog"),
+                            t("prop", "open", false), t("keyword", "=", false), t("bracket", "{", false), t("variable", "open", false), t("bracket", "}"),
+                            t("prop", "onOpen", false), t("keyword", "=", false), t("bracket", "{", false), t("function", "setOpen", false), t("bracket", "}", false),
                             t("tag", ">")
                         ],
+                    },
+                    {
                         level: [
                             {
-                                word: [
-                                    t("tag", "<ComboboxInput"),
-                                    t("prop", "placeholder", false),
-                                    t("keyword", "=", false),
-                                    t("string", '"Select an option..."'),
-                                    t("tag", "/>")
+                                word: [t("tag", "<DialogButton>", false), t("text", "Open", false), t("tag", "</DialogButton>")],
+                            },
+                            {
+                                word: { "tag": "<DialogContent>" },
+                            },
+                            {
+                                level: [
+                                    {
+                                        word: { "tag": "<DialogHeader>" },
+                                    },
+                                    {
+                                        level: [
+                                            { word: [t("tag", "<DialogTitle>", false), t("text", "Title", false), t("tag", "</DialogTitle>")] },
+                                            { word: [t("tag", "<DialogDescription>", false), t("text", "Description", false), t("tag", "</DialogDescription>")] },
+                                        ]
+                                    },
+                                    {
+                                        word: { "tag": "</DialogHeader>" },
+                                    },
+                                    {
+                                        word: { "tag": "<p>" },
+                                    },
+                                    {
+                                        level: [{ word: { "text": "This is a controlled dialog component..." } }],
+                                    },
+                                    {
+                                        word: { "tag": "</p>" },
+                                    },
+                                    {
+                                        word: { "tag": "<DialogFooter>" },
+                                    },
+                                    {
+                                        level: [
+                                            { word: [t("tag", "<DialogClose"), t("prop", "className", false), t("keyword", "=", false), t("string", '"border"', false), t("tag", ">", false), t("text", "Close", false), t("tag", "</DialogClose>")] },
+                                            { word: [t("tag", "<Button"), t("prop", "variant", false), t("keyword", "=", false), t("string", '"primary"', false), t("tag", ">", false), t("text", "Save", false), t("tag", "</Button>")] },
+                                        ]
+                                    },
+                                    {
+                                        word: { "tag": "</DialogFooter>" },
+                                    }
                                 ]
                             },
                             {
-                                word: { "tag": "<ComboboxContent>" },
+                                word: { "tag": "</DialogContent>" },
+                            }
+                        ]
+                    },
+                    {
+                        word: { "tag": "</Dialog>" },
+                    }
+                ]
+            },
+            {
+                word: { "bracket": ");" }
+            }
+        ]
+    },
+    {
+        word: { "bracket": "}" }
+    }
+];
+
+export const dialogNoCloseBtn = [
+    ...dialogCode,
+    {
+        word: [t("keyword", "export function"), t("function", "DialogWithNoCloseButton", false), t("bracket", "() {")],
+    },
+    {
+        level: [
+            {
+                word: {
+                    "keyword": "return",
+                    "bracket": "("
+                }
+            },
+            {
+                level: [
+                    {
+                        word: { "tag": "<Dialog>" },
+                    },
+                    {
+                        level: [
+                            {
+                                word: [t("tag", "<DialogButton>", false), t("text", "Open", false), t("tag", "</DialogButton>")],
+                            },
+                            {
+                                word: [t("tag", "<DialogContent"), t("prop", "showCloseButton", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "false", false), t("bracket", "}", false), t("tag", ">")],
+                            },
+                            {
                                 level: [
                                     {
-                                        word: { "tag": "<ComboboxEmpty />" }
+                                        word: { "tag": "<DialogHeader>" },
                                     },
                                     {
-                                        word: { "tag": "<ComboboxList>" },
+                                        level: [
+                                            { word: [t("tag", "<DialogTitle>", false), t("text", "Title", false), t("tag", "</DialogTitle>")] },
+                                            { word: [t("tag", "<DialogDescription>", false), t("text", "Description", false), t("tag", "</DialogDescription>")] },
+                                        ]
+                                    },
+                                    {
+                                        word: { "tag": "</DialogHeader>" },
+                                    },
+                                    {
+                                        word: { "tag": "<p>" },
+                                    },
+                                    {
+                                        level: [{ word: { "text": "Here is the central content of the dialog where you can include any details or instructions." } }],
+                                    },
+                                    {
+                                        word: { "tag": "</p>" },
+                                    },
+                                    {
+                                        word: { "tag": "<DialogFooter>" },
+                                    },
+                                    {
+                                        level: [
+                                            { word: [t("tag", "<DialogClose"), t("prop", "className", false), t("keyword", "=", false), t("string", '"border"', false), t("tag", ">", false), t("text", "Close", false), t("tag", "</DialogClose>")] },
+                                            { word: [t("tag", "<Button"), t("prop", "variant", false), t("keyword", "=", false), t("string", '"primary"', false), t("tag", ">", false), t("text", "Save", false), t("tag", "</Button>")] },
+                                        ]
+                                    },
+                                    {
+                                        word: { "tag": "</DialogFooter>" },
+                                    }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</DialogContent>" },
+                            }
+                        ]
+                    },
+                    {
+                        word: { "tag": "</Dialog>" },
+                    }
+                ]
+            },
+            {
+                word: { "bracket": ");" }
+            }
+        ]
+    },
+    {
+        word: { "bracket": "}" }
+    }
+];
+
+export const dialogOverlay = [
+    ...dialogCode,
+    {
+        word: [t("keyword", "export function"), t("function", "DialogOverlay", false), t("bracket", "() {")],
+    },
+    {
+        level: [
+            {
+                word: {
+                    "keyword": "return",
+                    "bracket": "("
+                }
+            },
+            {
+                level: [
+                    {
+                        word: { "tag": "<Dialog>" },
+                    },
+                    {
+                        level: [
+                            {
+                                word: [t("tag", "<DialogButton>", false), t("text", "Open", false), t("tag", "</DialogButton>")],
+                            },
+                            { word: [t("tag", "<DialogOverlay"), t("prop", "className", false), t("string", '"bg-violet-900/20"', false), t("tag", ">")] },
+                            {
+                                level: [
+                                    {
+                                        word: { "tag": "<DialogContent>" },
+                                    },
+                                    {
                                         level: [
                                             {
-                                                word: [
-                                                    t("bracket", "{", false),
-                                                    t("bracket", "(", false),
-                                                    t("variable", "item", false),
-                                                    t("bracket", ")"),
-                                                    t("keyword", "=>"),
-                                                    t("bracket", "(")
-                                                ]
+                                                word: { "tag": "<DialogHeader>" },
                                             },
                                             {
                                                 level: [
-                                                    {
-                                                        word: [
-                                                            t("tag", "<ComboboxItem"),
-                                                            t("prop", "key", false),
-                                                            t("keyword", "=", false),
-                                                            t("bracket", "{", false),
-                                                            t("text", "item", false),
-                                                            t("bracket", "}"),
-                                                            t("prop", "value", false),
-                                                            t("keyword", "=", false),
-                                                            t("bracket", "{", false),
-                                                            t("text", "item", false),
-                                                            t("bracket", "}", false),
-                                                            t("tag", ">")
-                                                        ],
-                                                        level: [
-                                                            {
-                                                                word: [
-                                                                    t("bracket", "{", false),
-                                                                    t("text", "item", false),
-                                                                    t("bracket", "}")
-                                                                ]
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        word: { "tag": "</ComboboxItem>" }
-                                                    }
+                                                    { word: [t("tag", "<DialogTitle>", false), t("text", "Title", false), t("tag", "</DialogTitle>")] },
+                                                    { word: [t("tag", "<DialogDescription>", false), t("text", "Description", false), t("tag", "</DialogDescription>")] },
                                                 ]
                                             },
                                             {
-                                                word: { "bracket": ")}" }
+                                                word: { "tag": "</DialogHeader>" },
+                                            },
+                                            {
+                                                word: { "tag": "<p>" },
+                                            },
+                                            {
+                                                level: [{ word: { "text": "Here is the central content of the dialog where you can include any details or instructions." } }],
+                                            },
+                                            {
+                                                word: { "tag": "</p>" },
+                                            },
+                                            {
+                                                word: { "tag": "<DialogFooter>" },
+                                            },
+                                            {
+                                                level: [
+                                                    { word: [t("tag", "<DialogClose"), t("prop", "className", false), t("keyword", "=", false), t("string", '"border"', false), t("tag", ">", false), t("text", "Close", false), t("tag", "</DialogClose>")] },
+                                                    { word: [t("tag", "<Button"), t("prop", "variant", false), t("keyword", "=", false), t("string", '"primary"', false), t("tag", ">", false), t("text", "Save", false), t("tag", "</Button>")] },
+                                                ]
+                                            },
+                                            {
+                                                word: { "tag": "</DialogFooter>" },
                                             }
                                         ]
                                     },
                                     {
-                                        word: { "tag": "</ComboboxList>" }
+                                        word: { "tag": "</DialogContent>" },
                                     }
                                 ]
                             },
-                            {
-                                word: { "tag": "</ComboboxContent>" }
-                            }
+                            { word: { "tag": '</DialogOverlay>' } }
                         ]
                     },
                     {
-                        word: { "tag": "</Combobox>" }
+                        word: { "tag": "</Dialog>" },
                     }
                 ]
             },
             {
-                word: { bracket: ')' }
+                word: { "bracket": ");" }
             }
         ]
     },
     {
-        word: { bracket: '}' }
-    }
-]
-
-export const comboboxLabel = [
-    ...comboboxCode,
-    ...itemsLabel,
-    {
-        word: [t("keyword", "export function"), t("function", "ComboboxLabel", false), t("bracket", "() {")],
-        level: [
-            {
-                word: {
-                    "keyword": "return",
-                    "bracket": "("
-                },
-            },
-            {
-                level: [
-                    {
-                        word: [
-                            t("tag", "<Combobox"),
-                            t("prop", "items", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("text", "fruitsLabel", false),
-                            t("bracket", "}"),
-                            t("prop", "labelKey", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("string", "'name'", false),
-                            t("bracket", "}", false),
-                            t("tag", ">")
-                        ],
-                        level: comboboxContent
-                    },
-                    {
-                        word: { "tag": "</Combobox>" }
-                    }
-                ]
-            },
-            {
-                word: { bracket: ')' }
-            }
-        ]
-    },
-    {
-        word: { bracket: '}' }
-    }
-];
-
-export const comboboxLabelFn = [
-    ...comboboxCode,
-    ...itemsLabel,
-    {
-        word: [t("keyword", "export function"), t("function", "ComboboxLabelFn", false), t("bracket", "() {")],
-        level: [
-            {
-                word: {
-                    "keyword": "return",
-                    "bracket": "("
-                },
-            },
-            {
-                level: [
-                    {
-                        word: [
-                            t("tag", "<Combobox"),
-                            t("prop", "items", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("text", "fruitsLabel", false),
-                            t("bracket", "}"),
-                            t("prop", "labelKey", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{(", false),
-                            t("variable", "item", false),
-                            t("bracket", ")"),
-                            t("keyword", "=>"),
-                            t("string", "`", false),
-                            t("bracket", "${", false),
-                            t("text", "item.name", false),
-                            t("bracket", "}"),
-                            t("keyword", "-"),
-                            t("bracket", "{", false),
-                            t("text", "item.color", false),
-                            t("bracket", "}", false),
-                            t("string", "`", false),
-                            t("bracket", "}", false),
-                            t("tag", ">")
-                        ],
-                        level: [
-                            {
-                                word: [
-                                    t("tag", "<ComboboxInput"),
-                                    t("prop", "placeholder", false),
-                                    t("keyword", "=", false),
-                                    t("string", '"Select an option..."'),
-                                    t("tag", "/>")
-                                ]
-                            },
-                            {
-                                word: { "tag": "<ComboboxContent>" },
-                                level: [
-                                    {
-                                        word: { "tag": "<ComboboxEmpty />" },
-                                    },
-                                    {
-                                        word: { "tag": "<ComboboxList>" },
-                                        level: [
-                                            {
-                                                word: [
-                                                    t("bracket", "{", false),
-                                                    t("bracket", "(", false),
-                                                    t("variable", "item", false),
-                                                    t("bracket", ")"),
-                                                    t("keyword", "=>"),
-                                                    t("bracket", "(")
-                                                ]
-                                            },
-                                            {
-                                                level: [
-                                                    {
-                                                        word: [
-                                                            t("tag", "<ComboboxItem"),
-                                                            t("prop", "key", false),
-                                                            t("keyword", "=", false),
-                                                            t("bracket", "{", false),
-                                                            t("text", "item.name", false),
-                                                            t("bracket", "}"),
-                                                            t("prop", "value", false),
-                                                            t("keyword", "=", false),
-                                                            t("bracket", "{", false),
-                                                            t("text", "item", false),
-                                                            t("bracket", "}", false),
-                                                            t("tag", ">")
-                                                        ],
-                                                        level: [
-                                                            {
-                                                                word: [
-                                                                    t("bracket", "{", false),
-                                                                    t("text", "item.name", false),
-                                                                    t("bracket", "}"),
-                                                                    t("keyword", "-"),
-                                                                    t("bracket", "{", false),
-                                                                    t("text", "item.color", false),
-                                                                    t("bracket", "}", false),
-                                                                ]
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        word: { "tag": "</ComboboxItem>" }
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                word: { "bracket": ")}" }
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        word: { "tag": "</ComboboxList>" }
-                                    }
-                                ]
-                            },
-                            {
-                                word: { "tag": "</ComboboxContent>" }
-                            }
-                        ]
-                    },
-                    {
-                        word: { "tag": "</Combobox>" }
-                    }
-                ]
-            },
-            {
-                word: { bracket: ')' }
-            }
-        ]
-    },
-
-    {
-        word: { bracket: '}' }
-    }
-];
-
-export const comboboxValue = [
-    ...comboboxCode,
-    ...itemsValue,
-    {
-        word: [t("keyword", "export function"), t("function", "ComboboxValue", false), t("bracket", "() {")],
-        level: [
-            {
-                word: {
-                    "keyword": "return",
-                    "bracket": "("
-                },
-            },
-            {
-                level: [
-
-                    {
-                        word: [
-                            t("tag", "<Combobox"),
-                            t("prop", "items", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("text", "fruitsValue", false),
-                            t("bracket", "}"),
-                            t("prop", "labelKey", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("string", "'name'", false),
-                            t("bracket", "}"),
-                            t("prop", "valueKey", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("string", "'id'", false),
-                            t("bracket", "}", false),
-                            t("tag", ">")
-                        ],
-                        level: comboboxContent
-                    },
-                    {
-                        word: { "tag": "</Combobox>" }
-                    }
-                ]
-            },
-            {
-                word: { bracket: ')' }
-            }
-        ]
-    },
-    {
-        word: { bracket: '}' }
-    }
-];
-
-export const comboboxValueFn = [
-    ...comboboxCode,
-    ...itemsValue,
-    {
-        word: [t("keyword", "export function"), t("function", "ComboboxValueFn", false), t("bracket", "() {")],
-        level: [
-            {
-                word: {
-                    "keyword": "return",
-                    "bracket": "("
-                },
-            },
-            {
-                level: [
-
-                    {
-                        word: [
-                            t("tag", "<Combobox"),
-                            t("prop", "items", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("text", "fruitsValue", false),
-                            t("bracket", "}"),
-                            t("prop", "labelKey", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("string", "'name'", false),
-                            t("bracket", "}"),
-                            t("prop", "valueKey", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{(", false),
-                            t("variable", "item", false),
-                            t("bracket", ")"),
-                            t("keyword", "=>"),
-                            t("function", "String", false),
-                            t("bracket", "(", false),
-                            t("text", "item.id", false),
-                            t("bracket", ")}", false),
-                            t("tag", ">")
-                        ],
-                        level: comboboxContent
-                    },
-                    {
-                        word: { "tag": "</Combobox>" }
-                    }
-                ]
-            },
-            {
-                word: { bracket: ')' }
-            }
-        ]
-    },
-    {
-        word: { bracket: '}' }
-    }
-];
-
-export const comboboxDisabled = [
-    ...comboboxCode,
-    ...itemsDisabled,
-    {
-        word: [t("keyword", "export function"), t("function", "ComboboxDisabled", false), t("bracket", "() {")],
-        level: [
-            {
-                word: {
-                    "keyword": "return",
-                    "bracket": "("
-                },
-            },
-            {
-                level: [
-
-                    {
-                        word: [
-                            t("tag", "<Combobox"),
-                            t("prop", "items", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("text", "fruitsDisabled", false),
-                            t("bracket", "}"),
-                            t("prop", "labelKey", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("string", "'name'", false),
-                            t("bracket", "}"),
-                            t("prop", "disabledKey", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("string", "'invalid'", false),
-                            t("bracket", "}", false),
-                            t("tag", ">")
-                        ],
-                        level: comboboxContent
-                    },
-                    {
-                        word: { "tag": "</Combobox>" }
-                    }
-                ]
-            },
-            {
-                word: { bracket: ')' }
-            }
-        ]
-    },
-    {
-        word: { bracket: '}' }
-    }
-];
-
-export const comboboxDisabledFn = [
-    ...comboboxCode,
-    ...itemsDisabled,
-    {
-        word: [t("keyword", "export function"), t("function", "ComboboxDisabledFn", false), t("bracket", "() {")],
-        level: [
-            {
-                word: {
-                    "keyword": "return",
-                    "bracket": "("
-                },
-            },
-            {
-                level: [
-
-                    {
-                        word: [
-                            t("tag", "<Combobox"),
-                            t("prop", "items", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("text", "fruitsDisabled", false),
-                            t("bracket", "}"),
-                            t("prop", "labelKey", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("string", "'name'", false),
-                            t("bracket", "}"),
-                            t("prop", "disabledKey", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{(", false),
-                            t("variable", "item", false),
-                            t("bracket", ")"),
-                            t("keyword", "=>"),
-                            t("keyword", "!!", false),
-                            t("bracket", "(", false),
-                            t("text", "item.id ", false),
-                            t("keyword", "==="),
-                            t("text", "1 ", false),
-                            t("keyword", "&&"),
-                            t("text", "item.invalid", false),
-                            t("bracket", ")}", false),
-                            t("tag", ">")
-                        ],
-                        level: comboboxContent
-                    },
-                    {
-                        word: { "tag": "</Combobox>" }
-                    }
-                ]
-            },
-            {
-                word: { bracket: ')' }
-            }
-        ]
-    },
-    {
-        word: { bracket: '}' }
-    }
-];
-
-export const comboboxAutoHighlight = [
-    ...comboboxCode,
-    ...itemsLabel,
-    {
-        word: [t("keyword", "export function"), t("function", "ComboboxAutoHighlight", false), t("bracket", "() {")],
-        level: [
-            {
-                word: {
-                    "keyword": "return",
-                    "bracket": "("
-                },
-            },
-            {
-                level: [
-
-                    {
-                        word: [
-                            t("tag", "<Combobox"),
-                            t("prop", "items", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("text", "fruits", false),
-                            t("bracket", "}"),
-                            t("prop", "labelKey", false),
-                            t("keyword", "=", false),
-                            t("bracket", "{", false),
-                            t("string", "'name'", false),
-                            t("bracket", "}"),
-                            t("prop", "autoHighlight", false),
-                            t("tag", ">")
-                        ],
-                        level: comboboxContent
-                    },
-                    {
-                        word: { "tag": "</Combobox>" }
-                    }
-                ]
-            },
-            {
-                word: { bracket: ')' }
-            }
-        ]
-    },
-    {
-        word: { bracket: '}' }
+        word: { "bracket": "}" }
     }
 ];
 

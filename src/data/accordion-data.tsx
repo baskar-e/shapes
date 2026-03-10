@@ -161,7 +161,7 @@ export const accordionBasic = [
           {
             "level": [
               {
-                "word": [t("bracket", "{", false), t("text", "items.", false), t("function", "map", false), t("bracket", "((", false), t("variable", "item", false), t("bracket", ")"), t("keyword", "=>"), t("bracket", "(")],
+                "word": [t("bracket", "{", false), t("variable", "items.", false), t("function", "map", false), t("bracket", "((", false), t("variable", "item", false), t("bracket", ")"), t("keyword", "=>"), t("bracket", "(")],
                 "level": [
                   {
                     "word": [t("tag", "<AccordionItem"), t("prop", "key", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}"), t("prop", "value", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}", false), t("tag", ">")]
@@ -219,7 +219,7 @@ export const accordionMultiple = [
           {
             "level": [
               {
-                "word": [t("bracket", "{", false), t("text", "items.", false), t("function", "map", false), t("bracket", "((", false), t("variable", "item", false), t("bracket", ")"), t("keyword", "=>"), t("bracket", "(")],
+                "word": [t("bracket", "{", false), t("variable", "items.", false), t("function", "map", false), t("bracket", "((", false), t("variable", "item", false), t("bracket", ")"), t("keyword", "=>"), t("bracket", "(")],
                 "level": [
                   {
                     "word": [t("tag", "<AccordionItem"), t("prop", "key", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}"), t("prop", "value", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}", false), t("tag", ">")]

@@ -1,3 +1,35 @@
+import { t } from "@/components/codeBlock";
+
+const items = [
+    { word: { "text": "" } },
+    {
+        word: [t("keyword", "const"), t("variable", "dropdownItems"), t("keyword", "="), t("bracket", "[")]
+    },
+    {
+        level: [
+            {
+                word: [t("bracket", "{"), t("text", "id:"), t("string", "1"), t("text", ","), t("text", "value:"), t("string", '"Add"'), t("bracket", "},")]
+            },
+            {
+                word: [t("bracket", "{"), t("text", "id:"), t("string", "2"), t("text", ","), t("text", "value:"), t("string", '"Edit"'), t("bracket", "},")]
+            },
+            {
+                word: [t("bracket", "{"), t("text", "id:"), t("string", "3"), t("text", ","), t("text", "value:"), t("string", '"Change"'), t("bracket", "},")]
+            },
+            {
+                word: [t("bracket", "{"), t("text", "id:"), t("string", "4"), t("text", ","), t("text", "value:"), t("string", '"Option"'), t("bracket", "},")]
+            },
+            {
+                word: [t("bracket", "{"), t("text", "id:"), t("string", "5"), t("text", ","), t("text", "value:"), t("string", '"Delete"'), t("bracket", "}")]
+            }
+        ]
+    },
+    {
+        word: { "bracket": "]", "text": ";", "space": false }
+    },
+    { word: { "text": "" } }
+];
+
 export const dropdownItems = [
     {
         id: 1,
@@ -19,6 +51,432 @@ export const dropdownItems = [
         id: 5,
         value: "Delete",
     },
+]
+
+export const dropdownCode = [
+    {
+        word: { keyword: 'import', bracket: '{' },
+        level: [
+            {
+                word: { text: 'Dropdown,', },
+            },
+            {
+                word: { text: 'DropdownButton,' },
+            },
+            {
+                word: { text: 'DropdownContent,' },
+            },
+            {
+                word: { text: 'DropdownItem' },
+            }
+        ],
+    },
+    {
+        word: { bracket: '}', keyword: 'from', string: '"@/components/ui/dropdown"' }
+    }
+]
+
+export const dropdownUsage = [
+    {
+        word: { "tag": "<Dropdown>" },
+        level: [
+            {
+                word: [t("tag", "<DropdownButton>", false), t("text", "Click", false), t("tag", "</DropdownButton>")],
+            },
+            {
+                word: { "tag": "<DropdownContent>" },
+                level: [
+                    {
+                        word: [t("tag", "<DropdownItem>", false), t("text","Item", false), t("tag","</DropdownItem>")],
+                    }                    
+                ]
+            },
+            {
+                word: [t("tag", "</DropdownContent>")]
+            }
+        ]
+    },
+    {
+        word: [t("tag", "</Dropdown>")]
+    }
+];
+
+export const dropdownBasic = [
+    ...dropdownCode,
+    ...items,
+    {
+        word: [t("keyword", "export function"), t("function", "DropdownBasic", false), t("bracket", "() {")],
+        level: [
+            {
+                word: {
+                    "keyword": "return",
+                    "bracket": "("
+                },
+            },
+            {
+                level: [
+                    {
+                        word: { "tag": "<Dropdown>" },
+                        level: [
+                            {
+                                word: [
+                                    t("tag", "<DropdownButton>", false),
+                                    t("text", "Click", false),
+                                    t("tag", "</DropdownButton>")
+                                ]
+                            },
+                            {
+                                word: { "tag": "<DropdownContent>" },
+                                level: [
+                                    {
+                                        word: [
+                                            t("bracket", "{", false),
+                                            t("variable", "dropdownItems.", false),
+                                            t("function", "map", false),
+                                            t("bracket", "((", false),
+                                            t("variable", "item", false),
+                                            t("bracket", ")"),
+                                            t("keyword", "=>"),
+                                            t("bracket", "(")
+                                        ]
+                                    },
+                                    {
+                                        level: [
+                                            {
+                                                word: [
+                                                    t("tag", "<DropdownItem"),
+                                                    t("prop", "key", false),
+                                                    t("keyword", "=", false),
+                                                    t("bracket", "{", false),
+                                                    t("text", "item.id", false),
+                                                    t("bracket", "}", false),
+                                                    t("tag", ">")
+                                                ],
+                                                level: [
+                                                    {
+                                                        word: [
+                                                            t("bracket", "{", false),
+                                                            t("text", "item.value", false),
+                                                            t("bracket", "}")
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                word: { "tag": "</DropdownItem>" }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        word: { "bracket": "))}" }
+                                    },
+                                ]
+                            },
+                            {
+                                word: { "tag": "</DropdownContent>" }
+                            }
+                        ]
+                    },
+                    {
+                        word: { "tag": "</Dropdown>" }
+                    }
+                ]
+            },
+            {
+                word: { bracket: ')' }
+            }
+        ]
+    },
+    {
+        word: { bracket: '}' }
+    }
+];
+
+export const dropdownControlled = [
+    ...dropdownCode,
+    ...items,
+    {
+        word: [t("keyword", "export function"), t("function", "DropdownControlled", false), t("bracket", "() {")],
+        level: [
+            {
+                word: [t("keyword", "const"), t("bracket", "[", false), t("variable", "open", false), t("text", ","), t("function", "setOpen", false), t("bracket", "]"), t("keyword", "="), t("function", "useState", false), t("bracket", "(", false), t("text", "false", false), t("bracket", ")", false), t("text", ";")],
+            },
+            { word: { text: '' } },
+            {
+                word: {
+                    "keyword": "return",
+                    "bracket": "("
+                },
+            },
+            {
+                level: [
+                    {
+                        word: [
+                            t("tag", "<Dropdown"),
+                            t("prop", "open", false), t("keyword", "=", false), t("bracket", "{", false), t("variable", "open", false), t("bracket", "}"),
+                            t("prop", "onOpen", false), t("keyword", "=", false), t("bracket", "{", false), t("function", "setOpen", false), t("bracket", "}", false),
+                            t("tag", ">")
+                        ],
+                        level: [
+                            {
+                                word: [
+                                    t("tag", "<DropdownButton>", false),
+                                    t("text", "Click", false),
+                                    t("tag", "</DropdownButton>")
+                                ]
+                            },
+                            {
+                                word: { "tag": "<DropdownContent>" },
+                                level: [
+                                    {
+                                        word: [
+                                            t("bracket", "{", false),
+                                            t("variable", "dropdownItems.", false),
+                                            t("function", "map", false),
+                                            t("bracket", "((", false),
+                                            t("variable", "item", false),
+                                            t("bracket", ")"),
+                                            t("keyword", "=>"),
+                                            t("bracket", "(")
+                                        ]
+                                    },
+                                    {
+                                        level: [
+                                            {
+                                                word: [
+                                                    t("tag", "<DropdownItem"),
+                                                    t("prop", "key", false),
+                                                    t("keyword", "=", false),
+                                                    t("bracket", "{", false),
+                                                    t("text", "item.id", false),
+                                                    t("bracket", "}", false),
+                                                    t("tag", ">")
+                                                ],
+                                                level: [
+                                                    {
+                                                        word: [
+                                                            t("bracket", "{", false),
+                                                            t("text", "item.value", false),
+                                                            t("bracket", "}")
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                word: { "tag": "</DropdownItem>" }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        word: { "bracket": "))}" }
+                                    },
+                                ]
+                            },
+                            {
+                                word: { "tag": "</DropdownContent>" }
+                            }
+                        ]
+                    },
+                    {
+                        word: { "tag": "</Dropdown>" }
+                    }
+                ]
+            },
+            {
+                word: { bracket: ')' }
+            }
+        ]
+    },
+    {
+        word: { bracket: '}' }
+    }
+];
+
+export const dropdownPosition = [
+    ...dropdownCode,
+    ...items,
+    {
+        word: [t("keyword", "export function"), t("function", "DropdownPosition", false), t("bracket", "() {")],
+        level: [
+            {
+                word: {
+                    "keyword": "return",
+                    "bracket": "("
+                },
+            },
+            {
+                level: [
+                    {
+                        word: [
+                            t("tag", "<Dropdown"),
+                            t("prop", "align", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "start", false), t("bracket", "}"),
+                            t("prop", "side", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "right", false), t("bracket", "}", false),
+                            t("tag", ">")
+                        ],
+                        level: [
+                            {
+                                word: [
+                                    t("tag", "<DropdownButton>", false),
+                                    t("text", "Click", false),
+                                    t("tag", "</DropdownButton>")
+                                ]
+                            },
+                            {
+                                word: { "tag": "<DropdownContent>" },
+                                level: [
+                                    {
+                                        word: [
+                                            t("bracket", "{", false),
+                                            t("variable", "dropdownItems.", false),
+                                            t("function", "map", false),
+                                            t("bracket", "((", false),
+                                            t("variable", "item", false),
+                                            t("bracket", ")"),
+                                            t("keyword", "=>"),
+                                            t("bracket", "(")
+                                        ]
+                                    },
+                                    {
+                                        level: [
+                                            {
+                                                word: [
+                                                    t("tag", "<DropdownItem"),
+                                                    t("prop", "key", false),
+                                                    t("keyword", "=", false),
+                                                    t("bracket", "{", false),
+                                                    t("text", "item.id", false),
+                                                    t("bracket", "}", false),
+                                                    t("tag", ">")
+                                                ],
+                                                level: [
+                                                    {
+                                                        word: [
+                                                            t("bracket", "{", false),
+                                                            t("text", "item.value", false),
+                                                            t("bracket", "}")
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                word: { "tag": "</DropdownItem>" }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        word: { "bracket": "))}" }
+                                    },
+                                ]
+                            },
+                            {
+                                word: { "tag": "</DropdownContent>" }
+                            }
+                        ]
+                    },
+                    {
+                        word: { "tag": "</Dropdown>" }
+                    }
+                ]
+            },
+            {
+                word: { bracket: ')' }
+            }
+        ]
+    },
+    {
+        word: { bracket: '}' }
+    }
+];
+
+export const dropdownModal = [
+    ...dropdownCode,
+    ...items,
+    {
+        word: [t("keyword", "export function"), t("function", "DropdownModal", false), t("bracket", "() {")],
+        level: [
+            {
+                word: {
+                    "keyword": "return",
+                    "bracket": "("
+                },
+            },
+            {
+                level: [
+                    {
+                        word: { "tag": "<Dropdown>" },
+                        level: [
+                            {
+                                word: [
+                                    t("tag", "<DropdownButton>", false),
+                                    t("text", "Click", false),
+                                    t("tag", "</DropdownButton>")
+                                ]
+                            },
+                            {
+                                word: [t("tag", "<DropdownContent"), t("prop", "modal", false), t("tag", ">")],
+                                level: [
+                                    {
+                                        word: [
+                                            t("bracket", "{", false),
+                                            t("variable", "dropdownItems.", false),
+                                            t("function", "map", false),
+                                            t("bracket", "((", false),
+                                            t("variable", "item", false),
+                                            t("bracket", ")"),
+                                            t("keyword", "=>"),
+                                            t("bracket", "(")
+                                        ]
+                                    },
+                                    {
+                                        level: [
+                                            {
+                                                word: [
+                                                    t("tag", "<DropdownItem"),
+                                                    t("prop", "key", false),
+                                                    t("keyword", "=", false),
+                                                    t("bracket", "{", false),
+                                                    t("text", "item.id", false),
+                                                    t("bracket", "}", false),
+                                                    t("tag", ">")
+                                                ],
+                                                level: [
+                                                    {
+                                                        word: [
+                                                            t("bracket", "{", false),
+                                                            t("text", "item.value", false),
+                                                            t("bracket", "}")
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                word: { "tag": "</DropdownItem>" }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        word: { "bracket": "))}" }
+                                    },
+                                ]
+                            },
+                            {
+                                word: { "tag": "</DropdownContent>" }
+                            }
+                        ]
+                    },
+                    {
+                        word: { "tag": "</Dropdown>" }
+                    }
+                ]
+            },
+            {
+                word: { bracket: ')' }
+            }
+        ]
+    },
+    {
+        word: { bracket: '}' }
+    }
 ]
 
 export const dropdownPropsData = [

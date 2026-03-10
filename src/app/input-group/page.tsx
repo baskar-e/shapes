@@ -1,11 +1,10 @@
 import { CodeBlock } from "@/components/codeBlock"
 import { TabButton, TabList, TabPanel, Tabs } from "../../controls/tabs"
-import { buttonGroupBasic, buttonGroupCode, buttonGroupInput, buttonGroupNested, buttonGroupUsage, buttonGroupVertical } from "@/data/button-group-data"
 import { PropsTable } from "@/components/propsTable"
 import { AttributeTable } from "@/components/attributeTable"
 import { AtSign, Mail, Search } from "lucide-react"
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/controls/input-group"
-import { inputGroupAddonAttribute, inputGroupAddonPropsData, inputGroupInputPropsData, inputGroupPropsData } from "@/data/input-group-data"
+import { inputGroupAddonAttribute, inputGroupAddonPropsData, inputGroupBlockEnd, inputGroupBlockStart, inputGroupCode, inputGroupDisabled, inputGroupInlineEnd, inputGroupInlineStart, inputGroupInputPropsData, inputGroupPropsData, inputGroupUsage } from "@/data/input-group-data"
 
 export default function InputGroupPage() {
     return (
@@ -18,11 +17,11 @@ export default function InputGroupPage() {
                 <h4 className="text-xl xl:text-2xl font-medium">Usage</h4>
                 <CodeBlock
                     title="Imports"
-                    data={buttonGroupCode}
+                    data={inputGroupCode}
                 />
                 <CodeBlock
                     title="Components"
-                    data={buttonGroupUsage}
+                    data={inputGroupUsage}
                 />
             </div>
             <div className="grid gap-3">
@@ -34,17 +33,17 @@ export default function InputGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
                         <InputGroup>
                             <InputGroupInput placeholder="Search" />
-                            <InputGroupAddon align="inline-start">
+                            <InputGroupAddon>
                                 <Search size={16} />
                             </InputGroupAddon>
                         </InputGroup>
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={buttonGroupBasic}
+                            data={inputGroupInlineStart}
                         />
                     </TabPanel>
                 </Tabs>
@@ -56,7 +55,7 @@ export default function InputGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
                         <InputGroup>
                             <InputGroupInput placeholder="Email" />
                             <InputGroupAddon align="inline-end">
@@ -66,7 +65,7 @@ export default function InputGroupPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={buttonGroupVertical}
+                            data={inputGroupInlineEnd}
                         />
                     </TabPanel>
                 </Tabs>
@@ -78,17 +77,17 @@ export default function InputGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
                         <InputGroup>
                             <InputGroupInput placeholder="Enter name" />
                             <InputGroupAddon align="block-start">
-                                <p className="">Your Name</p>
+                                <p>Your Name</p>
                             </InputGroupAddon>
                         </InputGroup>
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={buttonGroupNested}
+                            data={inputGroupBlockStart}
                         />
                     </TabPanel>
                 </Tabs>
@@ -100,7 +99,7 @@ export default function InputGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
                         <InputGroup>
                             <InputGroupInput placeholder="Enter amount" />
                             <InputGroupAddon align="block-end">
@@ -110,7 +109,7 @@ export default function InputGroupPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={buttonGroupInput}
+                            data={inputGroupBlockEnd}
                         />
                     </TabPanel>
                 </Tabs>
@@ -125,9 +124,9 @@ export default function InputGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
                         <InputGroup>
-                            <InputGroupInput placeholder="Disabled input" disabled />
+                            <InputGroupInput placeholder="Disabled Input" disabled />
                             <InputGroupAddon>
                                 <AtSign size={16} />
                             </InputGroupAddon>
@@ -135,7 +134,7 @@ export default function InputGroupPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={buttonGroupInput}
+                            data={inputGroupDisabled}
                         />
                     </TabPanel>
                 </Tabs>

@@ -1,18 +1,17 @@
 'use client'
 
+import { useState } from "react"
 import { CodeBlock } from "@/components/codeBlock"
 import { TabButton, TabList, TabPanel, Tabs } from "../../controls/tabs"
 import { PropsTable } from "@/components/propsTable"
-import { comboboxBasic, comboboxCode, comboboxDisabled, comboboxLabel, comboboxUsage, comboboxValue } from "@/data/combobox-data"
 import { AttributeTable } from "@/components/attributeTable"
-import { Dialog, DialogButton, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle } from "@/controls/dialog"
 import { Button } from "@/controls/button"
-import { useState } from "react"
-import { dialogButtonAttribute, dialogContentPropsData, dialogOverlayPropsData, dialogPropsData } from "@/data/dialog-data"
+import { Dialog, DialogButton, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle } from "@/controls/dialog"
+import { dialogBasic, dialogButtonAttribute, dialogCode, dialogContentPropsData, dialogControlled, dialogNoCloseBtn, dialogOverlay, dialogOverlayPropsData, dialogPropsData, dialogUsage } from "@/data/dialog-data"
 
 export default function DialogPage() {
     const [open, setOpen] = useState(false);
-   
+
     return (
         <div className="grid gap-8 max-w-160 lg:max-w-180 2xl:max-w-200 py-4 xl:py-6 mx-auto" >
             <div className="grid gap-3">
@@ -25,11 +24,11 @@ export default function DialogPage() {
                 <h4 className="text-xl xl:text-2xl font-medium">Usage</h4>
                 <CodeBlock
                     title="Imports"
-                    data={comboboxCode}
+                    data={dialogCode}
                 />
                 <CodeBlock
                     title="Components"
-                    data={comboboxUsage}
+                    data={dialogUsage}
                 />
             </div>
             {/* Basic */}
@@ -44,7 +43,7 @@ export default function DialogPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
                         <Dialog>
                             <DialogButton>
                                 Open
@@ -68,7 +67,7 @@ export default function DialogPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={comboboxBasic}
+                            data={dialogBasic}
                         />
                     </TabPanel>
                 </Tabs>
@@ -84,7 +83,7 @@ export default function DialogPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
                         <Dialog open={open} onOpen={setOpen}>
                             <DialogButton>
                                 Open
@@ -110,7 +109,7 @@ export default function DialogPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={comboboxLabel}
+                            data={dialogControlled}
                         />
                     </TabPanel>
                 </Tabs>
@@ -126,7 +125,7 @@ export default function DialogPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
                         <Dialog>
                             <DialogButton>
                                 Open
@@ -150,7 +149,7 @@ export default function DialogPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={comboboxValue}
+                            data={dialogNoCloseBtn}
                         />
                     </TabPanel>
                 </Tabs>
@@ -166,12 +165,12 @@ export default function DialogPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
                         <Dialog>
                             <DialogButton>
                                 Open
                             </DialogButton>
-                            <DialogOverlay>
+                            <DialogOverlay className="bg-violet-900/20">
                                 <DialogContent>
                                     <DialogHeader>
                                         <DialogTitle>Title</DialogTitle>
@@ -192,7 +191,7 @@ export default function DialogPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={comboboxDisabled}
+                            data={dialogOverlay}
                         />
                     </TabPanel>
                 </Tabs>

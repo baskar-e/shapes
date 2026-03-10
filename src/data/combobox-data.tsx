@@ -256,7 +256,7 @@ export const comboboxUsage = [
 
                         level: [
                             {
-                                word: { "tag": "<ComboboxItem" },
+                                word: { "tag": "<ComboboxItem>" },
                                 level: [
                                     {
                                         word: { text: "Item" }

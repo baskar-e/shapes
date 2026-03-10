@@ -35,7 +35,7 @@ export default function ButtonGroupPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
             <ButtonGroup>
               <Button variant="white">Button 1</Button>
               <Button variant="white">Button 2</Button>
@@ -59,7 +59,7 @@ export default function ButtonGroupPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 py-9 min-h-77">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
             <ButtonGroup orientation="vertical">
               <Button variant="white">Button 1</Button>
               <Button variant="white">Button 2</Button>
@@ -83,7 +83,7 @@ export default function ButtonGroupPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 py-9 min-h-77">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
             <ButtonGroup>
               <ButtonGroup>
                 <Button variant="white" className="px-2">
@@ -113,7 +113,7 @@ export default function ButtonGroupPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 py-9 min-h-77">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
             <ButtonGroup>
               <Input placeholder="Search..." />
               <Button variant="white"><Search size={16} /></Button>

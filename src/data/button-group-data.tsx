@@ -128,7 +128,7 @@ export const buttonGroupNested = [
                                     {
                                         level: [
                                             {
-                                                word: [t("tag", "<Plus"), t("prop", "size", false), t("keyword", "=", false), t("bracket", '{', false), t("number", '16', false), t("bracket", '}'), t("tag", "/>")],
+                                                word: [t("tag", "<Plus"), t("prop", "size", false), t("keyword", "=", false), t("bracket", '{', false), t("text", '16', false), t("bracket", '}'), t("tag", "/>")],
                                             }
                                         ]
                                     },
@@ -196,7 +196,7 @@ export const buttonGroupInput = [
                             {
                                 level: [
                                     {
-                                        word: [t("tag", "<Search"), t("prop", "size", false), t("keyword", "=", false), t("bracket", '{', false), t("number", '16', false), t("bracket", '}'), t("tag", "/>")],
+                                        word: [t("tag", "<Search"), t("prop", "size", false), t("keyword", "=", false), t("bracket", '{', false), t("text", '16', false), t("bracket", '}'), t("tag", "/>")],
                                     }
                                 ]
                             },

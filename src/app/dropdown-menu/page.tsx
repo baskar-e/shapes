@@ -1,13 +1,12 @@
 'use client'
 
+import { useState } from "react"
 import { CodeBlock } from "@/components/codeBlock"
 import { TabButton, TabList, TabPanel, Tabs } from "../../controls/tabs"
 import { PropsTable } from "@/components/propsTable"
-import { comboboxBasic, comboboxCode, comboboxDisabled, comboboxLabel, comboboxUsage, comboboxValue } from "@/data/combobox-data"
 import { AttributeTable } from "@/components/attributeTable"
 import { Dropdown, DropdownButton, DropdownContent, DropdownItem } from "@/controls/dropdown"
-import { dropdownButtonAttribute, dropdownContentAttribute, dropdownContentPropsData, dropdownItemAttribute, dropdownItemPropsData, dropdownItems, dropdownPropsData } from "@/data/dropdown-data"
-import { useState } from "react"
+import { dropdownBasic, dropdownButtonAttribute, dropdownCode, dropdownContentAttribute, dropdownContentPropsData, dropdownControlled, dropdownItemAttribute, dropdownItemPropsData, dropdownItems, dropdownModal, dropdownPosition, dropdownPropsData, dropdownUsage } from "@/data/dropdown-data"
 
 export default function DropdownPage() {
     const [open, setOpen] = useState(false);
@@ -24,11 +23,11 @@ export default function DropdownPage() {
                 <h4 className="text-xl xl:text-2xl font-medium">Usage</h4>
                 <CodeBlock
                     title="Imports"
-                    data={comboboxCode}
+                    data={dropdownCode}
                 />
                 <CodeBlock
                     title="Components"
-                    data={comboboxUsage}
+                    data={dropdownUsage}
                 />
             </div>
             {/* Basic */}
@@ -43,14 +42,14 @@ export default function DropdownPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
                         <Dropdown>
                             <DropdownButton>
                                 click
                             </DropdownButton>
                             <DropdownContent>
                                 {dropdownItems.map((item) => (
-                                    <DropdownItem key={item.id} onSelect={e=>{e.preventDefault(), console.log(e)}}>
+                                    <DropdownItem key={item.id}>
                                         {item.value}
                                     </DropdownItem>
                                 ))}
@@ -59,7 +58,7 @@ export default function DropdownPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={comboboxBasic}
+                            data={dropdownBasic}
                         />
                     </TabPanel>
                 </Tabs>
@@ -75,7 +74,7 @@ export default function DropdownPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
                         <Dropdown open={open} onOpen={setOpen}>
                             <DropdownButton>
                                 click
@@ -91,7 +90,7 @@ export default function DropdownPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={comboboxLabel}
+                            data={dropdownControlled}
                         />
                     </TabPanel>
                 </Tabs>
@@ -107,7 +106,7 @@ export default function DropdownPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
                         <Dropdown align="start" side="right">
                             <DropdownButton>
                                 click
@@ -123,7 +122,7 @@ export default function DropdownPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={comboboxValue}
+                            data={dropdownPosition}
                         />
                     </TabPanel>
                 </Tabs>
@@ -139,7 +138,7 @@ export default function DropdownPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
                         <Dropdown>
                             <DropdownButton>
                                 click
@@ -155,7 +154,7 @@ export default function DropdownPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={comboboxDisabled}
+                            data={dropdownModal}
                         />
                     </TabPanel>
                 </Tabs>

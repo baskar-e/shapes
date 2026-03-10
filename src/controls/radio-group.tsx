@@ -74,7 +74,7 @@ export function RadioGroup({ name, value: controlledValue, defaultValue = "", on
     );
 }
 
-export function RadioItem({ id, value: itemValue, children, className, disabled: itemDisabled, ...props }: RadioItemProps) {
+export function RadioGroupItem({ id, value: itemValue, children, className, disabled: itemDisabled, ...props }: RadioItemProps) {
     const { uniqName, value, disabled: groupDisabled, required, handleValueChange } = useRadioGroupContext();
 
     const uid = id ?? useId();

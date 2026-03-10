@@ -6,7 +6,7 @@ import { Input } from "@/controls/input"
 import { buttonGroupBasic, buttonGroupCode, buttonGroupInput, buttonGroupNested, buttonGroupUsage, buttonGroupVertical } from "@/data/button-group-data"
 import { PropsTable } from "@/components/propsTable"
 import { useState } from "react"
-import { inputPropsData } from "@/data/input-data"
+import { inputBasic, inputCode, inputControlled, inputDisabled, inputFile, inputPropsData, inputUsage } from "@/data/input-data"
 
 export default function InputPage() {
     const [value, setValue] = useState('');
@@ -21,11 +21,11 @@ export default function InputPage() {
                 <h4 className="text-xl xl:text-2xl font-medium">Usage</h4>
                 <CodeBlock
                     title="Imports"
-                    data={buttonGroupCode}
+                    data={inputCode}
                 />
                 <CodeBlock
                     title="Components"
-                    data={buttonGroupUsage}
+                    data={inputUsage}
                 />
             </div>
             <div className="grid gap-3">
@@ -37,12 +37,12 @@ export default function InputPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <Input placeholder="Enter" />
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={buttonGroupBasic}
+                            data={inputBasic}
                         />
                     </TabPanel>
                 </Tabs>
@@ -57,12 +57,12 @@ export default function InputPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <Input placeholder="Enter" value={value} onChange={e => setValue(e.target.value)} />
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={buttonGroupVertical}
+                            data={inputControlled}
                         />
                     </TabPanel>
                 </Tabs>
@@ -77,12 +77,12 @@ export default function InputPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <Input placeholder="Enter" disabled />
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={buttonGroupNested}
+                            data={inputDisabled}
                         />
                     </TabPanel>
                 </Tabs>
@@ -97,12 +97,12 @@ export default function InputPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <Input type="file" />
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={buttonGroupInput}
+                            data={inputFile}
                         />
                     </TabPanel>
                 </Tabs>

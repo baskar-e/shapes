@@ -3,11 +3,10 @@
 import { CodeBlock } from "@/components/codeBlock"
 import { TabButton, TabList, TabPanel, Tabs } from "../../controls/tabs"
 import { PropsTable } from "@/components/propsTable"
-import { checkboxBasic, checkboxCode, checkboxDisabled, checkboxLabel, checkboxPropsData, checkboxUsage } from "@/data/checkbox-data"
-import { RadioGroup, RadioItem } from "@/controls/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/controls/radio-group"
 import { useState } from "react"
 import { AttributeTable } from "@/components/attributeTable"
-import { radioGroupAttribute, radioGroupPropsData, radioItemAttribute, radioItemPropsData } from "@/data/radiogroup-data"
+import { radioGroupAttribute, radioGroupBasic, radioGroupCode, radioGroupControlled, radioGroupDefaultValue, radioGroupDisabled, radioGroupItemDisabled, radioGroupPropsData, radioGroupUsage, radioGroupVertical, radioItemAttribute, radioItemPropsData } from "@/data/radiogroup-data"
 
 export default function RadioGroupPage() {
     const items = [
@@ -29,11 +28,11 @@ export default function RadioGroupPage() {
                 <h4 className="text-xl xl:text-2xl font-medium">Usage</h4>
                 <CodeBlock
                     title="Imports"
-                    data={checkboxCode}
+                    data={radioGroupCode}
                 />
                 <CodeBlock
                     title="Components"
-                    data={checkboxUsage}
+                    data={radioGroupUsage}
                 />
             </div>
             <div className="grid gap-3">
@@ -47,18 +46,18 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <RadioGroup>
                             {items.map((item) => (
-                                <RadioItem key={item.value} value={item.value}>
+                                <RadioGroupItem key={item.value} value={item.value}>
                                     {item.label}
-                                </RadioItem>
+                                </RadioGroupItem>
                             ))}
                         </RadioGroup>
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxBasic}
+                            data={radioGroupBasic}
                         />
                     </TabPanel>
                 </Tabs>
@@ -73,18 +72,18 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <RadioGroup orientation="vertical">
                             {items.map((item) => (
-                                <RadioItem key={item.value} value={item.value}>
+                                <RadioGroupItem key={item.value} value={item.value}>
                                     {item.label}
-                                </RadioItem>
+                                </RadioGroupItem>
                             ))}
                         </RadioGroup>
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxLabel}
+                            data={radioGroupVertical}
                         />
                     </TabPanel>
                 </Tabs>
@@ -99,18 +98,18 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <RadioGroup defaultValue="option1">
                             {items.map((item) => (
-                                <RadioItem key={item.value} value={item.value}>
+                                <RadioGroupItem key={item.value} value={item.value}>
                                     {item.label}
-                                </RadioItem>
+                                </RadioGroupItem>
                             ))}
                         </RadioGroup>
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxLabel}
+                            data={radioGroupDefaultValue}
                         />
                     </TabPanel>
                 </Tabs>
@@ -125,18 +124,18 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
-                        <RadioGroup value={value} onValueChange={e=>setValue(e)}>
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+                        <RadioGroup value={value} onValueChange={setValue}>
                             {items.map((item) => (
-                                <RadioItem key={item.value} value={item.value}>
+                                <RadioGroupItem key={item.value} value={item.value}>
                                     {item.label}
-                                </RadioItem>
+                                </RadioGroupItem>
                             ))}
                         </RadioGroup>
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxLabel}
+                            data={radioGroupControlled}
                         />
                     </TabPanel>
                 </Tabs>
@@ -151,41 +150,41 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
-                        <RadioGroup>
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+                        <RadioGroup disabled>
                             {items.map((item) => (
-                                <RadioItem key={item.value} value={item.value} disabled={item.value === 'option2'}>
+                                <RadioGroupItem key={item.value} value={item.value}>
                                     {item.label}
-                                </RadioItem>
+                                </RadioGroupItem>
                             ))}
                         </RadioGroup>
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxDisabled}
+                            data={radioGroupDisabled}
                         />
                     </TabPanel>
                 </Tabs>
                 <p className="text-sm pt-5">
-                    Use the <code className="rounded-sm px-1.5 py-0.5 bg-gray-200">disabled</code> prop in <code className="rounded-sm px-1.5 py-0.5 bg-gray-200">{"<RadioItem />"}</code> to prevent interaction with the radio item.
+                    Use the <code className="rounded-sm px-1.5 py-0.5 bg-gray-200">disabled</code> prop in <code className="rounded-sm px-1.5 py-0.5 bg-gray-200">{"<RadioGroupItem />"}</code> to prevent interaction with the radio item.
                 </p>
                 <Tabs defaultValue={'preview'} variant="line">
                     <TabList>
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <RadioGroup>
                             {items.map((item) => (
-                                <RadioItem key={item.value} value={item.value} disabled={item.value === 'option2'}>
+                                <RadioGroupItem key={item.value} value={item.value} disabled={item.value === 'option2'}>
                                     {item.label}
-                                </RadioItem>
+                                </RadioGroupItem>
                             ))}
                         </RadioGroup>
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxDisabled}
+                            data={radioGroupItemDisabled}
                         />
                     </TabPanel>
                 </Tabs>
@@ -202,9 +201,9 @@ export default function RadioGroupPage() {
                 <AttributeTable data={radioGroupAttribute} />
             </div>
              <div className="grid gap-3">
-                <h5 className="text-lg xl:text-xl font-medium">RadioItem</h5>
+                <h5 className="text-lg xl:text-xl font-medium">RadioGroupItem</h5>
                 <p className="text-sm pb-1">
-                    The <span className="text-[13px] rounded-sm px-1.5 py-0.5 bg-gray-200">RadioItem</span> component represents an individual option within a <span className="text-[13px] rounded-sm px-1.5 py-0.5 bg-gray-200">RadioGroup</span>.
+                    The <span className="text-[13px] rounded-sm px-1.5 py-0.5 bg-gray-200">RadioGroupItem</span> component represents an individual option within a <span className="text-[13px] rounded-sm px-1.5 py-0.5 bg-gray-200">RadioGroup</span>.
                 </p>
                 <PropsTable data={radioItemPropsData} className="mb-5" />
                 <AttributeTable data={radioItemAttribute} />

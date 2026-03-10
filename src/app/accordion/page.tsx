@@ -32,7 +32,7 @@ export default function AccordionPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center px-12 min-h-77">
+          <TabPanel value="preview" className="flex items-center px-12 min-h-77 bg-[#edf0f3]">
             <Accordion type='single' defaultValue="item-1">
               {accordionItems.map((item) => (
                 <AccordionItem key={item.value} value={item.value}>
@@ -59,7 +59,7 @@ export default function AccordionPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center px-12 py-9 min-h-77">
+          <TabPanel value="preview" className="flex items-center px-12 min-h-77 bg-[#edf0f3]">
             <Accordion type='multiple' defaultValue={["item-1", "item-3"]}>
               {accordionItems.map((item) => (
                 <AccordionItem key={item.value} value={item.value}>

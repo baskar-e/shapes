@@ -34,7 +34,7 @@ export default function CardPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <Card>
                             <CardHeader>
                                 <CardTitle>Quote</CardTitle>
@@ -65,7 +65,7 @@ export default function CardPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 py-9 min-h-77">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <Card className=''>
                             <CardImage src='https://free-3dtextureshd.com/wp-content/uploads/2025/01/614.jpg.webp' alt='Card Image' />
                             <CardHeader className="flex items-center justify-between">
