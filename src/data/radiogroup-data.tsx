@@ -511,7 +511,7 @@ export const radioItemPropsData = [
         description: "A unique identifier for the radio item, used to link the input with its label for accessibility."
     },
     {
-        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">value</span>,
+        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">value*</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">-</span>,
         default: '-',
         description: "The unique string value associated with this specific radio item, used by the parent group to manage selection."

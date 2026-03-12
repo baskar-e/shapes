@@ -122,7 +122,7 @@ export function DropdownContent({ children, className, portal, modal = false, ..
             }[side],
         }),
     });
-    const [side, align] = placement.split('-')
+    const [side, align] = placement.split('-');
 
     if (!isMounted) return null;
 

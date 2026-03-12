@@ -1,4 +1,4 @@
-import { useId, ComponentProps, useState } from "react";
+import { ComponentProps, useState } from "react";
 import { cn } from "@/lib/utils";
 import { createSafeContext } from "@/lib/context";
 
@@ -45,14 +45,14 @@ export function Switch({ children, className, value: controlledCheck, onValueCha
                         className
                     )}
                 >
-                    {children ?? <SwitchIcon className="bg-white shadow-lg" />}
+                    {children ?? <SwitchThumb className="bg-white shadow-lg" />}
                 </span>
             </div>
         </SwitchProvider>
     );
 }
 
-export function SwitchIcon({ children, className }: ComponentProps<"span">) {
+export function SwitchThumb({ children, className }: ComponentProps<"span">) {
     const { checked } = useSwitchContext();
 
     return (

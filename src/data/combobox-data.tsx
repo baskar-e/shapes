@@ -864,7 +864,7 @@ export const comboboxPropsData = [
         description: "Callback function fired when the combobox open state is changed."
     },
     {
-        name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">items</span>,
+        name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">items*</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">array</span>,
         default: '-',
         description: "Array of items to be displayed in the dropdown list."
@@ -876,25 +876,29 @@ export const comboboxPropsData = [
         description: "Automatically highlights the first item when the dropdown is opened."
     },
     {
-        name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">position</span>,
+        name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">align</span>,
+        type: (
+            <div className="flex flex-wrap gap-1">
+                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"start"</span>
+                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"center"</span>
+                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"end"</span>
+            </div>
+        ),
+        default: 'center',
+        description: "The preferred alignment against the trigger which the component will be positioned."
+    },
+    {
+        name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">side</span>,
         type: (
             <div className="flex flex-wrap gap-1">
                 <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"top"</span>
                 <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"bottom"</span>
                 <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"left"</span>
                 <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"right"</span>
-                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"top-start"</span>
-                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"top-end"</span>
-                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"bottom-start"</span>
-                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"bottom-end"</span>
-                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"left-start"</span>
-                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"left-end"</span>
-                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"right-start"</span>
-                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">"right-end"</span>
             </div>
         ),
         default: 'bottom',
-        description: "Defines the position of the dropdown relative to the input field."
+        description: "The preferred edge of the trigger against which the component will be positioned."
     },
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">space</span>,
@@ -948,7 +952,7 @@ export const comboboxInputPropsData = [
 
 export const comboboxItemPropsData = [
     {
-        name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">value</span>,
+        name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">value*</span>,
         type: (
             <div className="flex flex-wrap gap-1">
                 <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">string</span>
@@ -973,9 +977,14 @@ export const comboboxContentAttribute = [
         description: "Indicates whether the combobox content is opened or closed."
     },
     {
-        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">data-placement</span>,
-        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">Placement</span>,
-        description: "Indicates the position of the combobox content."
+        name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">data-align</span>,
+        type: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">"start" | "center" | "end"</span>,
+        description: "Indicates the alignment of the combobox content relative to its trigger."
+    },
+    {
+        name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">data-side</span>,
+        type: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">"top" | "bottom" | "left" | "right"</span>,
+        description: "The attribute specifies the side on which the combobox content is positioned relative to the trigger."
     }
 ]
 

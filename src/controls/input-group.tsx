@@ -78,12 +78,12 @@ export const InputGroupInput = ({ ref: externalRef, className, ...props }: Compo
         <Input
             ref={(node) => {
                 if (internalRef) {
-                    (internalRef as React.RefObject<HTMLInputElement | null>).current = node;
+                    internalRef.current = node;
                 }
                 if (typeof externalRef === 'function') {
                     externalRef(node);
                 } else if (externalRef) {
-                    (externalRef as React.RefObject<HTMLInputElement | null>).current = node;
+                    externalRef.current = node;
                 }
             }}
             className={cn(

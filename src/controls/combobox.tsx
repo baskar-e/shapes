@@ -1,13 +1,14 @@
 'use client';
 
-import { ChangeEvent, ComponentProps, Dispatch, ReactNode, Ref, RefObject, SetStateAction, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, ComponentProps, Dispatch, ReactNode, Ref, SetStateAction, useMemo, useRef, useState } from 'react';
 import {
     useFloating, autoUpdate, offset, flip, size,
     useListNavigation, useListItem, useDismiss, useInteractions, useRole,
     FloatingPortal, FloatingFocusManager, FloatingList,
     OpenChangeReason,
-    Placement,
     useMergeRefs,
+    Alignment,
+    Side,
 } from '@floating-ui/react';
 
 import { FloatingContextType } from '@/types';
@@ -29,8 +30,9 @@ interface ComboboxContextProps<T extends ItemProps> extends FloatingContextType 
 type ComboboxProps<T extends ItemProps> = {
     children: ReactNode
     items: T[]
+    align?: Alignment | 'center'
+    side?: Side
     space?: number
-    position?: Placement
     autoHighlight?: boolean
     open?: boolean
     onOpen?: (open: boolean, event?: Event, reason?: OpenChangeReason) => void
@@ -40,11 +42,11 @@ type ComboboxProps<T extends ItemProps> = {
 }
 
 type ComboboxInputProps<T> = ({
-    ref?: RefObject<T>;
+    ref?: Ref<T>;
     value?: never;
     onChange?: (value: string) => void;
 } | {
-    ref?: RefObject<T>;
+    ref?: Ref<T>;
     value: string;
     onChange: (value: string) => void;
 }) & Omit<ComponentProps<"input">, "value" | "onChange">
@@ -58,12 +60,12 @@ type ComboboxItemProps = {
     onSelect?: (value: string, item: ItemProps) => void;
 } & Omit<ComponentProps<"div">, "onSelect">
 
-type ItemProps = string | Record<string, any>;
+type ItemProps = string | Record<string, unknown>;
 
-const [ComboboxProvider, useComboboxContext] = createSafeContext<ComboboxContextProps<any>>('Combobox');
+const [ComboboxProvider, useComboboxContext] = createSafeContext<ComboboxContextProps<ItemProps>>('Combobox');
 const [ComboboxContentProvider, useComboboxContentContext] = createSafeContext<{}>('ComboboxContent');
 
-export function Combobox<T extends ItemProps>({ children, open, onOpen, items, autoHighlight = false, position, space = 5, labelKey = 'label' as keyof T, valueKey = 'value' as keyof T, disabledKey = 'disabled' as keyof T }: ComboboxProps<T>) {
+export function Combobox<T extends ItemProps>({ children, open, onOpen, items, autoHighlight = false, align = 'center', side = 'bottom', space = 5, labelKey = 'label' as keyof T, valueKey = 'value' as keyof T, disabledKey = 'disabled' as keyof T }: ComboboxProps<T>) {
     const [internalOpen, setInternalOpen] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -94,7 +96,7 @@ export function Combobox<T extends ItemProps>({ children, open, onOpen, items, a
 
     const isItemDisabled = (item: T): boolean => {
         if (typeof item === 'string') return false;
-        
+
         if (disabledKey === null) return false;
 
         if (typeof disabledKey === 'function') {
@@ -117,7 +119,7 @@ export function Combobox<T extends ItemProps>({ children, open, onOpen, items, a
     const { refs, context, placement, floatingStyles } = useFloating({
         open: isOpen,
         onOpenChange: setIsOpen,
-        placement: position,
+        placement: align === 'center' ? side : `${side}-${align}`,
         whileElementsMounted: autoUpdate,
         middleware: [
             offset(space),
@@ -145,8 +147,28 @@ export function Combobox<T extends ItemProps>({ children, open, onOpen, items, a
 
     const { getFloatingProps, getReferenceProps, getItemProps } = useInteractions([role, dismiss, listNav]);
 
+    const contextValue = {
+        isOpen,
+        inputValue,
+        activeIndex,
+        listRef,
+        refs,
+        filteredItems,
+        context,
+        placement,
+        floatingStyles,
+        getItemLabel, 
+        getItemValue,
+        isItemDisabled,
+        getFloatingProps,
+        getReferenceProps,
+        getItemProps,
+        setIsOpen,
+        setInputValue
+    };
+    
     return (
-        <ComboboxProvider value={{ isOpen, inputValue, activeIndex, listRef, refs, filteredItems, context, placement, floatingStyles, getItemLabel, getItemValue, isItemDisabled, getFloatingProps, getReferenceProps, getItemProps, setIsOpen, setInputValue }}>
+        <ComboboxProvider value={contextValue as ComboboxContextProps<ItemProps>}>
             {children}
         </ComboboxProvider>
     );
@@ -209,6 +231,7 @@ export function ComboboxInput<T extends HTMLInputElement>({ ref: externalRef, cl
 
 export function ComboboxContent({ children, className, ...props }: ComponentProps<"div">) {
     const { isOpen, refs, placement, floatingStyles, getFloatingProps, context } = useComboboxContext();
+    const [side, align] = placement.split('-');
 
     if (!isOpen) return null;
 
@@ -221,7 +244,8 @@ export function ComboboxContent({ children, className, ...props }: ComponentProp
                         {...getFloatingProps({ ...props, id: 'combobox-list' })}
                         ref={refs.setFloating}
                         data-state={isOpen ? 'open' : 'closed'}
-                        data-placement={placement}
+                        data-align={align ?? 'center'}
+                        data-side={side}
                         className={cn("z-50 border rounded-lg shadow-md overflow-y-auto max-h-60 p-1.5 bg-white/20 backdrop-blur-md border-white/30 space-y-1 dark:bg-slate-950/70 dark:backdrop-blur-lg dark:border-slate-800/50", className)}
                     >
                         {children}

@@ -1,6 +1,697 @@
 import { t } from "@/components/codeBlock";
 import { classNameProps } from "./className-data"
 
+export const tabsCode = [
+    {
+        word: { keyword: 'import', bracket: '{' },
+        level: [
+            {
+                word: { text: 'Tabs,' },
+            },
+            {
+                word: { text: 'TabButton,', },
+            },
+            {
+                word: { text: 'TabHighlight,' },
+            },
+            {
+                word: { text: 'TabList,' },
+            },
+            {
+                word: { text: 'TabPanel' },
+            }
+        ]
+    },
+    {
+        word: { bracket: '}', keyword: 'from', string: '"@/components/ui/tabs"' }
+    }
+]
+
+export const tabsUsage = [
+    {
+        word: [
+            t("tag", "<Tabs"),
+            t("prop", "defaultValue", false),
+            t("keyword", "=", false),
+            t("string", '"home"', false),
+            t("tag", ">")
+        ],
+        level: [
+            {
+                word: { "tag": "<TabList>" }
+            },
+            {
+                level: [
+                    {
+                        word: [
+                            t("tag", "<TabButton"),
+                            t("prop", "value", false),
+                            t("keyword", "=", false),
+                            t("string", '"home"', false),
+                            t("tag", ">", false),
+                            t("text", "Home", false),
+                            t("tag", "</TabButton>")
+                        ]
+                    },
+                    {
+                        word: [
+                            t("tag", "<TabButton"),
+                            t("prop", "value", false),
+                            t("keyword", "=", false),
+                            t("string", '"profile"', false),
+                            t("tag", ">", false),
+                            t("text", "Profile", false),
+                            t("tag", "</TabButton>")
+                        ]
+                    }
+                ],
+            },
+            {
+                word: { tag: '</TabList>' },
+            },
+            {
+                word: [
+                    t("tag", "<TabPanel"),
+                    t("prop", "value", false),
+                    t("keyword", "=", false),
+                    t("string", '"home"', false),
+                    t("tag", ">")
+                ]
+            },
+            {
+                level: [
+                    { word: { "text": "Home" } },
+                ]
+            },
+            {
+                word: { "tag": "</TabPanel>" }
+            },
+            {
+                word: [
+                    t("tag", "<TabPanel"),
+                    t("prop", "value", false),
+                    t("keyword", "=", false),
+                    t("string", '"profile"', false),
+                    t("tag", ">")
+                ]
+            },
+            {
+                level: [
+                    { word: { "text": "Profile" } },
+                ]
+            },
+            {
+                word: { "tag": "</TabPanel>" }
+            }
+        ]
+    },
+    {
+        word: { tag: '</Tabs>' }
+    }
+]
+
+export const tabsBasic = [
+    ...tabsCode,
+    { word: { text: "" } },
+    {
+        word: [t("keyword", "export function"), t("function", "TabsBasic", false), t("bracket", "() {")],
+        level: [
+            {
+                word: {
+                    "keyword": "return",
+                    "bracket": "("
+                },
+            },
+            {
+                level: [
+                    {
+                        word: [
+                            t("tag", "<Tabs"),
+                            t("prop", "defaultValue", false),
+                            t("keyword", "=", false),
+                            t("string", '"home"', false),
+                            t("tag", ">")
+                        ]
+                    },
+                    {
+                        level: [
+                            {
+                                word: { "tag": "<TabList>" }
+                            },
+                            {
+                                level: [
+                                    {
+                                        word: [
+                                            t("tag", "<TabButton"),
+                                            t("prop", "value", false),
+                                            t("keyword", "=", false),
+                                            t("string", '"home"', false),
+                                            t("tag", ">", false),
+                                            t("text", "Home", false),
+                                            t("tag", "</TabButton>")
+                                        ]
+                                    },
+                                    {
+                                        word: [
+                                            t("tag", "<TabButton"),
+                                            t("prop", "value", false),
+                                            t("keyword", "=", false),
+                                            t("string", '"profile"', false),
+                                            t("tag", ">", false),
+                                            t("text", "Profile", false),
+                                            t("tag", "</TabButton>")
+                                        ]
+                                    },
+                                    {
+                                        word: [
+                                            t("tag", "<TabButton"),
+                                            t("prop", "value", false),
+                                            t("keyword", "=", false),
+                                            t("string", '"settings"', false),
+                                            t("tag", ">", false),
+                                            t("text", "Settings", false),
+                                            t("tag", "</TabButton>")
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabList>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"home"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "Access your personalized dashboard, recent activity, and a high-level overview of your current projects." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"profile"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "View and edit your personal information, manage your public bio, and update your account display settings." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"settings"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "Configure your application preferences, security options, and notification behaviors to suit your workflow." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            }
+                        ]
+                    },
+                    {
+                        word: { "tag": "</Tabs>" }
+                    }
+                ]
+            },
+            {
+                word: { bracket: ')' }
+            }
+        ]
+    },
+    { word: { bracket: '}' } }
+];
+
+export const tabsLine = [
+    ...tabsCode,
+    { word: { text: "" } },
+    {
+        word: [t("keyword", "export function"), t("function", "TabsLine", false), t("bracket", "() {")],
+        level: [
+            {
+                word: {
+                    "keyword": "return",
+                    "bracket": "("
+                },
+            },
+            {
+                level: [
+                    {
+                        word: [
+                            t("tag", "<Tabs"),
+                            t("prop", "defaultValue", false),
+                            t("keyword", "=", false),
+                            t("string", '"home"'),
+                            t("prop", "variant", false),
+                            t("keyword", "=", false),
+                            t("string", '"line"', false),
+                            t("tag", ">")
+                        ]
+                    },
+                    {
+                        level: [
+                            {
+                                word: { "tag": "<TabList>" }
+                            },
+                            {
+                                level: [
+                                    {
+                                        word: [
+                                            t("tag", "<TabButton"),
+                                            t("prop", "value", false),
+                                            t("keyword", "=", false),
+                                            t("string", '"home"', false),
+                                            t("tag", ">", false),
+                                            t("text", "Home", false),
+                                            t("tag", "</TabButton>")
+                                        ]
+                                    },
+                                    {
+                                        word: [
+                                            t("tag", "<TabButton"),
+                                            t("prop", "value", false),
+                                            t("keyword", "=", false),
+                                            t("string", '"profile"', false),
+                                            t("tag", ">", false),
+                                            t("text", "Profile", false),
+                                            t("tag", "</TabButton>")
+                                        ]
+                                    },
+                                    {
+                                        word: [
+                                            t("tag", "<TabButton"),
+                                            t("prop", "value", false),
+                                            t("keyword", "=", false),
+                                            t("string", '"settings"', false),
+                                            t("tag", ">", false),
+                                            t("text", "Settings", false),
+                                            t("tag", "</TabButton>")
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabList>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"home"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "Access your personalized dashboard, recent activity, and a high-level overview of your current projects." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"profile"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "View and edit your personal information, manage your public bio, and update your account display settings." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"settings"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "Configure your application preferences, security options, and notification behaviors to suit your workflow." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            }
+                        ]
+                    },
+                    {
+                        word: { "tag": "</Tabs>" }
+                    }
+                ]
+            },
+            {
+                word: { bracket: ')' }
+            }
+        ]
+    },
+    { word: { bracket: '}' } }
+];
+
+export const tabsVertical = [
+    ...tabsCode,
+    { word: { text: "" } },
+    {
+        word: [t("keyword", "export function"), t("function", "TabsVertical", false), t("bracket", "() {")],
+        level: [
+            {
+                word: {
+                    "keyword": "return",
+                    "bracket": "("
+                },
+            },
+            {
+                level: [
+                    {
+                        word: [
+                            t("tag", "<Tabs"),
+                            t("prop", "defaultValue", false),
+                            t("keyword", "=", false),
+                            t("string", '"home"'),
+                            t("prop", "orientation", false),
+                            t("keyword", "=", false),
+                            t("string", '"vertical"', false),
+                            t("tag", ">")
+                        ]
+                    },
+                    {
+                        level: [
+                            {
+                                word: { "tag": "<TabList>" }
+                            },
+                            {
+                                level: [
+                                    {
+                                        word: [
+                                            t("tag", "<TabButton"),
+                                            t("prop", "value", false),
+                                            t("keyword", "=", false),
+                                            t("string", '"home"', false),
+                                            t("tag", ">", false),
+                                            t("text", "Home", false),
+                                            t("tag", "</TabButton>")
+                                        ]
+                                    },
+                                    {
+                                        word: [
+                                            t("tag", "<TabButton"),
+                                            t("prop", "value", false),
+                                            t("keyword", "=", false),
+                                            t("string", '"profile"', false),
+                                            t("tag", ">", false),
+                                            t("text", "Profile", false),
+                                            t("tag", "</TabButton>")
+                                        ]
+                                    },
+                                    {
+                                        word: [
+                                            t("tag", "<TabButton"),
+                                            t("prop", "value", false),
+                                            t("keyword", "=", false),
+                                            t("string", '"settings"', false),
+                                            t("tag", ">", false),
+                                            t("text", "Settings", false),
+                                            t("tag", "</TabButton>")
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabList>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"home"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "Access your personalized dashboard, recent activity, and a high-level overview of your current projects." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"profile"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "View and edit your personal information, manage your public bio, and update your account display settings." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"settings"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "Configure your application preferences, security options, and notification behaviors to suit your workflow." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            }
+                        ]
+                    },
+                    {
+                        word: { "tag": "</Tabs>" }
+                    }
+                ]
+            },
+            {
+                word: { bracket: ')' }
+            }
+        ]
+    },
+    { word: { bracket: '}' } }
+];
+
+export const tabsHighlight = [
+    ...tabsCode,
+    { word: { text: "" } },
+    {
+        word: [t("keyword", "export function"), t("function", "TabsHighlight", false), t("bracket", "() {")],
+        level: [
+            {
+                word: {
+                    "keyword": "return",
+                    "bracket": "("
+                },
+            },
+            {
+                level: [
+                    {
+                        word: [
+                            t("tag", "<Tabs"),
+                            t("prop", "defaultValue", false),
+                            t("keyword", "=", false),
+                            t("string", '"home"', false),
+                            t("tag", ">")
+                        ]
+                    },
+                    {
+                        level: [
+                            {
+                                word: { "tag": "<TabList>" }
+                            },
+                            {
+                                level: [
+                                    {
+                                        word: [
+                                            t("tag", "<TabHighlight"),
+                                            t("prop", "className", false),
+                                            t("keyword", "=", false),
+                                            t("string", '"rounded-xl bg-gray-200 shadow-md"', false),
+                                            t("tag", ">")
+                                        ]
+                                    },
+                                    {
+                                        level: [
+                                            {
+                                                word: [
+                                                    t("tag", "<TabButton"),
+                                                    t("prop", "value", false),
+                                                    t("keyword", "=", false),
+                                                    t("string", '"home"', false),
+                                                    t("tag", ">", false),
+                                                    t("text", "Home", false),
+                                                    t("tag", "</TabButton>")
+                                                ]
+                                            },
+                                            {
+                                                word: [
+                                                    t("tag", "<TabButton"),
+                                                    t("prop", "value", false),
+                                                    t("keyword", "=", false),
+                                                    t("string", '"profile"', false),
+                                                    t("tag", ">", false),
+                                                    t("text", "Profile", false),
+                                                    t("tag", "</TabButton>")
+                                                ]
+                                            },
+                                            {
+                                                word: [
+                                                    t("tag", "<TabButton"),
+                                                    t("prop", "value", false),
+                                                    t("keyword", "=", false),
+                                                    t("string", '"settings"', false),
+                                                    t("tag", ">", false),
+                                                    t("text", "Settings", false),
+                                                    t("tag", "</TabButton>")
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        word: { "tag": "</TabHighlight>" }
+                                    },
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabList>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"home"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "Access your personalized dashboard, recent activity, and a high-level overview of your current projects." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"profile"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "View and edit your personal information, manage your public bio, and update your account display settings." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            },
+                            {
+                                word: [
+                                    t("tag", "<TabPanel"),
+                                    t("prop", "value", false),
+                                    t("keyword", "=", false),
+                                    t("string", '"settings"', false),
+                                    t("tag", ">")
+                                ]
+                            },
+                            {
+                                level: [
+                                    { word: { "tag": "<p>" } },
+                                    { level: [{ word: { "text": "Configure your application preferences, security options, and notification behaviors to suit your workflow." } }] },
+                                    { word: { "tag": "</p>" } }
+                                ]
+                            },
+                            {
+                                word: { "tag": "</TabPanel>" }
+                            }
+                        ]
+                    },
+                    {
+                        word: { "tag": "</Tabs>" }
+                    }
+                ]
+            },
+            {
+                word: { bracket: ')' }
+            }
+        ]
+    },
+    { word: { bracket: '}' } }
+];
+
 export const tabsPropsData = [
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">orientation</span>,
@@ -25,7 +716,7 @@ export const tabsPropsData = [
         description: "Defines the visual style of the tab triggers."
     },
     {
-        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">defaultValue</span>,
+        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">defaultValue*</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">string</span>,
         default: '-',
         description: "Sets the initially active tab when the component is rendered, determining which tab is visible by default."
@@ -54,7 +745,7 @@ export const tabsAttribute = [
 
 export const tabButtonPropsData = [
     {
-        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">value</span>,
+        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">value*</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">string</span>,
         default: '-',
         description: "The value prop on the TabButton specifies the identifier for each tab, used to track and control the active tab."
@@ -87,7 +778,7 @@ export const tabListAttribute = [
 
 export const tabPanelPropsData = [
     {
-        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">value</span>,
+        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">value*</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">string</span>,
         default: '-',
         description: "The value prop on TabPanel links the panel to its corresponding tab, controlling which panel is displayed."

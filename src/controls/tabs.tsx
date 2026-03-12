@@ -6,11 +6,11 @@ import { createSafeContext } from '@/lib/context';
 
 interface TabsContextProps {
     tabsMap: RefObject<Map<string, HTMLButtonElement>>;
-    indicatorRef: React.RefObject<HTMLDivElement | null>;
+    indicatorRef: RefObject<HTMLDivElement | null>;
     baseId: string;
     activeTab: string;
-    orientation?: "vertical" | "horizontal"
-    variant?: "pill" | "line"
+    orientation: "vertical" | "horizontal"
+    variant: "pill" | "line"
     handleTabChange: (id: string) => void;
     getOrderedTabs: () => string[];
 }

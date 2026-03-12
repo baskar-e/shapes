@@ -287,7 +287,13 @@ export const accordionPropsData = [
   },
   {
     name: <span className="inline-block w-min bg-gray-100 px-2 py-1 rounded-md">value</span>,
-    type: <div className="flex flex-wrap gap-1"><span className="bg-gray-100 px-2 py-1 rounded-md">string</span><span className="bg-gray-100 px-2 py-1 rounded-md">number</span></div>,
+    type: (
+      <div className="flex flex-wrap gap-1">
+        <span className="bg-gray-100 px-2 py-1 rounded-md">string</span>
+        <span className="bg-gray-100 px-2 py-1 rounded-md">number</span>
+        <span className="bg-gray-100 px-2 py-1 rounded-md">null</span>
+      </div>
+    ),
     default: '-',
     description: "Controls which panel is expanded. Can be a string or number representing the selected panel."
   },
@@ -299,7 +305,7 @@ export const accordionPropsData = [
   },
   {
     name: <span className="inline-block w-min bg-gray-100 px-2 py-1 rounded-md">onValueChange</span>,
-    type: <span className="inline-block w-auto bg-gray-100 px-2 py-1 rounded-md">{"(value: string | number) => void"}</span>,
+    type: <span className="inline-block w-auto bg-gray-100 px-2 py-1 rounded-md">{"(value: string | number | null) => void"}</span>,
     default: '-',
     description: "Callback function fired when the active value changes. Only available in controlled components."
   },

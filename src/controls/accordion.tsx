@@ -53,7 +53,7 @@ type AccordionItemProps = {
     value: AccordionValue;
 } & ComponentProps<"div">
 
-export type AccordionValue = string | number;
+type AccordionValue = string | number;
 
 const [AccordionProvider, useAccordionContext] = createSafeContext<AccordionContextProps>("Accordion");
 const [AccordionItemProvider, useAccordionItemContext] = createSafeContext<AccordionItemContextProps>("Accordion Item");

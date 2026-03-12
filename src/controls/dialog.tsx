@@ -1,4 +1,4 @@
-import { ComponentProps, createContext, ReactNode, Ref, RefObject, useContext, useId, useRef, useState } from 'react';
+import { ComponentProps, createContext, ReactNode, Ref, RefObject, useContext, useId, useState } from 'react';
 import { createSafeContext } from '@/lib/context';
 import {
     useFloating, useInteractions, useClick, useDismiss, useRole,

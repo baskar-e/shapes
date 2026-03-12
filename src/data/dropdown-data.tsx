@@ -563,7 +563,7 @@ export const dropdownContentAttribute = [
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md">data-side</span>,
         type: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md">"top" | "bottom" | "left" | "right"</span>,
         description: "The attribute specifies the side on which the dropdown content is positioned relative to the trigger."
-    },
+    }
 ]
 
 export const dropdownItemPropsData = [

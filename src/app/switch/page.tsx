@@ -6,10 +6,9 @@ import { PropsTable } from "@/components/propsTable"
 import { checkboxBasic, checkboxCode, checkboxLabel, checkboxUsage } from "@/data/checkbox-data"
 import { useState } from "react"
 import { AttributeTable } from "@/components/attributeTable"
-import { radioGroupAttribute, radioGroupPropsData, radioItemAttribute, radioItemPropsData } from "@/data/radiogroup-data"
-import { Switch, SwitchIcon } from "@/controls/switch"
+import { Switch, SwitchThumb } from "@/controls/switch"
 import { Moon, Sun } from "lucide-react"
-import { switchAttribute, switchPropsData } from "@/data/switch-data"
+import { switchAttribute, switchBasic, switchCard, switchCode, switchControlled, switchCustom, switchPropsData, switchUsage } from "@/data/switch-data"
 
 export default function SwitchPage() {
     const [check, setCheck] = useState(false);
@@ -26,11 +25,11 @@ export default function SwitchPage() {
                 <h4 className="text-xl xl:text-2xl font-medium">Usage</h4>
                 <CodeBlock
                     title="Imports"
-                    data={checkboxCode}
+                    data={switchCode}
                 />
                 <CodeBlock
                     title="Components"
-                    data={checkboxUsage}
+                    data={switchUsage}
                 />
             </div>
             <div className="grid gap-3">
@@ -49,7 +48,7 @@ export default function SwitchPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxBasic}
+                            data={switchBasic}
                         />
                     </TabPanel>
                 </Tabs>
@@ -73,7 +72,7 @@ export default function SwitchPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxBasic}
+                            data={switchCard}
                         />
                     </TabPanel>
                 </Tabs>
@@ -93,7 +92,7 @@ export default function SwitchPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxBasic}
+                            data={switchControlled}
                         />
                     </TabPanel>
                 </Tabs>
@@ -101,7 +100,7 @@ export default function SwitchPage() {
             <div className="grid gap-3">
                 <h5 className="text-lg xl:text-xl font-medium pb-1">Custom</h5>
                 <p className="text-sm">
-                    Customize the <code className="rounded-sm px-1.5 py-0.5 bg-gray-200">{'<Switch />'}</code> component with custom icons by passing children to the <code className="rounded-sm px-1.5 py-0.5 bg-gray-200">{'<SwitchIcon />'}</code> component. Personalize its appearance and behavior to suit your needs.
+                    Customize the <code className="rounded-sm px-1.5 py-0.5 bg-gray-200">{'<Switch />'}</code> component with custom icons by passing children to the <code className="rounded-sm px-1.5 py-0.5 bg-gray-200">{'<SwitchThumb />'}</code> component. Personalize its appearance and behavior to suit your needs.
                 </p>
                 <Tabs defaultValue={'preview'} variant="line">
                     <TabList>
@@ -110,15 +109,15 @@ export default function SwitchPage() {
                     </TabList>
                     <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
                         <Switch>
-                            <SwitchIcon>
+                            <SwitchThumb>
                                 <Sun />
                                 <Moon color="white" />
-                            </SwitchIcon>
+                            </SwitchThumb>
                         </Switch>
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={checkboxLabel}
+                            data={switchCustom}
                         />
                     </TabPanel>
                 </Tabs>
@@ -135,9 +134,9 @@ export default function SwitchPage() {
                 <AttributeTable data={switchAttribute} />
             </div>
             <div className="grid gap-3">
-                <h5 className="text-lg xl:text-xl font-medium">SwitchIcon</h5>
+                <h5 className="text-lg xl:text-xl font-medium">SwitchThumb</h5>
                 <p className="text-sm pb-1">
-                    The <span className="text-[13px] rounded-sm px-1.5 py-0.5 bg-gray-200">SwitchIcon</span> component lets you customize the switch’s appearance by passing icons for the "on" and "off" states.
+                    The <span className="text-[13px] rounded-sm px-1.5 py-0.5 bg-gray-200">SwitchThumb</span> component lets you customize the switch’s appearance by passing icons for the "on" and "off" states.
                 </p>
                 <AttributeTable data={switchAttribute} />
             </div>

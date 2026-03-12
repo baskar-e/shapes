@@ -2,8 +2,7 @@ import { CodeBlock } from "@/components/codeBlock"
 import { TabButton, TabHighlight, TabList, TabPanel, Tabs } from "../../controls/tabs"
 import { PropsTable } from "@/components/propsTable"
 import { AttributeTable } from "@/components/attributeTable"
-import { accordionBasic, accordionCode, accordionItemAttribute, accordionItemPropsData, accordionMultiple, accordionPropsData, accordionUsage } from "@/data/accordion-data"
-import { tabButtonAttribute, tabButtonPropsData, tabHighlightPropsData, tabListAttribute, tabPanelPropsData, tabsAttribute, tabsPropsData } from "@/data/tabs-data"
+import { tabButtonAttribute, tabButtonPropsData, tabHighlightPropsData, tabListAttribute, tabPanelPropsData, tabsAttribute, tabsBasic, tabsCode, tabsHighlight, tabsLine, tabsPropsData, tabsUsage, tabsVertical } from "@/data/tabs-data"
 
 export default function TabsPage() {
     return (
@@ -16,11 +15,11 @@ export default function TabsPage() {
                 <h4 className="text-xl xl:text-2xl font-medium">Usage</h4>
                 <CodeBlock
                     title="Imports"
-                    data={accordionCode}
+                    data={tabsCode}
                 />
                 <CodeBlock
                     title="Components"
-                    data={accordionUsage}
+                    data={tabsUsage}
                 />
             </div>
             <div className="grid gap-3">
@@ -33,13 +32,13 @@ export default function TabsPage() {
                         <TabButton value="code">Code</TabButton>
                     </TabList>
                     <TabPanel value="preview" className="flex items-center px-22 min-h-77 bg-[#edf0f3]">
-                        <Tabs defaultValue={'home'}>
+                        <Tabs defaultValue="home">
                             <TabList>
                                 <TabButton value="home">Home</TabButton>
                                 <TabButton value="profile">Profile</TabButton>
                                 <TabButton value="settings">Settings</TabButton>
                             </TabList>
-                            <TabPanel value="home" className="">
+                            <TabPanel value="home">
                                 <p>Access your personalized dashboard, recent activity, and a high-level overview of your current projects.</p>
                             </TabPanel>
                             <TabPanel value="profile">
@@ -52,7 +51,7 @@ export default function TabsPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={accordionBasic}
+                            data={tabsBasic}
                         />
                     </TabPanel>
                 </Tabs>
@@ -69,13 +68,13 @@ export default function TabsPage() {
                         <TabButton value="code">Code</TabButton>
                     </TabList>
                     <TabPanel value="preview" className="flex items-center px-12 min-h-77 bg-[#edf0f3]">
-                        <Tabs defaultValue={'home'} variant="line">
+                        <Tabs defaultValue="home" variant="line">
                             <TabList>
                                 <TabButton value="home">Home</TabButton>
                                 <TabButton value="profile">Profile</TabButton>
                                 <TabButton value="settings">Settings</TabButton>
                             </TabList>
-                            <TabPanel value="home" className="">
+                            <TabPanel value="home">
                                 <p>Access your personalized dashboard, recent activity, and a high-level overview of your current projects.</p>
                             </TabPanel>
                             <TabPanel value="profile">
@@ -88,7 +87,7 @@ export default function TabsPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={accordionMultiple}
+                            data={tabsLine}
                         />
                     </TabPanel>
                 </Tabs>
@@ -105,13 +104,13 @@ export default function TabsPage() {
                         <TabButton value="code">Code</TabButton>
                     </TabList>
                     <TabPanel value="preview" className="flex items-center px-12 min-h-77 bg-[#edf0f3]">
-                        <Tabs defaultValue={'home'} orientation="vertical">
+                        <Tabs defaultValue="home" orientation="vertical">
                             <TabList>
                                 <TabButton value="home">Home</TabButton>
                                 <TabButton value="profile">Profile</TabButton>
                                 <TabButton value="settings">Settings</TabButton>
                             </TabList>
-                            <TabPanel value="home" className="">
+                            <TabPanel value="home">
                                 <p>Access your personalized dashboard, recent activity, and a high-level overview of your current projects.</p>
                             </TabPanel>
                             <TabPanel value="profile">
@@ -124,7 +123,7 @@ export default function TabsPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={accordionMultiple}
+                            data={tabsVertical}
                         />
                     </TabPanel>
                 </Tabs>
@@ -141,7 +140,7 @@ export default function TabsPage() {
                         <TabButton value="code">Code</TabButton>
                     </TabList>
                     <TabPanel value="preview" className="flex items-center px-12 min-h-77 bg-[#edf0f3]">
-                        <Tabs defaultValue={'home'}>
+                        <Tabs defaultValue="home">
                             <TabList>
                                 <TabHighlight className="rounded-xl bg-gray-200 shadow-md">
                                     <TabButton value="home">Home</TabButton>
@@ -149,7 +148,7 @@ export default function TabsPage() {
                                     <TabButton value="settings">Settings</TabButton>
                                 </TabHighlight>
                             </TabList>
-                            <TabPanel value="home" className="">
+                            <TabPanel value="home">
                                 <p>Access your personalized dashboard, recent activity, and a high-level overview of your current projects.</p>
                             </TabPanel>
                             <TabPanel value="profile">
@@ -162,11 +161,12 @@ export default function TabsPage() {
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
                         <CodeBlock
-                            data={accordionMultiple}
+                            data={tabsHighlight}
                         />
                     </TabPanel>
                 </Tabs>
             </div>
+
             {/* Component API */}
             <div className="grid gap-3">
                 <h4 className="text-xl xl:text-2xl font-medium pb-2">Component API</h4>
