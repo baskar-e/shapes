@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dar k">
       <body
-        className={`${inter.variable} font-sans bg-sidebar antialiased [--header-h:52px] xl:[--header-h:64px]`}
+        className={`${inter.variable} font-sans bg-sidebar overflow-hidden antialiased [--header-h:52px] xl:[--header-h:64px]`}
       >
         <SidebarProvider>
           <AppSidebar />

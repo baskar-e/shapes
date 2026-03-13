@@ -22,6 +22,9 @@ import {
     useMergeRefs,
     Alignment,
     Side,
+    FloatingOverlay,
+    size,
+    limitShift,
 } from '@floating-ui/react';
 import { cn } from '@/lib/utils';
 import { FloatingContextType } from '@/types';
@@ -60,7 +63,19 @@ export function Dropdown({ open, onOpen, children, align = 'center', side = 'bot
         onOpenChange: setIsOpen,
         placement: align === 'center' ? side : `${side}-${align}`,
         whileElementsMounted: autoUpdate,
-        middleware: [offset(space), flip(), shift({ padding: 5 })],
+        middleware: [
+            offset(space),
+            flip({ padding: 5 }),
+            shift({ padding: 5, limiter: limitShift() }),
+            size({
+                apply({ elements, availableHeight }) {
+                    const child = elements.floating;
+                    if (child) {
+                        child.style.setProperty('--dropdown-h', `${availableHeight - 10}px`);
+                    }
+                },
+            }),
+        ]
     });
 
     const listNav = useListNavigation(context, {
@@ -125,30 +140,34 @@ export function DropdownContent({ children, className, portal, modal = false, ..
     const [side, align] = placement.split('-');
 
     if (!isMounted) return null;
+    
+    const content = (
+        <FloatingFocusManager context={context} modal={modal}>
+            <div
+                ref={refs.setFloating}
+                style={{ ...floatingStyles, zIndex: 50 }}
+                {...getFloatingProps()}
+            >
+                <div
+                    {...props}
+                    data-state={isMounted ? 'open' : 'closed'}
+                    data-slot='dropdown-content'
+                    data-align={align ?? 'center'}
+                    data-side={side}
+                    className={cn("min-w-48 rounded-lg border p-1.5 shadow-md bg-white/20 backdrop-blur-md border-white/30 space-y-1 dark:bg-slate-950/70 dark:backdrop-blur-lg dark:border-slate-800/50 z-50 max-h-(--dropdown-h) overflow-y-auto custom-scrollbar", className)}
+                    style={transitionStyles}
+                >
+                    <FloatingList elementsRef={listRef}>
+                        {children}
+                    </FloatingList>
+                </div>
+            </div>
+        </FloatingFocusManager>
+    )
 
     return (
         <FloatingPortal root={portal}>
-            <FloatingFocusManager context={context} modal={modal}>
-                <div
-                    ref={refs.setFloating}
-                    style={{ ...floatingStyles, zIndex: 50 }}
-                    {...getFloatingProps()}
-                >
-                    <div
-                        {...props}
-                        data-state={isMounted ? 'open' : 'closed'}
-                        data-slot='dropdown-content'
-                        data-align={align ?? 'center'}
-                        data-side={side}
-                        className={cn("min-w-48 overflow-hidden rounded-lg border p-1.5 shadow-md bg-white/20 backdrop-blur-md border-white/30 space-y-1 dark:bg-slate-950/70 dark:backdrop-blur-lg dark:border-slate-800/50 z-50", className)}
-                        style={transitionStyles}
-                    >
-                        <FloatingList elementsRef={listRef}>
-                            {children}
-                        </FloatingList>
-                    </div>
-                </div>
-            </FloatingFocusManager>
+            {!modal ? content : <FloatingOverlay className='z-50' lockScroll>{content}</FloatingOverlay>}
         </FloatingPortal>
     );
 }
