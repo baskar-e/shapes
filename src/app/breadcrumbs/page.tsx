@@ -33,7 +33,7 @@ export default function BreadcrumbPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
             <Breadcrumbs>
               <BreadcrumbsItem>
                 <BreadcrumbsLink href="#">Home</BreadcrumbsLink>
@@ -63,7 +63,7 @@ export default function BreadcrumbPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
             <Breadcrumbs separator={false}>
               <BreadcrumbsItem>
                 <BreadcrumbsLink href="#">Home</BreadcrumbsLink>
@@ -95,7 +95,7 @@ export default function BreadcrumbPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
             <Breadcrumbs>
               <BreadcrumbsItem>
                 <BreadcrumbsLink href="#">Home</BreadcrumbsLink>

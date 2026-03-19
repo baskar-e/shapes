@@ -13,7 +13,7 @@ export function Card({ children, className, ...props }: ComponentProps<"div">) {
         <CardProvider value={{}}>
             <div
                 className={cn(
-                    "relative w-80 text-sm overflow-hidden rounded-xl space-y-3 bg-white shadow-white-md",
+                    "relative w-80 text-sm overflow-hidden rounded-xl space-y-3 bg-white shadow-white-md dark:shadow-md dark:bg-zinc-800",
                     className
                 )}
                 {...props}
@@ -30,7 +30,7 @@ export function CardHeader({ children, className, ...props }: ComponentProps<"di
     return (
         <div
             className={cn(
-                "border-b border-white/20 px-5 mt-4",
+                "px-5 mt-4",
                 className
             )}
             {...props}>
@@ -45,7 +45,7 @@ export function CardFooter({ children, className, ...props }: ComponentProps<"di
     return (
         <div
             className={cn(
-                "flex items-center gap-2.5 border-t border-white/20 px-5 pt-1 mb-4",
+                "flex items-center gap-2.5 px-5 pt-1 mb-4",
                 className
             )}
             {...props}>
@@ -74,7 +74,7 @@ export function CardTitle({ children, className, ...props }: ComponentProps<"h3"
     useCardContext();
 
     return (
-        <h3 className={cn("text-lg font-medium text-slate-800 drop-shadow-sm", className)} {...props}>{children}</h3>
+        <h3 className={cn("text-lg font-medium text-slate-800 drop-shadow-sm dark:text-slate-200", className)} {...props}>{children}</h3>
     )
 }
 
@@ -82,7 +82,7 @@ export function CardDescription({ children, className, ...props }: ComponentProp
     useCardContext();
 
     return (
-        <p className={cn("text-sm leading-relaxed text-gray-600", className)} {...props}>{children}</p>
+        <p className={cn("text-sm leading-relaxed text-gray-600 dark:text-gray-400", className)} {...props}>{children}</p>
     )
 }
 

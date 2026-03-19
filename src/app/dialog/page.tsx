@@ -43,7 +43,7 @@ export default function DialogPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Dialog>
                             <DialogButton>
                                 Open
@@ -83,7 +83,7 @@ export default function DialogPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Dialog open={open} onOpen={setOpen}>
                             <DialogButton>
                                 Open
@@ -125,7 +125,7 @@ export default function DialogPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Dialog>
                             <DialogButton>
                                 Open
@@ -165,7 +165,7 @@ export default function DialogPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Dialog>
                             <DialogButton>
                                 Open

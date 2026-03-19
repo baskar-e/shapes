@@ -571,7 +571,7 @@ export const tabsHighlight = [
                                             t("tag", "<TabHighlight"),
                                             t("prop", "className", false),
                                             t("keyword", "=", false),
-                                            t("string", '"rounded-xl bg-gray-200 shadow-md"', false),
+                                            t("string", '"rounded-xl bg-gray-200 shadow-md dark:shadow-sm dark:border-gray-700"', false),
                                             t("tag", ">")
                                         ]
                                     },

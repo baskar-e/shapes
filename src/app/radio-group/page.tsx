@@ -46,7 +46,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup>
                             {items.map((item) => (
                                 <RadioGroupItem key={item.value} value={item.value}>
@@ -72,7 +72,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup orientation="vertical">
                             {items.map((item) => (
                                 <RadioGroupItem key={item.value} value={item.value}>
@@ -98,7 +98,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup defaultValue="option1">
                             {items.map((item) => (
                                 <RadioGroupItem key={item.value} value={item.value}>
@@ -124,7 +124,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup value={value} onValueChange={setValue}>
                             {items.map((item) => (
                                 <RadioGroupItem key={item.value} value={item.value}>
@@ -150,7 +150,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup disabled>
                             {items.map((item) => (
                                 <RadioGroupItem key={item.value} value={item.value}>
@@ -173,7 +173,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup>
                             {items.map((item) => (
                                 <RadioGroupItem key={item.value} value={item.value} disabled={item.value === 'option2'}>

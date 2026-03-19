@@ -42,7 +42,7 @@ export default function DropdownPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Dropdown>
                             <DropdownButton>
                                 click
@@ -74,7 +74,7 @@ export default function DropdownPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Dropdown open={open} onOpen={setOpen}>
                             <DropdownButton>
                                 click
@@ -106,7 +106,7 @@ export default function DropdownPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Dropdown align="start" side="right">
                             <DropdownButton>
                                 click
@@ -138,7 +138,7 @@ export default function DropdownPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-32 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Dropdown>
                             <DropdownButton>
                                 click

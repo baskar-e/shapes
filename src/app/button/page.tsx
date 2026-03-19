@@ -34,7 +34,7 @@ export default function ButtonPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
               <Button>Button 1</Button>
           </TabPanel>
           <TabPanel value="code" className="p-0">
@@ -54,7 +54,7 @@ export default function ButtonPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
               <Button variant="primary">Button 1</Button>
           </TabPanel>
           <TabPanel value="code" className="p-0">
@@ -74,7 +74,7 @@ export default function ButtonPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
               <Button variant="secondary">Button 1</Button>
           </TabPanel>
           <TabPanel value="code" className="p-0">
@@ -94,7 +94,7 @@ export default function ButtonPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
               <Button variant="ghost">Button 1</Button>
           </TabPanel>
           <TabPanel value="code" className="p-0">
@@ -114,7 +114,7 @@ export default function ButtonPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
               <Button variant="outline">Button 1</Button>
           </TabPanel>
           <TabPanel value="code" className="p-0">
@@ -134,7 +134,7 @@ export default function ButtonPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+          <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
               <Button variant="white">Button 1</Button>
           </TabPanel>
           <TabPanel value="code" className="p-0">
@@ -154,7 +154,7 @@ export default function ButtonPage() {
             <TabButton value="preview">Preview</TabButton>
             <TabButton value="code">Code</TabButton>
           </TabList>
-          <TabPanel value="preview" className="flex max-sm:flex-col items-center justify-center gap-8 px-12 min-h-77 bg-[#edf0f3]">
+          <TabPanel value="preview" className="flex max-sm:flex-col items-center justify-center gap-8 px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
               <Button variant="white" size="xs">Extra Small</Button>
               <Button variant="white" size="sm">Small</Button>
               <Button variant="white" size="md">Default</Button>

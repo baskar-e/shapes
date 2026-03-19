@@ -69,7 +69,7 @@ export default function ComboboxPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Combobox items={fruits}>
                             <ComboboxInput placeholder="Select an option..." />
                             <ComboboxContent>
@@ -100,7 +100,7 @@ export default function ComboboxPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Combobox items={fruitsLabel} labelKey={'name'}>
                             <ComboboxInput placeholder="Select an option..." />
                             <ComboboxContent>
@@ -127,7 +127,7 @@ export default function ComboboxPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Combobox items={fruitsLabel} labelKey={(item) => `${item.name} - ${item.color}`}>
                             <ComboboxInput placeholder="Select an option..." />
                             <ComboboxContent>
@@ -158,7 +158,7 @@ export default function ComboboxPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Combobox items={fruitsValue} labelKey={'name'} valueKey={'id'}>
                             <ComboboxInput placeholder="Select an option..." />
                             <ComboboxContent>
@@ -185,7 +185,7 @@ export default function ComboboxPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Combobox items={fruitsValue} labelKey={'name'} valueKey={(item) => String(item.id)}>
                             <ComboboxInput placeholder="Select an option..." />
                             <ComboboxContent>
@@ -216,7 +216,7 @@ export default function ComboboxPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Combobox items={fruitsDisabled} labelKey={'name'} disabledKey={'invalid'}>
                             <ComboboxInput placeholder="Select an option..." />
                             <ComboboxContent>
@@ -243,7 +243,7 @@ export default function ComboboxPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Combobox items={fruitsDisabled} labelKey={'name'} disabledKey={(i) => !!(i.id === 1 && i.invalid)}>
                             <ComboboxInput placeholder="Select an option..." />
                             <ComboboxContent>
@@ -274,7 +274,7 @@ export default function ComboboxPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Combobox items={fruits} autoHighlight>
                             <ComboboxInput placeholder="Select an option..." />
                             <ComboboxContent>

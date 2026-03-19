@@ -153,8 +153,8 @@ export function TabList({ children, className, ...props }: ComponentProps<"div">
             data-variant={variant}
             className={cn(
                 "relative flex data-[orientation=vertical]:flex-col shrink-0 overflow-auto no-scrollbar",
-                variant === "pill" && "bg-white rounded-3xl p-1.5",
-                variant === "line" && "border-b border-b-slate-300",
+                variant === "pill" && "bg-white rounded-3xl p-1.5 dark:bg-zinc-800",
+                variant === "line" && "border-b border-b-slate-300 dark:border-b-zinc-600",
                 className
             )}
             {...props}
@@ -187,7 +187,7 @@ export function TabButton({ value, children, className, ...props }: TabButtonPro
             data-state={isActive ? 'active' : 'inactive'}
             tabIndex={isActive ? 0 : -1}
             className={cn(
-                "relative px-4 py-1.5 text-sm text-slate-600 font-medium rounded-[22px] -outline-offset-2 hover:text-slate-800 data-[state=active]:text-slate-800 focus-visible:outline-slate-400",
+                "relative px-4 py-1.5 text-sm text-slate-600 font-medium rounded-[22px] -outline-offset-2 hover:text-slate-800 data-[state=active]:text-slate-800 focus-visible:outline-slate-400 dark:text-gray-300 dark:hover:text-gray-200 dark:data-[state=active]:text-slate-200",
                 className
             )}
             {...props}
@@ -204,9 +204,9 @@ export function TabButton({ value, children, className, ...props }: TabButtonPro
                 >
                     <div
                         aria-hidden="true"
-                        className={cn("relative w-full rounded-[22px] shadow-white-md",
-                            variant === "pill" && "h-full bg-white border-2 border-gray-50",
-                            variant === "line" && "h-0.5 top-[calc(100%-2px)] bg-slate-600",
+                        className={cn("relative w-full rounded-[22px] shadow-white-md dark:shadow-white-sm",
+                            variant === "pill" && "h-full bg-white border-2 border-gray-50 dark:bg-zinc-800 dark:border-zinc-700",
+                            variant === "line" && "h-0.5 top-[calc(100%-2px)] bg-slate-600 dark:bg-slate-300",
                             indicatorCtx?.className
                         )}
                     />
@@ -233,7 +233,7 @@ export function TabPanel({ value, children, className, ...props }: TabPanelProps
             data-state={isActive ? 'active' : 'inactive'}
             data-orientation={orientation}
             tabIndex={0}
-            className={cn("p-4 bg-white text-slate-800 text-sm rounded-lg animate-in fade-in duration-300", className)}
+            className={cn("p-4 bg-white text-slate-800 text-sm rounded-lg animate-in fade-in duration-300 dark:bg-zinc-800 dark:text-slate-200", className)}
             {...props}
         >
             {children}

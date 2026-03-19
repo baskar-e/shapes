@@ -157,7 +157,7 @@ export function Combobox<T extends ItemProps>({ children, open, onOpen, items, a
         context,
         placement,
         floatingStyles,
-        getItemLabel, 
+        getItemLabel,
         getItemValue,
         isItemDisabled,
         getFloatingProps,
@@ -166,7 +166,7 @@ export function Combobox<T extends ItemProps>({ children, open, onOpen, items, a
         setIsOpen,
         setInputValue
     };
-    
+
     return (
         <ComboboxProvider value={contextValue as ComboboxContextProps<ItemProps>}>
             {children}
@@ -181,11 +181,9 @@ export function ComboboxInput<T extends HTMLInputElement>({ ref: externalRef, cl
     const mergedRef = useMergeRefs([refs.setReference, externalRef]);
 
     return (
-        <div
-            ref={mergedRef as Ref<HTMLInputElement>}
-            className={cn("flex items-center w-full bg-white border border-slate-100 h-9 rounded-lg outline-none shadow-white-md focus:ring-2 ring-violet-500", className)}
-        >
-            <Input className='bg-transparent '
+        <div className='relative w-full'>
+            <Input
+                ref={mergedRef as Ref<HTMLInputElement>}
                 {...getReferenceProps({
                     placeholder: 'Search...',
                     ...props,
@@ -212,13 +210,18 @@ export function ComboboxInput<T extends HTMLInputElement>({ ref: externalRef, cl
                 aria-controls='combobox-list'
                 aria-activedescendant={activeIndex != null ? `combobox-item-${activeIndex}` : undefined}
                 data-state={isOpen ? 'open' : 'closed'}
+                className={cn(
+                    "items-center border border-slate-100 shadow-white-md focus:ring-2 ring-violet-500",
+                    "dark:bg-zinc-800 dark:text-slate-200 dark:border-zinc-700 dark:shadow-white-sm ",
+                    className
+                )}
             />
-            <div className='flex p-1'>
+            <div className='absolute inset-y-0 right-0 p-1'>
                 <Button
                     type='button'
                     aria-controls='combobox-list'
                     aria-expanded={isOpen}
-                    className='px-2 hover:bg-slate-100'
+                    className='h-full aspect-square p-0 hover:bg-slate-100 dark:hover:bg-zinc-700/40'
                     tabIndex={-1}
                     onClick={(e) => { e.stopPropagation(), setIsOpen(!isOpen) }}
                 >
@@ -246,7 +249,7 @@ export function ComboboxContent({ children, className, ...props }: ComponentProp
                         data-state={isOpen ? 'open' : 'closed'}
                         data-align={align ?? 'center'}
                         data-side={side}
-                        className={cn("z-50 border rounded-lg shadow-md overflow-y-auto max-h-60 p-1.5 bg-white/20 backdrop-blur-md border-white/30 space-y-1 dark:bg-slate-950/70 dark:backdrop-blur-lg dark:border-slate-800/50", className)}
+                        className={cn("z-50 border rounded-lg shadow-md overflow-y-auto max-h-60 p-1.5 bg-white/20 backdrop-blur-md border-white/30 space-y-1 dark:bg-zinc-800/20 dark:backdrop-blur-lg dark:border-zinc-700/20", className)}
                     >
                         {children}
                     </div>
@@ -292,8 +295,8 @@ export function ComboboxItem({ children, className, value, onSelect, ...props }:
     return (
         <div
             className={cn(
-                "relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2 text-sm transition-colors duration-200 dark:hover:bg-slate-800/60 outline-none",
-                isActive && 'bg-white/50 text-slate-800 shadow-md ring-1 ring-white/80',
+                "relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2 text-sm text-slate-800 transition-colors duration-200 outline-none dark:text-slate-200",
+                isActive && 'bg-white/50 shadow-md ring-1 ring-white/80 dark:bg-zinc-700/50 dark:ring-zinc-700/80',
                 disabled && 'opacity-50 cursor-not-allowed',
                 className
             )}
@@ -328,7 +331,7 @@ export function ComboboxEmpty({ children = "No results found.", className }: Com
         <div
             role="status"
             aria-live="polite"
-            className={cn("px-4 py-8 text-center text-sm text-gray-500", className)}
+            className={cn("px-4 py-8 text-center text-sm text-gray-500 dark:text-gray-300", className)}
         >
             {children}
         </div>

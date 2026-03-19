@@ -33,7 +33,7 @@ export default function CheckboxPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Checkbox />
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
@@ -53,7 +53,7 @@ export default function CheckboxPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Checkbox label="Accept terms and conditions" description="By clicking this checkbox, you agree to the terms and conditions." />
                     </TabPanel>
                     <TabPanel value="code" className="p-0">
@@ -73,7 +73,7 @@ export default function CheckboxPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3]">
+                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Checkbox label="Accept terms and conditions" disabled />
                     </TabPanel>
                     <TabPanel value="code" className="p-0">

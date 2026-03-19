@@ -9,9 +9,9 @@ type ButtonSize = 'xs' |'sm' | 'md' | 'lg';
 const buttonVariants: Record<ButtonVariant, string> = {
     primary: "bg-violet-500 text-white hover:bg-violet-600 focus:ring-2 focus:ring-violet-500",
     secondary: "bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-500",
-    ghost: "bg-gray-200 text-slate-800 border border-gray-300 hover:bg-gray-300 focus:ring-2 focus:ring-gray-500 focus:border-gray-500",
-    outline: "bg-transparent text-slate-800 border border-gray-300 hover:bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:border-gray-400",
-    white: "bg-white text-slate-800 hover:bg-gray-50 focus:ring-2 focus:ring-gray-300 focus:border-gray-300",
+    ghost: "bg-gray-200 text-slate-800 border border-gray-300 hover:bg-gray-300 focus:ring-2 focus:ring-gray-500 focus:border-gray-500 dark:text-slate-800",
+    outline: "bg-transparent text-slate-800 border border-gray-300 hover:bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:border-gray-400 dark:border-zinc-500 dark:hover:bg-zinc-800 dark:focus:ring-zinc-700 dark:focus:border-zinc-700 dark:text-slate-200",
+    white: "bg-white text-slate-800 hover:bg-gray-50 focus:ring-2 focus:ring-gray-300 focus:border-gray-300 dark:text-slate-800",
 };
 
 const buttonSizes: Record<ButtonSize, string> = {
@@ -33,7 +33,7 @@ export function Button({ className, variant, size = "md", type = 'button', ...pr
             data-variant={variant}
             data-size={size}
             className={cn(
-                'inline-flex items-center justify-center text-ash font-medium shrink-0 focus:z-10 focus:outline-none transition-colors',
+                'inline-flex items-center justify-center text-ash font-medium shrink-0 focus:z-10 focus:outline-none transition-colors dark:text-slate-200',
                 variant && buttonVariants[variant],
                 size && buttonSizes[size],
                 className

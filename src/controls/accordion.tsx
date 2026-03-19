@@ -93,7 +93,7 @@ export function Accordion({ children, className, type, defaultValue, value: cont
 
     return (
         <AccordionProvider value={{ checkIsOpen, toggleItem }}>
-            <div className={cn("w-full rounded-lg bg-white shadow-white-md overflow-hidden", className)} {...props}>
+            <div className={cn("w-full rounded-lg bg-white shadow-white-md overflow-hidden dark:bg-zinc-800", className)} {...props}>
                 {children}
             </div>
         </AccordionProvider>
@@ -130,12 +130,12 @@ export function AccordionTrigger({ children, className, ...props }: ComponentPro
                 aria-expanded={isOpen}
                 aria-controls={contentId}
                 data-state={isOpen ? 'open' : 'closed'}
-                className={cn("flex w-full items-center justify-between py-3 text-sm text-ash text-left font-medium transition-all", className)}
+                className={cn("flex w-full items-center justify-between py-3 text-sm text-ash text-left font-medium transition-all dark:text-slate-200", className)}
                 onClick={() => toggleItem(value)}
                 {...props}
             >
                 {children}
-                <ChevronDown className={`size-4 text-slate-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`size-4 text-slate-500 transition-transform duration-200 dark:text-slate-300 ${isOpen ? 'rotate-180' : ''}`} />
             </button>
         </h3>
     )
@@ -156,7 +156,7 @@ export function AccordionContent({ children, className, ...props }: ComponentPro
             )}
         >
             <div className="overflow-hidden">
-                <div className={cn("pt-0 pb-3 text-sm text-slate-600 leading-relaxed", className)} {...props}>
+                <div className={cn("pt-0 pb-3 text-sm text-slate-600 leading-relaxed dark:text-gray-300", className)} {...props}>
                     {children}
                 </div>
             </div>
