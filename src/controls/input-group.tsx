@@ -27,8 +27,9 @@ export function InputGroup({ className, ...props }: InputGroupProps) {
             <div
                 role="group"
                 className={cn(
-                    "group/input-group flex items-stretch w-full rounded-lg border border-slate-300 overflow-hidden has-data-[align*=block-]:flex-col",
-                    "focus-within:ring-2 focus-within:ring-violet-500 focus-within:ring-offset-2 focus-within:ring-offset-violet-300",
+                    "group/input-group flex items-stretch w-full rounded-lg bg-zinc-50 border border-slate-300 overflow-hidden has-data-[align*=block-]:flex-col",
+                    "focus-within:ring-2 focus-within:ring-violet-500 focus-within:ring-offset-2 focus-within:ring-offset-background",
+                    "dark:bg-zinc-800 dark:border-zinc-700 dark:focus-within:ring-violet-800",
                     className
                 )}
                 {...props}
@@ -57,7 +58,7 @@ export function InputGroupAddon({ className, align = 'inline-start', onClick, ..
             role="group"
             data-align={align}
             className={cn(
-                "flex items-center gap-2.5 text-sm text-slate-400 font-medium select-none cursor-text group-has-disabled/input-group:cursor-not-allowed group-has-disabled/input-group:opacity-50",
+                "flex items-center gap-2.5 text-sm text-slate-400 font-medium select-none cursor-text group-has-disabled/input-group:cursor-not-allowed group-has-disabled/input-group:opacity-50 dark:text-zinc-400",
                 align === 'inline-start' && 'pl-2.5',
                 align === 'inline-end' && 'pr-2.5',
                 align === 'block-start' && 'px-2.5 pt-2 pb-1',
@@ -87,8 +88,8 @@ export const InputGroupInput = ({ ref: externalRef, className, ...props }: Compo
                 }
             }}
             className={cn(
-                "flex-1 bg-transparent border-0",
-                "placeholder:text-slate-400",
+                "bg-transparent border-0",
+                "placeholder:text-slate-400 dark:placeholder:text-zinc-400",
                 className
             )}
             {...props}

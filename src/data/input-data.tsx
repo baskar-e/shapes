@@ -152,19 +152,19 @@ export const inputPropsData = [
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">value</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">string</span>,
-        default: '""',
+        default: '-',
         description: "The controlled input value of the input."
     },
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">onChange</span>,
-        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"(value: string) => void"}</span>,
+        type: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"(value: string) => void"}</span>,
         default: '-',
         description: "Event handler called when the input value changes."
     },
     {
         name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">disabled</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
-        default: 'false',
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">false</span>,
         description: "Whether the input is disabled."
     },
     {

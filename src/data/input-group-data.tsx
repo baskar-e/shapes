@@ -333,7 +333,7 @@ export const inputGroupAddonPropsData = [
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">align</span>,
         type: (
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-1 min-w-30 xl:min-w-20">
                 <span className="bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"inline-start"</span>
                 <span className="bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"inline-end"</span>
                 <span className="bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"block-start"</span>

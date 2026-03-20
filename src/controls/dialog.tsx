@@ -87,10 +87,10 @@ export function DialogContent({ children, className, showCloseButton = true, ...
                 aria-labelledby={labelId}
                 aria-describedby={descriptionId}
                 {...getFloatingProps(props)}
-                className={cn("relative flex flex-col gap-y-4 bg-white text-ash text-sm p-5 rounded-xl shadow-2xl max-w-md w-full outline-none animate-in zoom-in-95 fade-in duration-200", className)}
+                className={cn("relative flex flex-col gap-y-3.5 bg-white text-slate-800 text-sm p-4 rounded-xl shadow-2xl max-w-md w-full outline-none animate-in zoom-in-95 fade-in duration-200 dark:bg-zinc-800 dark:text-slate-200", className)}
             >
                 {children}
-                {showCloseButton && <DialogClose className='absolute right-3 top-3'><X className='size-4' /></DialogClose>}
+                {showCloseButton && <DialogClose className='absolute top-2.5 right-2.25 p-1 rounded-full'><X className='size-3.5' /></DialogClose>}
             </div>
         </FloatingFocusManager>
     )
@@ -107,7 +107,7 @@ export function DialogOverlay({ children, className, portal, ...props }: DialogO
         <DialogOverlayProvider value={{ isOverlay: true }}>
             <FloatingPortal root={portal}>
                 <FloatingOverlay
-                    className={cn("flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 animate-in fade-in duration-300", className)}
+                    className={cn("flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 animate-in fade-in duration-300 dark:bg-black/30", className)}
                     lockScroll
                     {...props}
                 >
@@ -138,7 +138,7 @@ export function DialogButton<T extends HTMLButtonElement>({ ref: externalRef, ch
 export function DialogHeader({ className, ...props }: ComponentProps<"div">) {
     return (
         <div
-            className={cn("flex flex-col gap-y-1.5 text-ash text-center sm:text-left pb-2 border-b border-border", className)}
+            className={cn("flex flex-col gap-y-1.5 text-center sm:text-left pb-2 border-b border-border dark:border-zinc-700", className)}
             {...props}
         />
     )
@@ -151,7 +151,7 @@ export function DialogTitle({ className, ...props }: ComponentProps<"h2">) {
         <h2
             {...props}
             id={labelId}
-            className={cn("font-semibold text-base leading-none tracking-tight", className)}
+            className={cn("font-semibold text-base text-slate-800 leading-none tracking-tight dark:text-slate-200", className)}
         />
     );
 }
@@ -163,7 +163,7 @@ export function DialogDescription({ className, ...props }: ComponentProps<"p">) 
         <p
             {...props}
             id={descriptionId}
-            className={cn("text-sm text-slate-500", className)}
+            className={cn("text-sm text-slate-700 dark:text-gray-300/60", className)}
         />
     );
 }
@@ -176,7 +176,7 @@ export function DialogClose({ className, children, ...props }: ComponentProps<"b
             type="button"
             aria-label='close'
             onClick={() => setIsOpen(false)}
-            className={cn("px-1.5 py-0.5 rounded-lg transition-colors hover:bg-slate-100 outline-none", className)}
+            className={cn("px-2.5 py-1.5 rounded-lg transition-colors hover:bg-slate-100 outline-none dark:hover:bg-zinc-700", className)}
             {...props}
         >
             {children}
@@ -188,7 +188,7 @@ export function DialogClose({ className, children, ...props }: ComponentProps<"b
 export function DialogFooter({ className, ...props }: ComponentProps<"div">) {
     return (
         <div
-            className={cn("flex justify-end gap-2 text-ash pt-4 border-t border-border", className)}
+            className={cn("flex justify-end gap-2 text-slate-800 pt-4 border-t border-border dark:text-slate-200 dark:border-zinc-700", className)}
             {...props}
         />
     )

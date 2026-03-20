@@ -93,7 +93,7 @@ export function Accordion({ children, className, type, defaultValue, value: cont
 
     return (
         <AccordionProvider value={{ checkIsOpen, toggleItem }}>
-            <div className={cn("w-full rounded-lg bg-white shadow-white-md overflow-hidden dark:bg-zinc-800", className)} {...props}>
+            <div className={cn("w-full rounded-lg bg-white shadow-white-md overflow-hidden dark:bg-zinc-800 dark:shadow-white-sm", className)} {...props}>
                 {children}
             </div>
         </AccordionProvider>
@@ -111,7 +111,7 @@ export function AccordionItem({ value, children, className, ...props }: Accordio
 
     return (
         <AccordionItemProvider value={{ isOpen, value, triggerId, contentId }}>
-            <div data-state={isOpen ? 'open' : 'closed'} className={cn("mx-4 border-b border-border last:border-none", className)} {...props}>
+            <div data-state={isOpen ? 'open' : 'closed'} className={cn("mx-4 border-b border-border last:border-none dark:border-zinc-700", className)} {...props}>
                 {children}
             </div>
         </AccordionItemProvider>
@@ -130,7 +130,7 @@ export function AccordionTrigger({ children, className, ...props }: ComponentPro
                 aria-expanded={isOpen}
                 aria-controls={contentId}
                 data-state={isOpen ? 'open' : 'closed'}
-                className={cn("flex w-full items-center justify-between py-3 text-sm text-ash text-left font-medium transition-all dark:text-slate-200", className)}
+                className={cn("flex w-full items-center justify-between py-3 text-sm text-slate-800 text-left font-medium transition-all dark:text-white", className)}
                 onClick={() => toggleItem(value)}
                 {...props}
             >
@@ -156,7 +156,7 @@ export function AccordionContent({ children, className, ...props }: ComponentPro
             )}
         >
             <div className="overflow-hidden">
-                <div className={cn("pt-0 pb-3 text-sm text-slate-600 leading-relaxed dark:text-gray-300", className)} {...props}>
+                <div className={cn("pt-0 pb-3 text-sm text-slate-700 leading-relaxed dark:text-slate-200", className)} {...props}>
                     {children}
                 </div>
             </div>

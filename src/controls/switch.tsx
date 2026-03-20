@@ -41,13 +41,14 @@ export function Switch({ children, className, value: controlledCheck, onValueCha
                     aria-hidden="true"
                     data-state={checked ? 'checked' : 'unchecked'}
                     className={cn(
-                        "flex items-center h-6 w-11 rounded-full border-2 border-transparent transition-colors duration-200",
-                        "bg-slate-200 group-has-checked:bg-violet-800 group-has-disabled:opacity-50 group-has-disabled:cursor-not-allowed",
+                        "flex items-center h-6 w-11 rounded-full border-2 border-transparent bg-slate-200 transition-colors duration-200",
+                        "group-has-checked:bg-violet-800 group-has-disabled:opacity-50 group-has-disabled:cursor-not-allowed",
                         "group-has-focus-visible:ring-2 group-has-focus-visible:ring-violet-500 group-has-focus-visible:ring-offset-2",
+                        "dark:bg-zinc-700 dark:group-has-checked:bg-violet-800 dark:group-has-focus-visible:ring-violet-600 dark:group-has-focus-visible:ring-offset-zinc-900",
                         className
                     )}
                 >
-                    {children ?? <SwitchThumb className="bg-white shadow-lg" />}
+                    {children ?? <SwitchThumb className="bg-white shadow-lg dark:bg-zinc-900" />}
                 </span>
             </div>
         </SwitchProvider>

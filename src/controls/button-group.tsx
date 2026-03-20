@@ -18,6 +18,7 @@ export function ButtonGroup({ children, className, orientation = "horizontal", .
         className={cn(
           "inline-flex items-stretch rounded-lg w-fit has-data-[slot=button-group]:gap-2 not-has-data-[slot=button-group]:shadow-white-md isolate",
           "[&>:not([data-slot=button-group]):not(:first-child):not(:last-child)]:rounded-none dark:not-has-data-[slot=button-group]:shadow-white-sm",
+          "dark:*:text-slate-200 dark:*:bg-zinc-800 dark:[&>:not([data-slot=button-group]):not(:last-child)]:border-zinc-700 dark:*:hover:bg-zinc-700/60",
           orientation === "horizontal" ?
             [
               "[&>:not([data-slot=button-group]):not(:last-child)]:border-r",

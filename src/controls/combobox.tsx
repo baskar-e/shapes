@@ -212,7 +212,7 @@ export function ComboboxInput<T extends HTMLInputElement>({ ref: externalRef, cl
                 data-state={isOpen ? 'open' : 'closed'}
                 className={cn(
                     "items-center border border-slate-100 shadow-white-md focus:ring-2 ring-violet-500",
-                    "dark:bg-zinc-800 dark:text-slate-200 dark:border-zinc-700 dark:shadow-white-sm ",
+                    "dark:bg-zinc-800 dark:text-slate-200 dark:border-zinc-700 dark:shadow-white-sm",
                     className
                 )}
             />
@@ -249,7 +249,7 @@ export function ComboboxContent({ children, className, ...props }: ComponentProp
                         data-state={isOpen ? 'open' : 'closed'}
                         data-align={align ?? 'center'}
                         data-side={side}
-                        className={cn("z-50 border rounded-lg shadow-md overflow-y-auto max-h-60 p-1.5 bg-white/20 backdrop-blur-md border-white/30 space-y-1 dark:bg-zinc-800/20 dark:backdrop-blur-lg dark:border-zinc-700/20", className)}
+                        className={cn("z-50 border rounded-lg shadow-md overflow-y-auto max-h-60 p-1.5 bg-white/20 backdrop-blur-md border-white/30 space-y-1 outline-none dark:bg-zinc-800/20 dark:backdrop-blur-lg dark:border-zinc-700/20", className)}
                     >
                         {children}
                     </div>

@@ -29,6 +29,7 @@ import {
 import { cn } from '@/lib/utils';
 import { FloatingContextType } from '@/types';
 import { createSafeContext } from '@/lib/context';
+import { Button } from './button';
 
 type DropdownProps = {
     children: ReactNode
@@ -103,16 +104,17 @@ export function DropdownButton<T extends HTMLButtonElement>({ ref: externalRef, 
     const mergedRef = useMergeRefs([refs.setReference, externalRef]);
 
     return (
-        <button
+        <Button
             ref={mergedRef as Ref<HTMLButtonElement>}
             aria-haspopup='menu'
             data-state={isOpen ? 'open' : 'closed'}
             data-slot='dropdown-button'
-            className={cn("px-4 py-2 text-ash text-sm rounded-md border w-fit", className)}
+            variant='outline'
+            className={cn(className)}
             {...getReferenceProps(props)}
         >
             {children}
-        </button>
+        </Button>
     );
 }
 
@@ -140,13 +142,14 @@ export function DropdownContent({ children, className, portal, modal = false, ..
     const [side, align] = placement.split('-');
 
     if (!isMounted) return null;
-    
+
     const content = (
         <FloatingFocusManager context={context} modal={modal}>
             <div
                 ref={refs.setFloating}
                 style={{ ...floatingStyles, zIndex: 50 }}
                 {...getFloatingProps()}
+                className='outline-none'
             >
                 <div
                     {...props}
@@ -154,7 +157,7 @@ export function DropdownContent({ children, className, portal, modal = false, ..
                     data-slot='dropdown-content'
                     data-align={align ?? 'center'}
                     data-side={side}
-                    className={cn("min-w-48 rounded-lg border p-1.5 shadow-md bg-white/20 backdrop-blur-md border-white/30 space-y-1 dark:bg-slate-950/70 dark:backdrop-blur-lg dark:border-slate-800/50 z-50 max-h-(--dropdown-h) overflow-y-auto custom-scrollbar", className)}
+                    className={cn("min-w-48 rounded-lg border p-1.5 shadow-md bg-white/20 backdrop-blur-md border-white/30 space-y-1 z-50 max-h-(--dropdown-h) outline-none overflow-y-auto custom-scrollbar dark:bg-zinc-800/20 dark:backdrop-blur-lg dark:border-zinc-700/20", className)}
                     style={transitionStyles}
                 >
                     <FloatingList elementsRef={listRef}>
@@ -179,7 +182,10 @@ export function DropdownItem({ children, className, onSelect, ...props }: Dropdo
 
     return (
         <div
-            className={cn("relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2 text-sm text-slate-800 outline-none transition-colors duration-200 hover:bg-white/50 hover:shadow-md hover:ring-1 hover:ring-white/80 dark:hover:bg-slate-800/60 focus-visible:bg-white/50 focus-visible:shadow-md focus-visible:ring-1 focus-visible:ring-white/80", className)}
+            className={cn(
+                "relative flex cursor-pointer select-none items-center rounded-lg px-3 py-2 text-sm text-slate-800 outline-none transition-colors duration-200 hover:bg-white/50 hover:shadow-md hover:ring-1 hover:ring-white/80 focus-visible:bg-white/50 focus-visible:shadow-md focus-visible:ring-1 focus-visible:ring-white/80 dark:text-slate-200 dark:hover:bg-zinc-700/50 dark:hover:ring-zinc-700/80 dark:focus-visible:bg-zinc-700/50 dark:focus-visible:ring-zinc-700/80",
+                className
+            )}
             {...getItemProps({
                 ...props,
                 ref,

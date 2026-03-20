@@ -24,6 +24,38 @@ const items = [
     { word: { "text": "" } }
 ];
 
+const radioGroupItems = {
+    level: [
+        {
+            word: [t("bracket", "{", false), t("variable", "items.", false), t("function", "map", false), t("bracket", "((", false), t("variable", "item", false), t("bracket", ")"), t("keyword", "=>"), t("bracket", "(")]
+        },
+        {
+            level: [
+                {
+                    word: [
+                        t("tag", "<Label"),
+                        t("prop", "key", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}"),
+                        t("prop", "className", false), t("keyword", "=", false), t("string", '"flex items-center gap-2"', false),
+                        t("tag", ">")
+                    ]
+                },
+                {
+                    level: [{ word: [t("tag", "<RadioGroupItem"), t("prop", "value", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}"), t("tag", "/>")] }]
+                },
+                {
+                    level: [{ word: [t("bracket", "{", false), t("text", "item.label", false), t("bracket", "}")] }]
+                },
+                {
+                    word: { "tag": "</Label>" }
+                }
+            ]
+        },
+        {
+            word: [t("bracket", "))}")]
+        }
+    ]
+};
+
 export const radioGroupCode = [
     {
         word: { keyword: 'import', bracket: '{' },
@@ -87,34 +119,7 @@ export const radioGroupBasic = [
                     {
                         word: { "tag": "<RadioGroup>" }
                     },
-                    {
-                        level: [
-                            {
-                                word: [t("bracket", "{", false), t("variable", "items.", false), t("function", "map", false), t("bracket", "((", false), t("variable", "item", false), t("bracket", ")"), t("keyword", "=>"), t("bracket", "(")]
-                            },
-                            {
-                                level: [
-                                    {
-                                        word: [
-                                            t("tag", "<RadioGroupItem"),
-                                            t("prop", "key", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}"),
-                                            t("prop", "value", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}", false),
-                                            t("tag", ">")
-                                        ]
-                                    },
-                                    {
-                                        level: [{ word: [t("bracket", "{", false), t("text", "item.label", false), t("bracket", "}")] }]
-                                    },
-                                    {
-                                        word: { "tag": "</RadioGroupItem>" }
-                                    }
-                                ]
-                            },
-                            {
-                                word: [t("bracket", "))}")]
-                            }
-                        ]
-                    },
+                    radioGroupItems,
                     {
                         word: { "tag": "</RadioGroup>" }
                     }
@@ -148,34 +153,7 @@ export const radioGroupVertical = [
                         word: [t("tag", "<RadioGroup"), t("prop", "orientation", false), t("keyword", "=", false), t("string", '"vertical"', false), t("tag", ">")]
 
                     },
-                    {
-                        level: [
-                            {
-                                word: [t("bracket", "{", false), t("variable", "items.", false), t("function", "map", false), t("bracket", "((", false), t("variable", "item", false), t("bracket", ")"), t("keyword", "=>"), t("bracket", "(")]
-                            },
-                            {
-                                level: [
-                                    {
-                                        word: [
-                                            t("tag", "<RadioGroupItem"),
-                                            t("prop", "key", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}"),
-                                            t("prop", "value", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}", false),
-                                            t("tag", ">")
-                                        ]
-                                    },
-                                    {
-                                        level: [{ word: [t("bracket", "{", false), t("text", "item.label", false), t("bracket", "}")] }]
-                                    },
-                                    {
-                                        word: { "tag": "</RadioGroupItem>" }
-                                    }
-                                ]
-                            },
-                            {
-                                word: [t("bracket", "))}")]
-                            }
-                        ]
-                    },
+                    radioGroupItems,
                     {
                         word: { "tag": "</RadioGroup>" }
                     }
@@ -209,34 +187,7 @@ export const radioGroupDefaultValue = [
                         word: [t("tag", "<RadioGroup"), t("prop", "defaultValue", false), t("keyword", "=", false), t("string", '"option1"', false), t("tag", ">")]
 
                     },
-                    {
-                        level: [
-                            {
-                                word: [t("bracket", "{", false), t("variable", "items.", false), t("function", "map", false), t("bracket", "((", false), t("variable", "item", false), t("bracket", ")"), t("keyword", "=>"), t("bracket", "(")]
-                            },
-                            {
-                                level: [
-                                    {
-                                        word: [
-                                            t("tag", "<RadioGroupItem"),
-                                            t("prop", "key", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}"),
-                                            t("prop", "value", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}", false),
-                                            t("tag", ">")
-                                        ]
-                                    },
-                                    {
-                                        level: [{ word: [t("bracket", "{", false), t("text", "item.label", false), t("bracket", "}")] }]
-                                    },
-                                    {
-                                        word: { "tag": "</RadioGroupItem>" }
-                                    }
-                                ]
-                            },
-                            {
-                                word: [t("bracket", "))}")]
-                            }
-                        ]
-                    },
+                    radioGroupItems,
                     {
                         word: { "tag": "</RadioGroup>" }
                     }
@@ -278,34 +229,7 @@ export const radioGroupControlled = [
                             t("tag", ">")
                         ]
                     },
-                    {
-                        level: [
-                            {
-                                word: [t("bracket", "{", false), t("variable", "items.", false), t("function", "map", false), t("bracket", "((", false), t("variable", "item", false), t("bracket", ")"), t("keyword", "=>"), t("bracket", "(")]
-                            },
-                            {
-                                level: [
-                                    {
-                                        word: [
-                                            t("tag", "<RadioGroupItem"),
-                                            t("prop", "key", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}"),
-                                            t("prop", "value", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}", false),
-                                            t("tag", ">")
-                                        ]
-                                    },
-                                    {
-                                        level: [{ word: [t("bracket", "{", false), t("text", "item.label", false), t("bracket", "}")] }]
-                                    },
-                                    {
-                                        word: { "tag": "</RadioGroupItem>" }
-                                    }
-                                ]
-                            },
-                            {
-                                word: [t("bracket", "))}")]
-                            }
-                        ]
-                    },
+                    radioGroupItems,
                     {
                         word: { "tag": "</RadioGroup>" }
                     }
@@ -339,34 +263,7 @@ export const radioGroupDisabled = [
                         word: [t("tag", "<RadioGroup"), t("prop", "disabled", false), t("tag", ">")]
 
                     },
-                    {
-                        level: [
-                            {
-                                word: [t("bracket", "{", false), t("variable", "items.", false), t("function", "map", false), t("bracket", "((", false), t("variable", "item", false), t("bracket", ")"), t("keyword", "=>"), t("bracket", "(")]
-                            },
-                            {
-                                level: [
-                                    {
-                                        word: [
-                                            t("tag", "<RadioGroupItem"),
-                                            t("prop", "key", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}"),
-                                            t("prop", "value", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}", false),
-                                            t("tag", ">")
-                                        ]
-                                    },
-                                    {
-                                        level: [{ word: [t("bracket", "{", false), t("text", "item.label", false), t("bracket", "}")] }]
-                                    },
-                                    {
-                                        word: { "tag": "</RadioGroupItem>" }
-                                    }
-                                ]
-                            },
-                            {
-                                word: [t("bracket", "))}")]
-                            }
-                        ]
-                    },
+                    radioGroupItems,
                     {
                         word: { "tag": "</RadioGroup>" }
                     }
@@ -407,29 +304,38 @@ export const radioGroupItemDisabled = [
                             {
                                 level: [
                                     {
-                                        word: { "tag": "<RadioGroupItem" },
+                                        word: [
+                                            t("tag", "<Label"),
+                                            t("prop", "key", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}"),
+                                            t("prop", "className", false), t("keyword", "=", false), t("string", '"flex items-center gap-2"', false),
+                                            t("tag", ">")
+                                        ]
                                     },
                                     {
                                         level: [
                                             {
-                                                word: [t("prop", "key", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}")]
+                                                word: { "tag": "<RadioGroupItem" },
                                             },
                                             {
-                                                word: [t("prop", "value", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}")]
+                                                level: [
+                                                    {
+                                                        word: [t("prop", "value", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value", false), t("bracket", "}")]
+                                                    },
+                                                    {
+                                                        word: [t("prop", "disabled", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value"), t("keyword", "==="), t("string", '"option2"', false), t("bracket", "}")]
+                                                    }
+                                                ]
                                             },
                                             {
-                                                word: [t("prop", "disabled", false), t("keyword", "=", false), t("bracket", "{", false), t("text", "item.value"), t("keyword", "==="), t("string", '"option2"', false), t("bracket", "}")]
+                                                word: { "tag": "/>" }
                                             }
                                         ]
-                                    },
-                                    {
-                                        word: { "tag": ">" }
                                     },
                                     {
                                         level: [{ word: [t("bracket", "{", false), t("text", "item.label", false), t("bracket", "}")] }]
                                     },
                                     {
-                                        word: { "tag": "</RadioGroupItem>" }
+                                        word: { "tag": "</Label>" }
                                     }
                                 ]
                             },
@@ -456,7 +362,7 @@ export const radioGroupItemDisabled = [
 export const radioGroupPropsData = [
     {
         name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">name</span>,
-        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">-</span>,
+        type: '-',
         default: '-',
         description: "The name of the radio group, used to group items together for form submission."
     },
@@ -486,19 +392,19 @@ export const radioGroupPropsData = [
                 <span className="bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"vertical"</span>
             </div>
         ),
-        default: 'horizontal',
+        default: <span className="bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"horizontal"</span>,
         description: "Sets the visual layout of the radio items."
     },
     {
         name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">disabled</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
-        default: 'false',
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">false</span>,
         description: "A boolean flag that, prevents user interaction with all radio items within the group."
     },
     {
         name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">required</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
-        default: 'false',
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">false</span>,
         description: "Indicates that the user must select an option before submitting the form."
     }
 ]
@@ -506,26 +412,20 @@ export const radioGroupPropsData = [
 export const radioItemPropsData = [
     {
         name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">id</span>,
-        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">-</span>,
+        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">string</span>,
         default: '-',
         description: "A unique identifier for the radio item, used to link the input with its label for accessibility."
     },
     {
         name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">value*</span>,
-        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">-</span>,
+        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">string</span>,
         default: '-',
         description: "The unique string value associated with this specific radio item, used by the parent group to manage selection."
     },
     {
-        name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">children</span>,
-        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">ReactNode</span>,
-        default: '-',
-        description: "Content or elements rendered inside the component."
-    },
-    {
         name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">disabled</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
-        default: 'false',
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">false</span>,
         description: "A boolean flag that, prevents user interaction with this specific radio item."
     }
 ]
@@ -543,5 +443,10 @@ export const radioItemAttribute = [
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">data-state</span>,
         type: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"checked" | "unchecked"</span>,
         description: "Indicates whether the radio item is checked or unchecked."
+    },
+    {
+        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">data-disabled</span>,
+        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
+        description: "Indicates whether the radio item is disabled."
     }
 ]

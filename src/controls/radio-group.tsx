@@ -36,7 +36,7 @@ type RadioItemProps = {
     id?: string;
     value: string;
     disabled?: boolean
-} & ComponentProps<"label">
+} & ComponentProps<"input">
 
 const [RadioGroupProvider, useRadioGroupContext] = createSafeContext<RadioContextProps>('Combobox');
 
@@ -62,7 +62,7 @@ export function RadioGroup({ name, value: controlledValue, defaultValue = "", on
                 aria-disabled={disabled}
                 data-orientation={orientation}
                 className={cn(
-                    'flex gap-x-5 gap-y-3',
+                    'flex gap-x-5 gap-y-3 text-sm text-ash dark:text-slate-200',
                     orientation === 'vertical' && 'flex-col',
                     className
                 )}
@@ -74,42 +74,35 @@ export function RadioGroup({ name, value: controlledValue, defaultValue = "", on
     );
 }
 
-export function RadioGroupItem({ id, value: itemValue, children, className, disabled: itemDisabled, ...props }: RadioItemProps) {
+export function RadioGroupItem({ id, value: itemValue, className, disabled: itemDisabled, ...props }: RadioItemProps) {
     const { uniqName, value, disabled: groupDisabled, required, handleValueChange } = useRadioGroupContext();
-
-    const uid = id ?? useId();
 
     const isChecked = value === itemValue;
     const isDisabled = groupDisabled || itemDisabled;
 
     return (
-        <label
-            {...props}
-            htmlFor={!isDisabled ? uid : undefined}
-            className={cn(
-                "group relative flex items-center gap-2 text-sm text-ash cursor-pointer transition-all",
-                isDisabled && "opacity-50 cursor-not-allowed grayscale-[0.5]",
-                className
-            )}
-        >
+        <div className="group relative" data-state={isChecked ? 'checked' : 'unchecked'} data-disabled={isDisabled}>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                className="rounded-full transition-transform duration-300 ease-out bg-white text-slate-300 shadow-xs group-has-checked:text-violet-800 group-hover:-translate-y-0.5 group-has-focus-visible:ring-2 group-has-focus-visible:ring-[currentColor]/30 group-has-focus-visible:ring-offset-1 group-has-focus-visible:ring-offset-transparent"
+                className={cn(
+                    "rounded-full bg-white text-violet-800 shadow-xs group-has-focus-visible:ring-2 group-has-focus-visible:ring-[currentColor]/30 group-has-focus-visible:ring-offset-1 group-has-focus-visible:ring-offset-transparent dark:bg-zinc-800",
+                    isDisabled && "opacity-50 cursor-not-allowed grayscale-[0.5]",
+                    className
+                )}
             >
-                <circle cx="12" cy="12" r="12" strokeWidth={isChecked ? "14" : "1"} />
+                <circle cx="12" cy="12" r="12" strokeWidth={isChecked ? "14" : "0"} />
             </svg>
             <input
+                id={id}
                 type="radio"
-                id={uid}
                 name={uniqName}
                 value={itemValue}
                 checked={isChecked}
-                disabled={isDisabled}
                 required={required}
-                data-state={isChecked ? 'checked' : 'unchecked'}
+                disabled={isDisabled}
+                className="absolute inset-0 opacity-0"
                 onChange={() => !isDisabled && handleValueChange?.(itemValue)}
-                className="sr-only peer"
+                {...props}
             />
-            {children}
-        </label>
+        </div>
     );
 }

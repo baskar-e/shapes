@@ -132,7 +132,7 @@ export const checkboxPropsData = [
     {
         name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">disabled</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
-        default: 'false',
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">false</span>,
         description: "Whether the checkbox is disabled."
     }
 ]

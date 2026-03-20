@@ -483,12 +483,12 @@ export const dropdownPropsData = [
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">open</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
-        default: 'false',
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">false</span>,
         description: "Controls whether the combobox dropdown is open."
     },
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">onOpen</span>,
-        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"(open: boolean) => void"}</span>,
+        type: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"(open: boolean) => void"}</span>,
         default: '-',
         description: "Callback function fired when the combobox open state is changed."
     },
@@ -501,7 +501,7 @@ export const dropdownPropsData = [
                 <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"end"</span>
             </div>
         ),
-        default: 'center',
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"center"</span>,
         description: "The preferred alignment against the trigger which the component will be positioned."
     },
     {
@@ -514,13 +514,13 @@ export const dropdownPropsData = [
                 <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"right"</span>
             </div>
         ),
-        default: 'bottom',
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"bottom"</span>,
         description: "The preferred edge of the trigger against which the component will be positioned."
     },
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">space</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">number</span>,
-        default: '5',
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">8</span>,
         description: "The space between the combobox input and the dropdown."
     }
 ];
@@ -537,13 +537,13 @@ export const dropdownContentPropsData = [
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">portal</span>,
         type: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"RefObject<HTMLElement | null>"}</span>,
-        default: 'document.body',
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">document.body</span>,
         description: "Specify a container element to render the content into via a portal."
     },
     {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">modal</span>,
         type: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
-        default: 'false',
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">false</span>,
         description: "The property that determines whether the component should prevent interaction with the background while open."
     }
 ]

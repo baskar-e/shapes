@@ -67,7 +67,7 @@ export const switchCard = [
                     {
                         word: [
                             t("tag", "<label"),
-                            t("prop", "className", false), t("keyword", "=", false), t("string", '"grid grid-cols-[1fr_min-content] items-center gap-x-4 gap-y-1 w-full bg-white rounded-2xl text-sm text-ash p-3 shadow-md"', false),
+                            t("prop", "className", false), t("keyword", "=", false), t("string", '"grid grid-cols-[1fr_min-content] items-center gap-x-4 gap-y-1 w-full bg-white rounded-2xl text-sm text-ash p-3 shadow-md dark:bg-zinc-800 dark:text-slate-200"', false),
                             t("tag", ">")
                         ]
                     },

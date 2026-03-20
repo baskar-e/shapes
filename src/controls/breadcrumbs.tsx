@@ -50,7 +50,7 @@ export function BreadcrumbsLink({ children, className, ...props }: ComponentProp
     return (
         <a
             className={cn(
-                "text-sm text-slate-600 hover:text-slate-900 transition-colors dark:text-gray-400",
+                "text-sm text-slate-600 hover:text-slate-800 transition-colors dark:text-gray-400",
                 className
             )}
             {...props}
@@ -67,7 +67,7 @@ export function BreadcrumbsPage({ children, className, ...props }: ComponentProp
         <span
             aria-current="page"
             data-current="page"
-            className={cn("text-sm text-slate-900 font-medium dark:text-slate-200", className)}
+            className={cn("text-sm text-slate-800 font-medium dark:text-slate-200", className)}
             {...props}
         >
             {children}
@@ -82,10 +82,10 @@ export function BreadcrumbsEllipsis({ className, ...props }: ComponentProps<"spa
         <span
             role="presentation"
             aria-hidden="true"
-            className={cn("text-slate-600", className)}
+            className={cn("text-slate-500 dark:text-gray-400", className)}
             {...props}
         >
-            <Ellipsis className='size-4 text-slate-500 dark:text-gray-400' />
+            <Ellipsis className='size-4 ' />
             <span className="sr-only">More</span>
         </span>
     );
