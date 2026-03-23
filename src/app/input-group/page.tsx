@@ -33,7 +33,7 @@ export default function InputGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-16 sm:px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <InputGroup>
                             <InputGroupInput placeholder="Search" />
                             <InputGroupAddon>
@@ -55,7 +55,7 @@ export default function InputGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-16 sm:px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <InputGroup>
                             <InputGroupInput placeholder="Email" />
                             <InputGroupAddon align="inline-end">
@@ -77,7 +77,7 @@ export default function InputGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-16 sm:px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <InputGroup>
                             <InputGroupInput placeholder="Enter name" />
                             <InputGroupAddon align="block-start">
@@ -99,7 +99,7 @@ export default function InputGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-16 sm:px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <InputGroup>
                             <InputGroupInput placeholder="Enter amount" />
                             <InputGroupAddon align="block-end">
@@ -124,7 +124,7 @@ export default function InputGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-16 sm:px-42 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <InputGroup>
                             <InputGroupInput placeholder="Disabled Input" disabled />
                             <InputGroupAddon>

@@ -31,7 +31,7 @@ export default function TabsPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center px-22 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center xs:px-12 sm:px-22 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Tabs defaultValue="home">
                             <TabList>
                                 <TabButton value="home">Home</TabButton>
@@ -67,7 +67,7 @@ export default function TabsPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center px-22 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center xs:px-12 sm:px-22 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Tabs defaultValue="home" variant="line">
                             <TabList>
                                 <TabButton value="home">Home</TabButton>
@@ -103,7 +103,7 @@ export default function TabsPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center px-22 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center xs:px-12 sm:px-22 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Tabs defaultValue="home" orientation="vertical">
                             <TabList>
                                 <TabButton value="home">Home</TabButton>
@@ -139,7 +139,7 @@ export default function TabsPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center px-22 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center xs:px-12 sm:px-22 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <Tabs defaultValue="home">
                             <TabList>
                                 <TabHighlight className="rounded-xl bg-gray-200 shadow-md dark:shadow-sm dark:border-gray-700">

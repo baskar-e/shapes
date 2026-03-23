@@ -47,6 +47,7 @@
 }
 
 @theme {
+  --breakpoint-xs: 26rem;
   --color-ash: #3e4b61;
   --color-fade: #F5F7FA;
   --color-border: #d3dbe0;

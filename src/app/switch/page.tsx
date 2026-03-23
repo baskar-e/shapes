@@ -62,11 +62,11 @@ export default function SwitchPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-10 sm:px-32 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <label className="grid grid-cols-[1fr_min-content] items-center gap-x-4 gap-y-1 w-full bg-white rounded-2xl text-sm text-ash p-3 shadow-md dark:bg-zinc-800 dark:text-slate-200">
                             <div className="font-medium">Enable Notifications</div>
                             <Switch className="w-8.5 h-5"/>
-                            <p>Toggle the switch to enable or disable notifications based on your preferences.</p>
+                            <p className="max-sm:text-xs">Toggle the switch to enable or disable notifications based on your preferences.</p>
                         </label>
                     </TabPanel>
                     <TabPanel value="code" className="p-0">

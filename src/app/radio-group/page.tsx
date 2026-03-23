@@ -46,7 +46,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup>
                             {items.map((item) => (
                                 <label key={item.value} className="flex items-center gap-2">
@@ -73,7 +73,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup orientation="vertical">
                             {items.map((item) => (
                                 <label key={item.value} className="flex items-center gap-2">
@@ -100,7 +100,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup defaultValue="option1">
                             {items.map((item) => (
                                 <label key={item.value} className="flex items-center gap-2">
@@ -127,7 +127,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup value={value} onValueChange={setValue}>
                             {items.map((item) => (
                                 <label key={item.value} className="flex items-center gap-2">
@@ -154,7 +154,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup disabled>
                             {items.map((item) => (
                                 <label key={item.value} className="flex items-center gap-2">
@@ -178,7 +178,7 @@ export default function RadioGroupPage() {
                         <TabButton value="preview">Preview</TabButton>
                         <TabButton value="code">Code</TabButton>
                     </TabList>
-                    <TabPanel value="preview" className="flex items-center justify-center px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
+                    <TabPanel value="preview" className="flex items-center justify-center xs:px-12 min-h-77 bg-[#edf0f3] dark:bg-zinc-900">
                         <RadioGroup>
                             {items.map((item) => (
                                 <label key={item.value} className="flex items-center gap-2">
