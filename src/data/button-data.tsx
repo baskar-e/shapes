@@ -209,6 +209,18 @@ export const buttonSize = [
 
 export const buttonPropsData = [
     {
+        name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">type</span>,
+        type: (
+            <div className="flex flex-wrap gap-1">
+                <span className="bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"button"</span>
+                <span className="bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"reset"</span>
+                <span className="bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"submit"</span>
+            </div>
+        ),
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"button"</span>,
+        description: "Specifies the default behavior of the button."
+    },
+    {
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">variant</span>,
         type: (
             <div className="flex flex-wrap gap-1">
@@ -238,6 +250,18 @@ export const buttonPropsData = [
     {
         ...classNameProps,
         description: "Custom CSS class name for styling the button group component."
+    },
+    {
+        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">loading</span>,
+        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">false</span>,
+        description: "Indicates that an action is in progress. Disables the button when set to true."
+    },
+    {
+        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">disabled</span>,
+        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
+        default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">false</span>,
+        description: "Disables the button, preventing user interaction and applying disabled styles."
     }
 ]
 
@@ -251,5 +275,15 @@ export const ButtonAttribute = [
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">data-size</span>,
         type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"xs" | "sm" | "md" | "lg"</span>,
         description: "Indicates the size of the button."
+    },
+    {
+        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">data-loading</span>,
+        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
+        description: "Indicates whether the button is loading."
+    },
+    {
+        name: <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">data-disabled</span>,
+        type: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">boolean</span>,
+        description: "Indicates whether the button is disabled."
     }
 ]

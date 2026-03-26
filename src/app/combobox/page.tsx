@@ -7,7 +7,7 @@ import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxInput, ComboboxItem, 
 import { comboboxAutoHighlight, comboboxBasic, comboboxCode, comboboxContentAttribute, comboboxDisabled, comboboxDisabledFn, comboboxEmptyPropsData, comboboxInputAttribute, comboboxInputPropsData, comboboxItemAttribute, comboboxItemPropsData, comboboxLabel, comboboxLabelFn, comboboxPropsData, comboboxUsage, comboboxValue, comboboxValueFn } from "@/data/combobox-data"
 import { AttributeTable } from "@/components/attributeTable"
 
-type Fruits = {
+interface Fruits {
     id?: number;
     name: string;
     color?: string;

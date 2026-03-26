@@ -1,5 +1,7 @@
 "use client";
 
+import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxInput, ComboboxItem, ComboboxList } from "@/controls/combobox";
+import { SearchCode, Send } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -76,7 +78,8 @@ Guidelines:
 - Be concise — developers want answers, not essays
 - If multiple components could work, list them briefly and explain the tradeoff
 - If asked something unrelated to the component library, gently redirect
-- Always use the exact component names from the registry`;
+- Always use the exact component names from the registry
+- When explaining props, make it clear which sub-component each prop belongs to`;
 }
 
 // ─── Search logic ─────────────────────────────────────────────────────────────
@@ -118,43 +121,7 @@ function runSearch(components: ComponentEntry[], query: string): SearchResult[] 
         .slice(0, 7);
 }
 
-// ─── Anthropic API call ───────────────────────────────────────────────────────
-
-// async function callGemini(
-//     messages: { role: string; content: string }[],
-//     systemPrompt: string,
-//     onChunk: (text: string) => void
-// ): Promise<void> {
-//     const response = await fetch("/api/component-ai", {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ messages: messages, systemPrompt }),
-//   });
-
-//     if (!response.ok) throw new Error(`API error: ${response.status}`);
-
-//     const reader = response.body!.getReader();
-//     const decoder = new TextDecoder();
-
-//     while (true) {
-//         const { done, value } = await reader.read();
-//         if (done) break;
-//         const chunk = decoder.decode(value);
-//         for (const line of chunk.split("\n")) {
-//             if (line.startsWith("data: ")) {
-//                 const data = line.slice(6);
-//                 if (data === "[DONE]") return;
-//                 try {
-//                     const parsed = JSON.parse(data);
-//                     if (parsed.type === "content_block_delta" && parsed.delta?.text) {
-//                         onChunk(parsed.delta.text);
-//                     }
-//                 } catch { }
-//             }
-//         }
-//     }
-// }
-
+// ─── API call ───────────────────────────────────────────────────────
 
 async function callGemini(
     messages: { role: string; content: string }[],
@@ -409,28 +376,28 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
     return (
         <>
             <style>{CSS}</style>
-            <div className="cls-root absolute top-0">
+            <div className="font-['JetBrains_Mono','Fira_Code',ui-monospace,monospace] ml-auto">
                 {/* ── Search bar ── */}
-                <div className="cls-search-wrap" ref={containerRef}>
-                    <div className="cls-input-wrap">
-                        <SearchIcon />
+                <div className="relative w-full max-w-170" ref={containerRef}>
+                    <div className="flex items-center gap-2 bg-[#0c0e18] border border-[#1e2236] rounded-lg px-2.5 transition-[border-color,box-shadow] duration-150 focus-within:border-[#4f6ef7] focus-within:shadow-[0_0_0_3px_rgba(79,110,247,.15)]">
+                        <SearchCode size={16} />
                         <input
                             ref={inputRef}
-                            className="cls-input"
+                            className="flex-1 bg-transparent min-w-52 border-none outline-none text-sm text-[#d8daf0] py-1.5 caret-[#4f6ef7] placeholder:text-[#2e3352]"
                             type="text"
                             value={query}
                             onChange={e => setQuery(e.target.value)}
                             onFocus={() => query && setDropOpen(true)}
                             onKeyDown={handleKeyDown}
-                            placeholder="Search components… (⌘K)"
+                            placeholder="Search components… (⌘ K)"
                             autoComplete="off"
                             spellCheck={false}
                         />
                         {query && (
-                            <button className="cls-clear" onClick={() => { setQuery(""); inputRef.current?.focus(); }}>×</button>
+                            <button className="bg-none border-none text-[#4a4f6a] text-xl pr-1 cursor-pointer hover:text-[#8b90aa]" onClick={() => { setQuery(""); inputRef.current?.focus(); }}>×</button>
                         )}
                         <button
-                            className={`cls-ai-toggle${chatOpen ? " active" : ""}`}
+                            className={`flex items-center gap-1.25 border rounded-[7px] text-[#4f6ef7] text-xs whitespace-nowrap px-2.5 py-1 cursor-pointer transition-all duration-150 hover:bg-[#1a1e36] hover:border-[#4f6ef7] ${chatOpen ? "bg-[rgba(79,110,247,.15)] border-[#4f6ef7]" : "bg-[#131625] border-[#2a2d3a]"}`}
                             onClick={() => { setChatOpen(o => !o); setTimeout(() => chatInputRef.current?.focus(), 100); }}
                             title="AI assistant"
                         >
@@ -441,11 +408,11 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
 
                     {/* ── Dropdown ── */}
                     {dropOpen && (
-                        <div className="cls-dropdown">
+                        <div className="absolute top-[calc(100%+6px)] left-0 right-0 bg-[#0c0e18] border border-[#1e2236] rounded-[14px] overflow-hidden overscroll-contain z-999 shadow-[0_20px_50px_rgba(0,0,0,.6)] animate-[clsFadeIn_.12s_ease]">
                             {noResults ? (
-                                <div className="cls-empty">
-                                    No results for <strong>"{query}"</strong>
-                                    <button className="cls-ask-btn" onClick={() => {
+                                <div className="flex flex-col items-center gap-3 text-center text-xs text-[#3a3f57] font-[-apple-system,sans-serif] px-4 py-5">
+                                    No results for <strong className="text-[#555d80]">"{query}"</strong>
+                                    <button className="flex items-center gap-1.5 bg-[rgba(79,110,247,.12)] border border-[rgba(79,110,247,.25)] rounded-md text-[#4f6ef7] text-xs px-3.5 py-2 cursor-pointer transition-all duration-150 hover:bg-[rgba(79,110,247,.22)]" onClick={() => {
                                         setQuery(""); setDropOpen(false);
                                         setChatOpen(true);
                                         setInput(`How do I ${query}?`);
@@ -455,27 +422,27 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
                                     </button>
                                 </div>
                             ) : (
-                                <ul className="cls-list">
+                                <ul className="p-1.5 max-h-95 overflow-y-auto">
                                     {results.map((r, i) => (
                                         <li
                                             key={r.id}
-                                            className={`cls-item${i === activeIdx ? " active" : ""}`}
+                                            className={`px-3 p-2.5 rounded-[9px] cursor-pointer transition-[background] duration-100 hover:bg-[#111428] ${i === activeIdx ? "bg-[#111428]" : ""}`}
                                             onMouseEnter={() => setActiveIdx(i)}
                                             onMouseDown={e => { e.preventDefault(); selectResult(r); }}
                                         >
-                                            <div className="cls-item-head">
-                                                <span className="cls-item-name">{highlight(r.name, query)}</span>
-                                                <span className="cls-item-cat">{r.category}</span>
+                                            <div className="flex items-center justify-between gap-2 mb-0.75">
+                                                <span className="text-[13px] font-semibold text-[#d8daf0]">{highlight(r.name, query)}</span>
+                                                <span className="text-[10px] text-[#4f6ef7] bg-[rgba(79,110,247,.1)] border border-[rgba(79,110,247,.18)] rounded-[4px] px-1.75 py-0.5">{r.category}</span>
                                             </div>
-                                            <p className="cls-item-desc">{highlight(r.description, query)}</p>
-                                            <div className="cls-item-foot">
-                                                <div className="cls-tags">
+                                            <p className="text-[11px] text-[#555d80] mb-1.5 font-[-apple-system,sans-serif]">{highlight(r.description, query)}</p>
+                                            <div className="flex items-center justify-between gap-2">
+                                                <div className="flex flex-wrap gap-0.75">
                                                     {r.tags.slice(0, 4).map(t => (
-                                                        <span key={t} className="cls-tag">{highlight(t, query)}</span>
+                                                        <span key={t} className="text-[10px] text-[#3fcf8e] bg-[rgba(63,207,142,.08)] border border-[rgba(63,207,142,.15)] rounded-[3px] px-1.25 py-px">{highlight(t, query)}</span>
                                                     ))}
                                                 </div>
                                                 <button
-                                                    className="cls-explain-btn"
+                                                    className="flex items-center gap-1 shrink-0 bg-[rgba(79,110,247,.1)] border border-[rgba(79,110,247,.2)] rounded-[5px] text-[#4f6ef7] text-[10px] whitespace-nowrap px-2 py-0.75 transition-all duration-100 cursor-pointer hover:bg-[rgba(79,110,247,.2)]"
                                                     onMouseDown={e => { e.stopPropagation(); e.preventDefault(); explainComponent(r); }}
                                                 >
                                                     <SparkleIcon /> Explain
@@ -485,7 +452,7 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
                                     ))}
                                 </ul>
                             )}
-                            <div className="cls-drop-footer">
+                            <div className="flex gap-4 px-3.5 py-1.75 text-[10px] text-[#222538] border-t border-t-[#131625]">
                                 <span>↑↓ navigate</span><span>↵ open</span><span>esc close</span>
                             </div>
                         </div>
@@ -494,43 +461,43 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
 
                 {/* ── Chat panel ── */}
                 {chatOpen && (
-                    <div className="cls-chat">
+                    <div className="absolute top-10 flex flex-col bg-[#0c0e18] border border-[#1e2236] rounded-[16px] h-130 mt-2.5 overflow-hidden animate-[clsFadeIn_.15s_ease]">
                         {/* Chat header */}
-                        <div className="cls-chat-header">
-                            <div className="cls-chat-title">
+                        <div className="flex items-center justify-between px-4 py-3 border-b border-b-[#131625]">
+                            <div className="flex items-center gap-2 text-[13px] font-semibold text-[#d8daf0]">
                                 <SparkleIcon />
                                 <span>Component AI</span>
                                 {contextComponent && (
-                                    <span className="cls-ctx-pill">
-                                        {contextComponent.name}
-                                        <button onClick={() => setContextComponent(null)}>×</button>
+                                    <span className="flex items-center gap-1.25 bg-[rgba(79,110,247,.12)] border border-[rgba(79,110,247,.2)] rounded-2xl text-[#4f6ef7] text-[11px] px-2 py-0.75">
+                                        <span className="leading-none">{contextComponent.name}</span>
+                                        <button className="text-[#4f6ef7] text-sm leading-none pl-0.5 cursor-pointer" onClick={() => setContextComponent(null)}>×</button>
                                     </span>
                                 )}
                             </div>
-                            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                            <div className="flex items-center gap-2">
                                 {messages.length > 0 && (
-                                    <button className="cls-chat-action" onClick={() => setMessages([])}>
+                                    <button className="border border-[#1e2236] rounded-[6px] text-[#3a3f57] text-[11px] px-2.5 py-1 cursor-pointer transition-all duration-100 hover:border-[#2a2d3a] hover:text-[#555d80]" onClick={() => setMessages([])}>
                                         Clear
                                     </button>
                                 )}
-                                <button className="cls-chat-close" onClick={() => setChatOpen(false)}>×</button>
+                                <button className="text-[#3a3f57] text-xl leading-none px-0.5 cursor-pointer transition-colors duration-100 hover:text-[#8b90aa]" onClick={() => setChatOpen(false)}>×</button>
                             </div>
                         </div>
 
                         {/* Messages */}
-                        <div className="cls-messages">
+                        <div className="flex flex-1 flex-col gap-4 p-4 overflow-y-auto">
                             {messages.length === 0 && (
-                                <div className="cls-welcome">
-                                    <div className="cls-welcome-icon"><SparkleIcon /></div>
-                                    <p>Ask me anything about your component library.</p>
-                                    <div className="cls-suggestions">
+                                <div className="text-center py-5">
+                                    <div className="text-[28px] text-[#4f6ef7] mb-2.5"><SparkleIcon /></div>
+                                    <p className="text-[13px] text-[#555d80] mb-4 font-[-apple-system,sans-serif]">Ask me anything about your component library.</p>
+                                    <div className="flex flex-col items-stretch gap-1.5">
                                         {[
                                             "What component should I use for a confirmation dialog?",
                                             "Show me how to use Button with a loading state",
                                             "What's the difference between Toast and Modal?",
                                             "How do I build a form with validation?",
                                         ].map(s => (
-                                            <button key={s} className="cls-suggestion" onClick={() => { setInput(s); chatInputRef.current?.focus(); }}>
+                                            <button key={s} className="bg-[#0f1220] border border-[#1e2236] rounded-[8px] text-xs text-left text-[#555d80] font-[-apple-system,sans-serif] cursor-pointer px-3.5 py-2.25 transition-all duration-[.12s] hover:bg-[#131625] hover:border-[#2a2d3a] hover:text-[#8b90aa]" onClick={() => { setInput(s); chatInputRef.current?.focus(); }}>
                                                 {s}
                                             </button>
                                         ))}
@@ -538,9 +505,9 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
                                 </div>
                             )}
                             {messages.map((msg, i) => (
-                                <div key={i} className={`cls-msg cls-msg--${msg.role}`}>
+                                <div key={i} className={`flex gap-2.5 animate-[clsFadeIn_.15s_ease] cls-msg--${msg.role}`}>
                                     {msg.role === "assistant" && (
-                                        <div className="cls-msg-avatar"><SparkleIcon /></div>
+                                        <div className="flex items-center justify-center shrink-0 size-7 rounded-[8px] bg-[rgba(79,110,247,.15)] border border-[rgba(79,110,247,.2)] text-[#4f6ef7]"><SparkleIcon /></div>
                                     )}
                                     <div className="cls-msg-body">
                                         {msg.role === "assistant"
@@ -548,7 +515,7 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
                                             : <p style={{ fontSize: 13, color: "#e2e4ef", margin: 0 }}>{msg.content}</p>
                                         }
                                         {streaming && i === messages.length - 1 && msg.role === "assistant" && !msg.content && (
-                                            <span className="cls-cursor" />
+                                            <span className="inline-block align-middle w-0.5 h-3.5 bg-[#4f6ef7] rounded-[1px] mt-1 animate-[clsBlink_1s_ease_infinite]" />
                                         )}
                                     </div>
                                 </div>
@@ -573,7 +540,7 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
                                 onClick={sendMessage}
                                 disabled={streaming || !input.trim()}
                             >
-                                {streaming ? <LoadingDots /> : <SendIcon />}
+                                {streaming ? <LoadingDots /> : <Send size={14} />}
                             </button>
                         </div>
                     </div>
@@ -585,27 +552,10 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
-function SearchIcon() {
-    return (
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: "#4a4f6a", flexShrink: 0 }}>
-            <circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M10 10.5L13.5 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
-    );
-}
-
 function SparkleIcon() {
     return (
         <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
             <path d="M8 1 L9 6.5 L14.5 8 L9 9.5 L8 15 L7 9.5 L1.5 8 L7 6.5 Z" />
-        </svg>
-    );
-}
-
-function SendIcon() {
-    return (
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-            <path d="M2 8L14 2L8 14L7 9L2 8Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
         </svg>
     );
 }
@@ -627,72 +577,18 @@ const CSS = `
 @keyframes clsFadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
 @keyframes clsBlink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-.cls-root { font-family:'JetBrains Mono','Fira Code',ui-monospace,monospace; }
-
-/* Search bar */
-.cls-search-wrap { position:relative; width:100%; max-width:600px; }
-.cls-input-wrap { display:flex; align-items:center; gap:8px; background:#0c0e18; border:1px solid #1e2236; border-radius:12px; padding:0 10px 0 14px; transition:border-color .15s,box-shadow .15s; }
-.cls-input-wrap:focus-within { border-color:#4f6ef7; box-shadow:0 0 0 3px rgba(79,110,247,.15); }
-.cls-input { flex:1; background:transparent; border:none; outline:none; font-family:inherit; font-size:14px; color:#d8daf0; padding:11px 0; caret-color:#4f6ef7; }
-.cls-input::placeholder { color:#2e3352; }
-.cls-clear { background:none; border:none; color:#4a4f6a; cursor:pointer; font-size:20px; line-height:1; padding:0 4px; }
-.cls-clear:hover { color:#8b90aa; }
-
-.cls-ai-toggle { display:flex; align-items:center; gap:5px; background:#131625; border:1px solid #2a2d3a; border-radius:7px; color:#4f6ef7; cursor:pointer; font-family:inherit; font-size:12px; padding:5px 10px; transition:all .15s; white-space:nowrap; }
-.cls-ai-toggle:hover { background:#1a1e36; border-color:#4f6ef7; }
-.cls-ai-toggle.active { background:rgba(79,110,247,.15); border-color:#4f6ef7; }
-
 /* Dropdown */
-.cls-dropdown { position:absolute; top:calc(100% + 6px); left:0; right:0; background:#0c0e18; border:1px solid #1e2236; border-radius:14px; overflow:hidden; z-index:9999; box-shadow:0 20px 50px rgba(0,0,0,.6); animation:clsFadeIn .12s ease; }
-.cls-list { list-style:none; margin:0; padding:6px; max-height:380px; overflow-y:auto; }
-.cls-list::-webkit-scrollbar { width:3px; }
-.cls-list::-webkit-scrollbar-thumb { background:#1e2236; border-radius:2px; }
-.cls-item { padding:10px 12px; border-radius:9px; cursor:pointer; transition:background .1s; }
-.cls-item:hover,.cls-item.active { background:#111428; }
-.cls-item-head { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:3px; }
-.cls-item-name { font-size:13px; font-weight:600; color:#d8daf0; }
-.cls-item-cat { font-size:10px; color:#4f6ef7; background:rgba(79,110,247,.1); border:1px solid rgba(79,110,247,.18); border-radius:4px; padding:2px 7px; }
-.cls-item-desc { font-size:11px; color:#555d80; margin:0 0 6px; line-height:1.5; font-family:-apple-system,sans-serif; }
-.cls-item-foot { display:flex; align-items:center; justify-content:space-between; gap:8px; }
-.cls-tags { display:flex; flex-wrap:wrap; gap:3px; }
-.cls-tag { font-size:10px; color:#3fcf8e; background:rgba(63,207,142,.08); border:1px solid rgba(63,207,142,.15); border-radius:3px; padding:1px 5px; font-family:inherit; }
-.cls-explain-btn { display:flex; align-items:center; gap:4px; background:rgba(79,110,247,.1); border:1px solid rgba(79,110,247,.2); border-radius:5px; color:#4f6ef7; cursor:pointer; font-family:inherit; font-size:10px; padding:3px 8px; transition:all .1s; white-space:nowrap; flex-shrink:0; }
-.cls-explain-btn:hover { background:rgba(79,110,247,.2); }
-.cls-empty { padding:20px 16px; text-align:center; font-size:12px; color:#3a3f57; font-family:-apple-system,sans-serif; display:flex; flex-direction:column; align-items:center; gap:12px; }
-.cls-empty strong { color:#555d80; }
-.cls-ask-btn { display:flex; align-items:center; gap:6px; background:rgba(79,110,247,.12); border:1px solid rgba(79,110,247,.25); border-radius:8px; color:#4f6ef7; cursor:pointer; font-family:inherit; font-size:12px; padding:8px 14px; transition:all .15s; }
-.cls-ask-btn:hover { background:rgba(79,110,247,.22); }
-.cls-drop-footer { display:flex; gap:16px; padding:7px 14px; border-top:1px solid #131625; font-size:10px; color:#222538; }
+// .cls-list::-webkit-scrollbar { width:3px; }
+// .cls-list::-webkit-scrollbar-thumb { background:#1e2236; border-radius:2px; }
 
 /* Chat panel */
-.cls-chat { background:#0c0e18; border:1px solid #1e2236; border-radius:16px; overflow:hidden; margin-top:10px; display:flex; flex-direction:column; height:520px; animation:clsFadeIn .15s ease; }
-.cls-chat-header { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #131625; }
-.cls-chat-title { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:#d8daf0; }
-.cls-ctx-pill { display:flex; align-items:center; gap:5px; background:rgba(79,110,247,.12); border:1px solid rgba(79,110,247,.2); border-radius:20px; color:#4f6ef7; font-size:11px; padding:2px 8px; }
-.cls-ctx-pill button { background:none; border:none; color:#4f6ef7; cursor:pointer; font-size:14px; line-height:1; padding:0 0 0 2px; }
-.cls-chat-action { background:none; border:1px solid #1e2236; border-radius:6px; color:#3a3f57; cursor:pointer; font-family:inherit; font-size:11px; padding:4px 10px; transition:all .1s; }
-.cls-chat-action:hover { border-color:#2a2d3a; color:#555d80; }
-.cls-chat-close { background:none; border:none; color:#3a3f57; cursor:pointer; font-size:20px; line-height:1; padding:0 2px; transition:color .1s; }
-.cls-chat-close:hover { color:#8b90aa; }
-.cls-messages { flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:16px; }
-.cls-messages::-webkit-scrollbar { width:3px; }
-.cls-messages::-webkit-scrollbar-thumb { background:#1e2236; border-radius:2px; }
-
-/* Welcome */
-.cls-welcome { text-align:center; padding:20px 0; }
-.cls-welcome-icon { font-size:28px; color:#4f6ef7; margin-bottom:10px; }
-.cls-welcome p { font-size:13px; color:#555d80; margin-bottom:16px; font-family:-apple-system,sans-serif; }
-.cls-suggestions { display:flex; flex-direction:column; gap:6px; align-items:stretch; }
-.cls-suggestion { background:#0f1220; border:1px solid #1e2236; border-radius:8px; color:#555d80; cursor:pointer; font-family:-apple-system,sans-serif; font-size:12px; padding:9px 14px; text-align:left; transition:all .12s; }
-.cls-suggestion:hover { border-color:#2a2d3a; color:#8b90aa; background:#131625; }
+// .cls-messages::-webkit-scrollbar { width:3px; }
+// .cls-messages::-webkit-scrollbar-thumb { background:#1e2236; border-radius:2px; }
 
 /* Messages */
-.cls-msg { display:flex; gap:10px; animation:clsFadeIn .15s ease; }
 .cls-msg--user { flex-direction:row-reverse; }
 .cls-msg--user .cls-msg-body { background:#131d3d; border:1px solid #1e2d56; border-radius:12px 12px 2px 12px; padding:10px 14px; max-width:80%; }
 .cls-msg--assistant .cls-msg-body { flex:1; }
-.cls-msg-avatar { width:28px; height:28px; border-radius:8px; background:rgba(79,110,247,.15); border:1px solid rgba(79,110,247,.2); color:#4f6ef7; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
-.cls-cursor { display:inline-block; width:2px; height:14px; background:#4f6ef7; border-radius:1px; animation:clsBlink 1s ease infinite; vertical-align:middle; }
 
 /* Chat input */
 .cls-chat-input-wrap { display:flex; gap:8px; padding:12px 14px; border-top:1px solid #131625; }

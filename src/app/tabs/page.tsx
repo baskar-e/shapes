@@ -180,7 +180,7 @@ export default function TabsPage() {
             <div className="grid gap-3">
                 <h5 className="text-lg xl:text-xl font-medium">TabButton</h5>
                 <p className="text-sm pb-1">
-                    The navigation wrapper that groups and displays all tab buttons.
+                    The individual trigger used to switch between different tabs.
                 </p>
                 <PropsTable data={tabButtonPropsData} className="mb-5" />
                 <AttributeTable data={tabButtonAttribute} />
@@ -188,14 +188,14 @@ export default function TabsPage() {
             <div className="grid gap-3">
                 <h5 className="text-lg xl:text-xl font-medium">TabHightlight</h5>
                 <p className="text-sm pb-1">
-                    The individual trigger used to switch between different tabs.
+                    Visual indicator showing the currently active tab.
                 </p>
                 <PropsTable data={tabHighlightPropsData} />
             </div>
             <div className="grid gap-3">
                 <h5 className="text-lg xl:text-xl font-medium">TabList</h5>
                 <p className="text-sm pb-1">
-                    Visual indicator showing the currently active tab.
+                    The navigation wrapper that groups and displays all tab buttons.
                 </p>
                 <AttributeTable data={tabListAttribute} />
             </div>

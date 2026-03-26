@@ -38,7 +38,7 @@ type ComboboxProps<T extends ItemProps> = {
     onOpen?: (open: boolean, event?: Event, reason?: OpenChangeReason) => void
     labelKey?: keyof T | ((item: T) => string);
     valueKey?: keyof T | ((item: T) => string);
-    disabledKey?: keyof T | ((item: T) => boolean) | null;
+    disabledKey?: keyof T | ((item: T) => boolean | undefined);
 }
 
 type ComboboxInputProps<T> = ({
@@ -60,7 +60,7 @@ type ComboboxItemProps = {
     onSelect?: (value: string, item: ItemProps) => void;
 } & Omit<ComponentProps<"div">, "onSelect">
 
-type ItemProps = string | Record<string, unknown>;
+type ItemProps = string | Record<string, any>;
 
 const [ComboboxProvider, useComboboxContext] = createSafeContext<ComboboxContextProps<ItemProps>>('Combobox');
 const [ComboboxContentProvider, useComboboxContentContext] = createSafeContext<{}>('ComboboxContent');

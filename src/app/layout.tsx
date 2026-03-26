@@ -45,12 +45,12 @@ export default function RootLayout({
                   <SidebarTrigger className="-ml-1 dark:text-slate-300" />
                   <Separator orientation="vertical" className="mr-2 data-[orientation=vertical]:h-4" />
                   <ComponentLibrarySearch components={COMPONENTS}/>
-                  <InputGroup className="w-70 ml-auto">
+                  {/* <InputGroup className="w-70 ml-auto">
                     <InputGroupInput className="h-8" placeholder="Search documentation..." />
                     <InputGroupAddon align="inline-end">
                       <Search size={18} className="text-slate-600" />
                     </InputGroupAddon>
-                  </InputGroup>
+                  </InputGroup> */}
                   <ThemeToggle />
                 </div>
               </header>

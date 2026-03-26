@@ -25,7 +25,7 @@ export const COMPONENTS: ComponentEntry[] = [
     category: "Layout",
     description: "Vertically stacked sections that expand and collapse. Useful for FAQs, settings panels, and progressive disclosure.",
     tags: ["expand", "collapse", "faq", "disclosure", "toggle", "panel", "collapsible"],
-    codeSnippet: `<Accordion type="single" defaultValue="item-1" collapsible>
+    codeSnippet: `<Accordion type="single" defaultValue="item-1">
   <AccordionItem value="item-1">
     <AccordionTrigger>Is it accessible?</AccordionTrigger>
     <AccordionContent>Yes. Follows the WAI-ARIA design pattern.</AccordionContent>
@@ -44,9 +44,7 @@ export const COMPONENTS: ComponentEntry[] = [
           defaultValue: "string | string[] — uncontrolled initial open item(s).",
           onValueChange: "(value: string | string[]) => void — fires when open state changes.",
           type: '"single" | "multiple" — single allows one item open at a time, multiple allows many.',
-          collapsible: 'boolean — when type="single", allows clicking the open item to close it. Default false.',
-          disabled: "boolean — disables all items.",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
@@ -54,24 +52,21 @@ export const COMPONENTS: ComponentEntry[] = [
         description: "A single collapsible section. Direct child of Accordion.",
         props: {
           value: "string — unique ID for this item. Used by Accordion to track open state. Required. Must be unique among siblings.",
-          disabled: "boolean — disables only this item.",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
         component: "AccordionTrigger",
         description: "Clickable header that toggles the item.",
         props: {
-          className: "string",
-          asChild: "boolean — render as child element instead of <button>.",
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
         component: "AccordionContent",
         description: "Collapsible body shown when item is open.",
         props: {
-          forceMount: "boolean — keep mounted in DOM even when closed.",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
     ],
@@ -87,31 +82,64 @@ export const COMPONENTS: ComponentEntry[] = [
     description: "Hierarchical navigation trail showing the user's current location. Renders an ordered list of links separated by dividers.",
     tags: ["navigation", "path", "location", "trail", "hierarchy", "links", "wayfinding"],
     codeSnippet: `<Breadcrumbs>
-  <BreadcrumbItem href="/">Home</BreadcrumbItem>
-  <BreadcrumbItem href="/components">Components</BreadcrumbItem>
-  <BreadcrumbItem current>Breadcrumbs</BreadcrumbItem>
+  <BreadcrumbsItem>
+    <BreadcrumbsLink href="/">Home</BreadcrumbsLink>
+  </BreadcrumbsItem>
+  <BreadcrumbsItem>
+    <BreadcrumbsLink href="/components">Components</BreadcrumbsLink>
+  </BreadcrumbsItem>
+  <BreadcrumbsItem>
+    <BreadcrumbsPage>Breadcrumbs</BreadcrumbsPage>
+  </BreadcrumbsItem>
 </Breadcrumbs>`,
     subComponents: [
       {
         component: "Breadcrumbs",
         description: "Root nav wrapper.",
         props: {
-          separator: 'ReactNode — custom separator between items. Defaults to "/".',
-          className: "string",
-          "aria-label": 'string — accessible label. Defaults to "Breadcrumb".',
+          separator: 'ReactNode — custom separator between items. Defaults to ">".',
+          className: "string - additional CSS classes for styling.",
+          "aria-label": 'string — accessible label. Defaults to "Breadcrumbs".',
         },
       },
       {
-        component: "BreadcrumbItem",
-        description: "A single step in the trail.",
+        component: "BreadcrumbsItem",
+        description: "A wrapper for breadcrumbs - link, page, ellipsis and separartor.",
         props: {
-          href: "string — link destination. Omit for the current (last) item.",
-          current: "boolean — marks this as the active page. Sets aria-current='page' and renders as plain text instead of a link.",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
+        },
+      },
+      {
+        component: "BreadcrumbsLink",
+        description: "An interactive link representing a previous page in the hierarchy.",
+        props: {
+          href: "A string defining the URL or path to navigate to.",
+          className: "string - additional CSS classes for styling.",
+        },
+      },
+      {
+        component: "BreadcrumbsPage",
+        description: "The current active page, typically rendered as non-clickable text.",
+        props: {
+          className: "string - additional CSS classes for styling.",
+        },
+      },
+      {
+        component: "BreadcrumbsEllipsis",
+        description: "Indicates collapsed or hidden steps in a long navigation trail.",
+        props: {
+          className: "string - additional CSS classes for styling.",
+        },
+      },
+      {
+        component: "BreadcrumbsSeparator",
+        description: "Visual separator displayed between breadcrumb items",
+        props: {
+          className: "string - additional CSS classes for styling.",
         },
       },
     ],
-    href: "/components/breadcrumbs",
+    href: "/breadcrumbs",
   },
 
   {
@@ -121,12 +149,12 @@ export const COMPONENTS: ComponentEntry[] = [
     description: "Organises content into multiple panels accessible via a tabbed interface. Only one panel visible at a time. Supports keyboard navigation.",
     tags: ["tab", "panel", "switch", "navigation", "sections", "content", "active"],
     codeSnippet: `<Tabs defaultValue="account">
-  <TabsList>
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
-  </TabsList>
-  <TabsContent value="account">Account settings.</TabsContent>
-  <TabsContent value="password">Change your password.</TabsContent>
+  <TabList>
+    <TabButton value="account">Account</TabButton>
+    <TabButton value="password">Password</TabButton>
+  </TabList>
+  <TabPanel value="account">Account settings.</TabPanel>
+  <TabPanel value="password">Change your password.</TabPanel>
 </Tabs>`,
     subComponents: [
       {
@@ -137,38 +165,42 @@ export const COMPONENTS: ComponentEntry[] = [
           defaultValue: "string — uncontrolled initial active tab.",
           onValueChange: "(value: string) => void — fires when active tab changes.",
           orientation: '"horizontal" | "vertical" — layout direction. Default horizontal.',
-          className: "string",
+          variant: '"pill" | "line" - defines the visual style, either a rounded capsule or a simple underlined text.',
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
-        component: "TabsList",
+        component: "TabList",
         description: "Container for the tab trigger buttons.",
         props: {
-          className: "string",
-          loop: "boolean — keyboard navigation wraps from last to first tab. Default true.",
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
-        component: "TabsTrigger",
+        component: "TabButton",
         description: "Clickable tab button. Activates the matching TabsContent.",
         props: {
           value: "string — must match the value of the TabsContent it controls. Required.",
-          disabled: "boolean — disables this tab only.",
-          className: "string",
-          asChild: "boolean",
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
-        component: "TabsContent",
+        component: "TabPanel",
         description: "Panel shown when its matching trigger is active.",
         props: {
           value: "string — must match the value of the TabsTrigger that controls it. Required.",
-          forceMount: "boolean — keep mounted even when inactive.",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
+        },
+      },
+      {
+        component: "TabHighlight",
+        description: "A decorative element used to style and highlight the active tab.",
+        props: {
+          className: "string - additional CSS classes for styling.",
         },
       },
     ],
-    href: "/components/tabs",
+    href: "/tabs",
   },
 
   // ─── Inputs ───────────────────────────────────────────────────────────────
@@ -185,19 +217,18 @@ export const COMPONENTS: ComponentEntry[] = [
 <Button variant="outline" loading={isSaving}>
   <UploadIcon /> Export
 </Button>
-<Button variant="danger" disabled>Delete</Button>`,
+<Button variant="ghost" disabled>Delete</Button>`,
     subComponents: [
       {
         component: "Button",
         props: {
-          variant: '"primary" | "secondary" | "outline" | "ghost" | "danger" | "link"',
+          variant: '"primary" | "secondary" | "outline" | "ghost" | "white"',
           size: '"xs" | "sm" | "md" | "lg"',
           loading: "boolean — shows a spinner and disables interaction.",
           disabled: "boolean",
           type: '"button" | "submit" | "reset"',
           onClick: "(e: React.MouseEvent) => void",
-          asChild: "boolean — render as child element (e.g. wrap a Next.js <Link>).",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
     ],
@@ -221,13 +252,11 @@ export const COMPONENTS: ComponentEntry[] = [
         description: "Wrapper that fuses child Button borders.",
         props: {
           orientation: '"horizontal" | "vertical" — default horizontal.',
-          size: '"sm" | "md" | "lg" — applied to all child buttons.',
-          disabled: "boolean — disables all buttons in the group.",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
     ],
-    href: "/components/button-group",
+    href: "/button-group",
   },
 
   {
@@ -243,7 +272,6 @@ export const COMPONENTS: ComponentEntry[] = [
 />
 <Checkbox
   label="Select all"
-  indeterminate={someSelected}
   checked={allSelected}
   onChange={handleSelectAll}
 />`,
@@ -253,18 +281,16 @@ export const COMPONENTS: ComponentEntry[] = [
         props: {
           checked: "boolean — controlled checked state.",
           defaultChecked: "boolean — uncontrolled initial state.",
-          indeterminate: "boolean — renders a dash. Used for select-all when only some children are checked.",
           onChange: "(e: React.ChangeEvent<HTMLInputElement>) => void",
           label: "string | ReactNode — visible label.",
-          helperText: "string — shown below the label.",
-          error: "string — error message, also applies error styling.",
+          description: "string — shown below the label.",
           disabled: "boolean",
           required: "boolean",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
     ],
-    href: "/components/checkbox",
+    href: "/checkbox",
   },
 
   {
@@ -273,33 +299,31 @@ export const COMPONENTS: ComponentEntry[] = [
     category: "Inputs",
     description: "Searchable select combining a text field with a dropdown. Supports async loading, multi-select, and creatable options.",
     tags: ["search", "select", "autocomplete", "typeahead", "filter", "async", "multi", "dropdown", "creatable"],
-    codeSnippet: `<Combobox
-  options={frameworks}
-  value={value}
-  onChange={setValue}
-  placeholder="Search frameworks..."
-/>
-<Combobox
-  loadOptions={fetchUsers}
-  isMulti
-  value={selectedUsers}
-  onChange={setSelectedUsers}
-/>`,
+    codeSnippet: `<Combobox items={frameworks} labelKey="name" valueKey="id">
+  <ComboboxInput value={value} onChange={setValue} placeholder="Search frameworks..." />
+  <ComboboxContent>
+    <ComboboxEmpty />
+    <ComboboxList>
+      <ComboboxItem value="react">React</ComboboxItem>
+      <ComboboxItem value="next">Next</ComboboxItem>
+      <ComboboxItem value="angular">Angular</ComboboxItem>
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>`,
     subComponents: [
       {
         component: "Combobox",
         props: {
-          options: "Option[] — static options { value: string, label: string }[].",
-          loadOptions: "(query: string) => Promise<Option[]> — async option loader. Use instead of options for server-side search.",
-          value: "Option | Option[] | null — controlled selected value.",
-          onChange: "(value: Option | Option[] | null) => void",
-          isMulti: "boolean — allow selecting multiple options.",
-          isCreatable: "boolean — allow typing a new value not in the list.",
-          isLoading: "boolean — shows a loading spinner in the dropdown.",
-          placeholder: "string",
-          disabled: "boolean",
-          clearable: "boolean — show a clear button when a value is selected.",
-          className: "string",
+          items: "Items[] — An array of data objects used as selectable options.",
+          open: "boolean — Controlled state to handle the visibility of the menu.",
+          onOpen: "(open: boolean) => void — Callback function triggered when the menu opens or closes.",
+          autoHighlight: "boolean — If true, the first option is highlighted by default (Default: false).",
+          align: "'start' | 'center' | 'end' — The alignment of the menu relative to the trigger (Default: 'center').",
+          side: "'top' | 'right' | 'bottom' | 'left' — The preferred side for menu placement (Default: 'bottom').",
+          space: "number — The pixel gap between the trigger and the menu (Default: 5).",
+          labelKey: "string | ((item: T) => string) — The object key used to display text (Default: 'label').",
+          valueKey: "string | ((item: T) => string) — The object key used for the unique value (Default: 'value').",
+          disabledKey: "string | ((item: T) => boolean | undefined) — The object key used to identify disabled items (Default: 'disabled').",
         },
       },
     ],
@@ -340,7 +364,7 @@ export const COMPONENTS: ComponentEntry[] = [
           disabled: "boolean",
           required: "boolean",
           maxLength: "number — enables character count display.",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
     ],
@@ -371,14 +395,14 @@ export const COMPONENTS: ComponentEntry[] = [
         component: "InputGroup",
         description: "Wrapper that fuses child borders into a single control.",
         props: {
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
         component: "InputAddon",
         description: "Non-interactive prefix or suffix label inside the group.",
         props: {
-          className: "string",
+          className: "string - additional CSS classes for styling.",
           children: "ReactNode — text or icon shown in the addon.",
         },
       },
@@ -414,7 +438,7 @@ export const COMPONENTS: ComponentEntry[] = [
           error: "string — error message shown below.",
           disabled: "boolean — disables all options.",
           name: "string — HTML name attribute for native form submission.",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
@@ -423,7 +447,7 @@ export const COMPONENTS: ComponentEntry[] = [
         props: {
           value: "string — the value this option represents. Compared against RadioGroup value to determine if checked. Required.",
           disabled: "boolean — disables only this option.",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
           children: "ReactNode — label for this option.",
         },
       },
@@ -459,7 +483,7 @@ export const COMPONENTS: ComponentEntry[] = [
           description: "string — secondary descriptive text shown below the label.",
           disabled: "boolean",
           size: '"sm" | "md" | "lg"',
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
     ],
@@ -495,7 +519,7 @@ export const COMPONENTS: ComponentEntry[] = [
           closeOnBackdrop: "boolean — close when clicking the backdrop. Default true.",
           closeOnEsc: "boolean — close on Escape key. Default true.",
           initialFocus: "RefObject<HTMLElement> — element to focus when dialog opens.",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
@@ -567,7 +591,7 @@ export const COMPONENTS: ComponentEntry[] = [
           side: '"top" | "bottom" | "left" | "right" — preferred placement. Default bottom.',
           align: '"start" | "center" | "end" — alignment relative to trigger. Default start.',
           sideOffset: "number — gap between trigger and menu in px. Default 4.",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
@@ -577,7 +601,7 @@ export const COMPONENTS: ComponentEntry[] = [
           onSelect: "(e: Event) => void — fires when item is clicked or activated by keyboard.",
           disabled: "boolean — makes item non-interactive.",
           variant: '"default" | "danger" — danger applies destructive styling.',
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
@@ -619,7 +643,7 @@ export const COMPONENTS: ComponentEntry[] = [
           hoverable: "boolean — adds a lift effect on hover.",
           onClick: "(e: React.MouseEvent) => void — makes the whole card clickable.",
           asChild: "boolean",
-          className: "string",
+          className: "string - additional CSS classes for styling.",
         },
       },
       {
@@ -630,7 +654,7 @@ export const COMPONENTS: ComponentEntry[] = [
       {
         component: "CardTitle",
         description: "Primary heading inside the card header.",
-        props: { className: "string", asChild: "boolean" },
+        props: { className: "string - additional CSS classes for styling.", asChild: "boolean" },
       },
       {
         component: "CardDescription",

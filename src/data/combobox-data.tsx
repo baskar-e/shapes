@@ -910,7 +910,7 @@ export const comboboxPropsData = [
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">labelKey</span>,
         type: (
             <div className="flex flex-wrap gap-1">
-                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"keyof T"}</span>
+                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"string"}</span>
                 <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"((item: T) => string)"}</span>
             </div>
         ),
@@ -921,7 +921,7 @@ export const comboboxPropsData = [
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">valueKey</span>,
         type: (
             <div className="flex flex-wrap gap-1">
-                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"keyof T"}</span>
+                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"string"}</span>
                 <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"((item: T) => string)"}</span>
             </div>
         ),
@@ -932,8 +932,8 @@ export const comboboxPropsData = [
         name: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">disabledKey</span>,
         type: (
             <div className="flex flex-wrap gap-1">
-                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"keyof T"}</span>
-                <span className="inline-block w-max bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"((item: T) => string)"}</span>
+                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"string"}</span>
+                <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">{"((item: T) => boolean | undefined)"}</span>
             </div>
         ),
         default: <span className="inline-block bg-gray-100 px-2 py-1 rounded-md dark:bg-zinc-800">"disabled"</span>,
