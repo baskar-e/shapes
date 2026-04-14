@@ -141,7 +141,7 @@ export function ComponentShowcase() {
                 backgroundColor='#131316'
                 className='h-full'
               >
-                <a href='#' className="flex flex-col h-full p-6">
+                <a href={comp.link} className="flex flex-col h-full p-6">
                   <div className="flex items-start gap-4">
                     <div className="shrink-0 w-10 h-10 rounded-lg bg-[#8249df1a] flex items-center justify-center text-violet-600">
                       <comp.icon className={`w-5 h-5 [.lucide-circle-dot]:*:last:[r:4px] [.lucide-circle-dot]:*:last:fill-violet-600`} />
