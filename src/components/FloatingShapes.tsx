@@ -84,7 +84,7 @@ function ShapeElement({ type, size }: { type: string; size: number }) {
   }
 }
 
-export default function FloatingShapes() {
+export function FloatingShapes() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-[5]">
       {shapes.map((shape, i) => (

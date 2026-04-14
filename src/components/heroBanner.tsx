@@ -2,7 +2,7 @@
 
 import LightRays from '@/components/LightRays'
 import ShinyText from '@/components/ShinyText';
-import FloatingShapes from './floatingShapes';
+import { FloatingShapes } from './floatingShapes';
 
 export function HeroBanner() {
   return (
