@@ -52,7 +52,7 @@ export function NavMain({ items }: {
               <>
                 <SidebarMenuButton asChild
                   className={cn(
-                    "group text-slate-800 text-sm pl-2 py-1.5 rounded-md cursor-default select-none font-medium hover:bg-transparent data-[state=open]:font-medium dark:text-slate-300",
+                    "group text-slate-800 text-sm pl-2 py-1.5 rounded-md cursor-default select-none font-medium hover:bg-transparent active:bg-transparent data-[state=open]:font-medium dark:text-slate-300",
                     item.items.some((subItem) => subItem.url === pathName)
                       ? "font-medium bg-linear-to-br from-blue-100 via-violet-200/75 to-pink-100 dark:from-violet-600 dark:via-fuchsia-900 dark:to-pink-400"
                       : ""

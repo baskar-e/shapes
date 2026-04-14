@@ -264,7 +264,10 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
     // Close dropdown on outside click
     useEffect(() => {
         function h(e: MouseEvent) {
-            if (!containerRef.current?.contains(e.target as Node)) setDropOpen(false);
+            if (!containerRef.current?.contains(e.target as Node)) {
+                setDropOpen(false);
+                setChatOpen(false);
+            }
         }
         document.addEventListener("mousedown", h);
         return () => document.removeEventListener("mousedown", h);
@@ -420,7 +423,8 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
                                 <div className="flex flex-col items-center gap-3 text-center text-xs text-[#3a3f57] font-[-apple-system,sans-serif] px-4 py-5">
                                     No results for <strong className="text-[#555d80] w-full text-ellipsis overflow-hidden">"{query}"</strong>
                                     <button className="flex items-center gap-1.5 bg-violet-800/12 border border-violet-800/25 rounded-md text-violet-500 text-xs whitespace-nowrap w-full px-3.5 py-2 cursor-pointer transition-all duration-150 hover:bg-violet-800/22" onClick={() => {
-                                        setQuery(""); setDropOpen(false);
+                                        setQuery(""); 
+                                        setDropOpen(false);
                                         setChatOpen(true);
                                         setInput(`How do I ${query}?`);
                                         setTimeout(() => chatInputRef.current?.focus(), 100);
@@ -470,7 +474,7 @@ export function ComponentLibrarySearch({ components, onNavigate }: Props) {
 
                 {/* ── Chat panel ── */}
                 {chatOpen && (
-                    <div className={`absolute top-10 flex flex-col bg-zinc-50 dark:bg-zinc-900 border border-violet-700/15 rounded-[16px] h-130 mt-2.5 overflow-hidden overscroll-contain animate-[clsFadeIn_.15s_ease] ${messages.length <=1 ? "max-w-87" : "right-5 max-w-[95vw]"}`}>
+                    <div className={`absolute top-10 flex flex-col bg-zinc-50 dark:bg-zinc-900 border border-violet-700/15 rounded-[16px] h-130 mt-2.5 overflow-hidden overscroll-contain animate-[clsFadeIn_.15s_ease] ${messages.length <=1 ? "max-w-87 mr-2" : "right-5 max-w-[95vw]"}`}>
                         {/* Chat header */}
                         <div className="flex items-center justify-between px-4 py-3 border-b border-b-violet-800/15">
                             <div className="flex items-center gap-2 text-[13px] font-semibold text-slate-600 dark:text-slate-200">
